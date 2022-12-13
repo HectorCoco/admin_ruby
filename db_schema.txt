@@ -1,10 +1,10 @@
-users
+>>users
     id - int - pk 
     email - str 
     password - str
-    permission_level - int
+    permission_level - in
 
-clients
+>>clients
     id - int - pk
     first_name - str
     middle_name - str
@@ -12,35 +12,35 @@ clients
     active - bool
 
 
-addresses
+>>addresses
     id - int - pk
     street - str
     block - str
     lot - str
     colony - str
-    postal_code - int
+    postal_code - string
     city - str
     state - str
     client - int - fk --client
     
-phones
+>>phones
     id - int - pk
     number - str
     client - int - fk --client
 
-batches
+>>batches
     id - int - pk
-    block - str
+    price - int
     lot - str
+    block - str
     boundaries - str
-    description - str
     state - int
+    description - str
 
 contracts
     id - int - pk
     client - int - fk --client
     batch - int - fk --batch
-
 
 payments
     id - int - pk

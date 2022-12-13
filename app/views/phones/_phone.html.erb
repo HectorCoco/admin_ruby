@@ -1,0 +1,10 @@
+<div id="<%= dom_id phone %>">
+  <p>
+    <strong>Number:</strong>
+    <%= phone.number %>
+  </p>
+  <p>
+    <strong>Client:</strong>
+    <%= "#{phone.client.first_name.capitalize} #{phone.client.middle_name.capitalize} #{phone.client.last_name.capitalize}"%>
+  </p>
+</div>
