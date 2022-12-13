@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :batches
+  resources :addresses
+  resources :phones
   devise_for :users
   resources :clients
   root "home#index"

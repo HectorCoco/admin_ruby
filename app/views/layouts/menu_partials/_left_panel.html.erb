@@ -1,5 +1,10 @@
 <!-- ########## START: LEFT PANEL ########## -->
-<div class="br-logo"><a href=""><span>[</span>bracket<span>]</span></a></div>
+<div class="br-logo">   <%= link_to root_path, class: "" do %>
+    <span>[</span>
+    <span class="">Inicio</span>
+    <span>]</span>
+  <% end %>
+</div>
 <div class="br-sideleft overflow-y-auto">
   <label class="sidebar-label pd-x-15 mg-t-20">Navigation</label>
   <div class="br-sideleft-menu">
@@ -30,45 +35,6 @@
         <span class="menu-item-label">UI Elements</span>
         <i class="menu-item-arrow fa fa-angle-down"></i>
       </div>
-      <%# %>
-      <%# <div class="menu-item has-sub">
-        <a href="javascript:;" class="menu-link">
-          <div class="menu-icon">
-            <i class="bi bi-bag-check"></i>
-            <span class="w-5px h-5px rounded-3 bg-theme position-absolute top-0 end-0 mt-3px me-3px"></span>
-          </div>
-          <div class="menu-text d-flex align-items-center">POS System</div>
-          <span class="menu-caret"><b class="caret"></b></span>
-        </a>
-        <div class="menu-submenu">
-          <div class="menu-item">
-            <a href="pos_customer_order.html" target="_blank" class="menu-link">
-              <div class="menu-text">Customer Order</div>
-            </a>
-          </div>
-          <div class="menu-item">
-            <a href="pos_kitchen_order.html" target="_blank" class="menu-link">
-              <div class="menu-text">Kitchen Order</div>
-            </a>
-          </div>
-          <div class="menu-item">
-            <a href="pos_counter_checkout.html" target="_blank" class="menu-link">
-              <div class="menu-text">Counter Checkout</div>
-            </a>
-          </div>
-          <div class="menu-item">
-            <a href="pos_table_booking.html" target="_blank" class="menu-link">
-              <div class="menu-text">Table Booking</div>
-            </a>
-          </div>
-          <div class="menu-item">
-            <a href="pos_menu_stock.html" target="_blank" class="menu-link">
-              <div class="menu-text">Menu Stock</div>
-            </a>
-          </div>
-        </div>
-      </div> %>
-      <%#  %>
       <!-- menu-item -->
     </a><!-- br-menu-link -->
     <ul class="br-menu-sub nav flex-column">

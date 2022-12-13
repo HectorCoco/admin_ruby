@@ -10,7 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_13_170222) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_13_181657) do
+  create_table "addresses", force: :cascade do |t|
+    t.string "street"
+    t.string "block"
+    t.string "lot"
+    t.string "colony"
+    t.string "postal_code"
+    t.string "city"
+    t.string "state"
+    t.integer "client_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_addresses_on_client_id"
+  end
+
+  create_table "batches", force: :cascade do |t|
+    t.integer "price"
+    t.string "lot"
+    t.string "block"
+    t.text "boundaries"
+    t.string "state"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "clients", force: :cascade do |t|
     t.string "first_name"
     t.string "middle_name"
@@ -18,6 +43,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_170222) do
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "phones", force: :cascade do |t|
+    t.string "number"
+    t.integer "client_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_phones_on_client_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -32,4 +65,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_170222) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "clients"
+  add_foreign_key "phones", "clients"
 end
