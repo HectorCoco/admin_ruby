@@ -14,15 +14,19 @@ clients
 
 addresses
     id - int - pk
-    client_id - int - fk --client
     street - str
     block - str
     lot - str
+    colony - str
+    postal_code - int
+    city - str
+    state - str
+    client - int - fk --client
     
 phones
     id - int - pk
     number - str
-    client_id - int - fk --client
+    client - int - fk --client
 
 batches
     id - int - pk
@@ -34,13 +38,13 @@ batches
 
 contracts
     id - int - pk
-    client_id - int - fk --client
-    batch_id - int - fk --batch
+    client - int - fk --client
+    batch - int - fk --batch
 
 
 payments
     id - int - pk
     date - date
-    client_id - int - fk --client
+    client - int - fk --client
 
 

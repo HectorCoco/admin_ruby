@@ -34,6 +34,8 @@
     <%=render "/layouts/menu_partials/top_panel"%>
     <%=render "/layouts/menu_partials/right_panel"%>
     <div class="br-mainpanel">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
       <%= yield %>
       <!-- br-pagebody -->
       <%=render "layouts/menu_partials/footer"%>
