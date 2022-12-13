@@ -1,0 +1,46 @@
+users
+    id - int - pk 
+    email - str 
+    password - str
+    permission_level - int
+
+clients
+    id - int - pk
+    first_name - str
+    middle_name - str
+    last_name - str
+    active - bool
+
+
+addresses
+    id - int - pk
+    client_id - int - fk --client
+    street - str
+    block - str
+    lot - str
+    
+phones
+    id - int - pk
+    number - str
+    client_id - int - fk --client
+
+batches
+    id - int - pk
+    block - str
+    lot - str
+    boundaries - str
+    description - str
+    state - int
+
+contracts
+    id - int - pk
+    client_id - int - fk --client
+    batch_id - int - fk --batch
+
+
+payments
+    id - int - pk
+    date - date
+    client_id - int - fk --client
+
+
