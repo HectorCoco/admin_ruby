@@ -29,6 +29,9 @@ gem "jbuilder"
 
 gem 'sass-rails'
 
+#gem devise for user administration
+gem 'devise'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
