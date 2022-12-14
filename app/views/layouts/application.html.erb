@@ -33,13 +33,18 @@
     <%=render "/layouts/menu_partials/left_panel"%>
     <%=render "/layouts/menu_partials/top_panel"%>
     <%=render "/layouts/menu_partials/right_panel"%>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <!-- ########## START: MAIN PANEL ########## -->
     <div class="br-mainpanel">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
+      <!-- d-flex -->
+      <div class="br-pagebody mg-t-5 pd-x-30">
+        <%= yield %>
+      </div>
       <!-- br-pagebody -->
       <%=render "layouts/menu_partials/footer"%>
     </div>
+    <!-- br-mainpanel -->
     <!--Javascripts-->
     <%= javascript_include_tag "jquery/jquery" %>
     <%= javascript_include_tag "popper.js/popper" %>
