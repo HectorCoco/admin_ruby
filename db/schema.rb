@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_13_181657) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_15_161034) do
   create_table "addresses", force: :cascade do |t|
     t.string "street"
     t.string "block"
@@ -34,6 +34,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_181657) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "square_meters"
+    t.integer "contract_id"
+    t.index ["contract_id"], name: "index_batches_on_contract_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -43,6 +46,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_181657) do
     t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "contracts", force: :cascade do |t|
+    t.integer "total_amount"
+    t.integer "total_payments"
+    t.text "comments"
+    t.integer "client_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_contracts_on_client_id"
   end
 
   create_table "phones", force: :cascade do |t|
@@ -66,5 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_181657) do
   end
 
   add_foreign_key "addresses", "clients"
+  add_foreign_key "batches", "contracts"
+  add_foreign_key "contracts", "clients"
   add_foreign_key "phones", "clients"
 end

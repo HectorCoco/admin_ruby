@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Twitter -->
+    <meta name="twitter:site" content="@themepixels">
+    <meta name="twitter:creator" content="@themepixels">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bracket">
+    <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="twitter:image" content="http://themepixels.me/bracket/img/bracket-social.png">
+    <!-- Facebook -->
+    <meta property="og:url" content="http://themepixels.me/bracket">
+    <meta property="og:title" content="Bracket">
+    <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta property="og:image" content="http://themepixels.me/bracket/img/bracket-social.png">
+    <meta property="og:image:secure_url" content="http://themepixels.me/bracket/img/bracket-social.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+    <!-- Meta -->
+    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="author" content="ThemePixels">
+    <title>Login</title>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <div class="d-flex align-items-center justify-content-center bg-br-primary ht-100v">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <% if notice %>
+          <div class="alert alert-primary text-white text-opacity-50 text-center mb-4"> <%=notice%>  </div>
+        <% end %>
+        <% if alert %>
+          <div class="alert alert-danger text-white text-opacity-50 text-center mb-4"> <%=alert%>  </div>
+        <% end %>
+        <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white rounded shadow-base">
+          <div class="signin-logo tx-center tx-28 tx-bold tx-inverse"><span class="tx-normal">[</span> Login <span class="tx-normal">]</span></div>
+          <div class="tx-center mg-b-60">The Admin Template For Perfectionist</div>
+          <div class="form-group">
+            <%= f.email_field :email, autofocus: true, autocomplete: "Enter your Email", class: "form-control"  %>
+          </div>
+          <!-- form-group -->
+          <div class="form-group">
+            <%= f.password_field :password, autofocus: true, autocomplete: "Enter your password", class: "form-control"  %>
+          </div>
+          <!-- form-group -->
+          <button type="submit" class="btn btn-info btn-block">Sign In</button>
+        <% end %>
+      </div>
+      <!-- login-wrapper -->
+    </div>
+    <!-- d-flex -->
+    <%= javascript_include_tag "jquery/jquery" %>
+    <%= javascript_include_tag "popper.js/popper" %>
+    <%= javascript_include_tag "bootstrap/bootstrap" %>
+  </body>
+</html>

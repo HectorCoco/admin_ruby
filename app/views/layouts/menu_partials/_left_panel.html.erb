@@ -10,14 +10,20 @@
   <div class="br-sideleft-menu">
     <%= link_to clients_path, class: "br-menu-link" do %>
       <div class="br-menu-item">
-        <i class="menu-item-icon icon ion-ios-email-outline tx-24"></i>
+        <i class="menu-item-icon icon ion-person tx-24"></i>
         <span class="menu-item-label">Clientes</span>
       </div>
     <% end %>
     <%= link_to batches_path, class: "br-menu-link" do %>
       <div class="br-menu-item">
-        <i class="menu-item-icon icon ion-ios-email-outline tx-24"></i>
+        <i class="menu-item-icon icon ion-pin tx-24"></i>
         <span class="menu-item-label">Lotes</span>
+      </div>
+    <% end %>
+    <%= link_to contracts_path, class: "br-menu-link" do %>
+      <div class="br-menu-item">
+        <i class="menu-item-icon icon ion-filing tx-24"></i>
+        <span class="menu-item-label">Contratos</span>
       </div>
     <% end %>
     <a href="#" class="br-menu-link">
