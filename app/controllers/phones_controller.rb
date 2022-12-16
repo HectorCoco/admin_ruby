@@ -1,5 +1,6 @@
 class PhonesController < ApplicationController
-  before_action :set_phone, only: %i[ show edit update destroy ]
+  before_action :set_phone, only: %i[show edit update destroy]
+  before_action :set_catalogs, only: %i[new edit create]
 
   # GET /phones or /phones.json
   def index
@@ -58,13 +59,18 @@ class PhonesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_phone
-      @phone = Phone.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def phone_params
-      params.require(:phone).permit(:number, :client_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_phone
+    @phone = Phone.find(params[:id])
+  end
+
+  def set_catalogs
+    @clients = Client.select(:id, :first_name, :middle_name, :last_name, :status)
+  end
+
+  # Only allow a list of trusted parameters through.
+  def phone_params
+    params.require(:phone).permit(:number, :client_id)
+  end
 end

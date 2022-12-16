@@ -1,0 +1,38 @@
+<%= form_with(model: contract) do |form| %>
+  <% if contract.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(contract.errors.count, "error") %> prohibited this contract from being saved:</h2>
+      <ul>
+        <% contract.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="mb-3">
+    <%= form.label "Client", style: "display: block"%>
+    <%= form.select :client_id, @clients.collect { |c| [ "#{c.first_name} #{c.middle_name} #{c.last_name}", c.id ] }, {},class:"" %>
+  </div>
+  <div class="">
+    <%= form.label :batch_id, style: "display: block" %>
+    <%@batches.each do |batch|%>
+      <%= form.label :"Lote #{batch.lot}, Manzana #{batch.block}", style: "display: block" %>
+      <%= form.check_box "batch[]", class: "" %>
+    <% end %>
+    <div>
+      <%= form.label :total_amount, style: "display: block" %>
+      <%= form.number_field :total_amount %>
+    </div>
+    <div>
+      <%= form.label :total_payments, style: "display: block" %>
+      <%= form.number_field :total_payments %>
+    </div>
+    <div>
+      <%= form.label :comments, style: "display: block" %>
+      <%= form.text_area :comments %>
+    </div>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

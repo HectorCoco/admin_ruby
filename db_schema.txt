@@ -1,11 +1,9 @@
 >>users
-    id - int - pk 
     email - str 
     password - str
     permission_level - in
 
 >>clients
-    id - int - pk
     first_name - str
     middle_name - str
     last_name - str
@@ -13,8 +11,7 @@
 
 
 >>addresses
-    id - int - pk
-    street - str
+    street - strs
     block - str
     lot - str
     colony - str
@@ -24,27 +21,34 @@
     client - int - fk --client
     
 >>phones
-    id - int - pk
     number - str
     client - int - fk --client
 
 >>batches
-    id - int - pk
     price - int
     lot - str
     block - str
     boundaries - str
     state - int
     description - str
+    cnt opt
 
 contracts
-    id - int - pk
+    total_amount - int 
+    total_payments - int
+    comments - str
     client - int - fk --client
-    batch - int - fk --batch
+
 
 payments
-    id - int - pk
     date - date
-    client - int - fk --client
+    amount - id
+    contract - int - fk
+    comments - str
 
 
+Contrario 1 Cliente Hector
+Litado de lotes del contrato 
+
+1. Batch 2
+2. Batch 455

@@ -1,10 +1,35 @@
 <p style="color: green"><%= notice %></p>
-
 <%= render @client %>
-
+<p>
+  <strong>Phone number:</strong>
+  <br>
+  <%@client.phones.each do |phone| %>
+    <%=phone.number%>
+    <br>
+  <% end %>
+</p>
+<p>
+  <h6><strong> Address:
+    </strong></h6>
+  <%@client.addresses.each do |address| %>
+    <strong>Street:</Strong>
+    <%=address.street%>
+    <strong>Block:</Strong>
+    <%=address.block%>
+    <strong>Lot:</Strong>
+    <%=address.lot%>
+    <strong>Colony:</Strong>
+    <%=address.street%>
+    <strong>Postal Code:</Strong>
+    <%=address.postal_code%>
+    <strong>City:</Strong>
+    <%=address.city%>
+    <strong>State:</Strong>
+    <%=address.state%>
+  <% end %>
+</p>
 <div>
   <%= link_to "Edit this client", edit_client_path(@client) %> |
   <%= link_to "Back to clients", clients_path %>
-
   <%= button_to "Destroy this client", @client, method: :delete %>
 </div>
