@@ -11,21 +11,18 @@
   <% end %>
   <div class="mb-3">
     <%= form.label "Client", style: "display: block"%>
-    <%= form.select :client_id, @clients.collect { |c| [ "#{c.first_name} #{c.middle_name} #{c.last_name}", c.id ] }, {},class:"" %>
+    <%= form.select :client_id, @clients.collect { |c| [ "#{c.first_name} #{c.middle_name} #{c.last_name}", c.id ] }, {},class:"custom-select" %>
   </div>
   <div class="">
     <%= form.label :batch_id, style: "display: block" %>
-    <%@batches.each do |batch|%>
-      <%= form.label :"Lote #{batch.lot}, Manzana #{batch.block}", style: "display: block" %>
-      <%= form.check_box "batch[]", class: "" %>
-    <% end %>
+    <%= form.select "batch_id", @batches.collect { |b| [ "manzana-#{b.block} lote-#{b.lot}", b.id ] }, {},multiple:true, class:"selectpicker multiselect" %>
     <div>
       <%= form.label :total_amount, style: "display: block" %>
-      <%= form.number_field :total_amount %>
+      <%= form.text_field :total_amount %>
     </div>
     <div>
       <%= form.label :total_payments, style: "display: block" %>
-      <%= form.number_field :total_payments %>
+      <%= form.text_field :total_payments %>
     </div>
     <div>
       <%= form.label :comments, style: "display: block" %>

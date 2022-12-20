@@ -62,6 +62,7 @@
     <%= javascript_include_tag "bracket" %>
     <%= javascript_include_tag "ResizeSensor" %>
     <%= javascript_include_tag "dashboard" %>
+    <%= javascript_include_tag "bootstrap-select/bootstrap-select.min" %>
     <script>
       $(function(){
       'use strict'
@@ -86,6 +87,9 @@
       }
       }
       });
+    </script>
+    <script>
+      $('.multiselect').selectpicker();
     </script>
   </body>
 </html>

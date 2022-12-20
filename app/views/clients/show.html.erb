@@ -1,27 +1,35 @@
 <p style="color: green"><%= notice %></p>
+<h6><strong>Personal information</strong></h6>
 <%= render @client %>
+<br>
 <p>
   <strong>Phone number:</strong>
   <br>
+  <%n=1%>
   <%@client.phones.each do |phone| %>
-    <%=phone.number%>
+    <%="#{n}.- #{phone.number}"%>
+    <%n+=1%>
     <br>
   <% end %>
 </p>
+<br>
 <p>
   <h6><strong> Address:
     </strong></h6>
   <%@client.addresses.each do |address| %>
     <strong>Street:</Strong>
     <%=address.street%>
+    <br>
     <strong>Block:</Strong>
     <%=address.block%>
     <strong>Lot:</Strong>
     <%=address.lot%>
+    <br>
     <strong>Colony:</Strong>
     <%=address.street%>
     <strong>Postal Code:</Strong>
     <%=address.postal_code%>
+    <br>
     <strong>City:</Strong>
     <%=address.city%>
     <strong>State:</Strong>
