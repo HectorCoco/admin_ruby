@@ -23,6 +23,8 @@ class ContractsController < ApplicationController
   # POST /contracts or /contracts.json
   def create
     @contract = Contract.new(contract_params)
+    set_batches
+    get_batch_list
 
     respond_to do |format|
       if @contract.save
@@ -38,6 +40,9 @@ class ContractsController < ApplicationController
   # PATCH/PUT /contracts/1 or /contracts/1.json
   def update
     respond_to do |format|
+      set_batches
+      get_batch_list
+
       if @contract.update(contract_params)
         format.html { redirect_to contract_url(@contract), notice: "Contract was successfully updated." }
         format.json { render :show, status: :ok, location: @contract }
@@ -73,5 +78,13 @@ class ContractsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def contract_params
     params.require(:contract).permit(:total_amount, :total_payments, :comments, :client_id)
+  end
+
+  def set_batches
+    @contract.batches_params = params[:contract][:batch_id].reject(&:empty?).map(&:to_i)
+  end
+
+  def get_batch_list
+    @contract.batch_list = Batch.all
   end
 end
