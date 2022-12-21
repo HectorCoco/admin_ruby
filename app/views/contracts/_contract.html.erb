@@ -19,4 +19,9 @@
     <strong>Comments:</strong>
     <%= contract.comments %>
   </p>
+  <p>
+    <strong>Lotes:</strong>
+    <br>
+    <%= contract.batches.map{ |b| [ "Manzana - #{b.block}, Lote - #{b.lot} "] }.join("; ")%>
+  </p>
 </div>
