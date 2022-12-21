@@ -1,0 +1,16 @@
+<h1>Hola Mundo</h1>
+<%=render "search"%>
+<br>
+<br>
+<h1>Resultados para: &nbsp;"<%=@value%>"</h1>
+<% unless @error %>
+  <% unless @results.empty?%>
+    <%@results.each do |result|%>
+      <%=link_to result do%>
+        <span><%="#{result.first_name} #{result.middle_name} #{result.last_name}"%></span><br>
+      <% end %>
+    <% end %>
+  <% else %>
+    <span><%=@error%></span>
+  <% end %>
+<% end %>

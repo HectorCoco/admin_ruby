@@ -4,7 +4,7 @@ class ContractsController < ApplicationController
 
   # GET /contracts or /contracts.json
   def index
-    @contracts = Contract.all
+    @contracts = Contract.eager_load(:batches).all
   end
 
   # GET /contracts/1 or /contracts/1.json
@@ -23,8 +23,8 @@ class ContractsController < ApplicationController
   # POST /contracts or /contracts.json
   def create
     @contract = Contract.new(contract_params)
-    set_batches
-    get_batch_list
+    set_batches_selected
+    # get_all_batches
 
     respond_to do |format|
       if @contract.save
@@ -40,8 +40,8 @@ class ContractsController < ApplicationController
   # PATCH/PUT /contracts/1 or /contracts/1.json
   def update
     respond_to do |format|
-      set_batches
-      get_batch_list
+      set_batches_selected
+      # get_all_batches
 
       if @contract.update(contract_params)
         format.html { redirect_to contract_url(@contract), notice: "Contract was successfully updated." }
@@ -71,8 +71,8 @@ class ContractsController < ApplicationController
   end
 
   def set_catalogs
-    @batches = Batch.allowed.select(:id, :price, :lot, :block, :bundaries, :state, :description)
-    @clients = Client.select(:id, :first_name, :middle_name, :last_name, :status)
+    @batches = Batch.allowed.all
+    @clients = Client.all
   end
 
   # Only allow a list of trusted parameters through.
@@ -80,11 +80,11 @@ class ContractsController < ApplicationController
     params.require(:contract).permit(:total_amount, :total_payments, :comments, :client_id)
   end
 
-  def set_batches
-    @contract.batches_params = params[:contract][:batch_id].reject(&:empty?).map(&:to_i)
+  def set_batches_selected
+    @contract.batches_selected = params[:contract][:batch_id].reject(&:empty?).map(&:to_i)
   end
 
-  def get_batch_list
-    @contract.batch_list = Batch.all
-  end
+  # def get_all_batches
+  #   @contract.batch_list = Batch.all
+  # end
 end

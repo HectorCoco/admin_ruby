@@ -1,0 +1,10 @@
+<%=form_tag( client_results_path, method: :get, name:"search_form", class:"") do%>
+  <div>
+    <div>
+      <input type="text" name="value" id="value" minlength="3" class="" placeholder="Buscar..."/>
+    </div>
+    <div>
+      <input type="submit" value="Aceptar"/>
+    </div>
+  </div>
+<% end %>

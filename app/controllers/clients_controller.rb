@@ -57,6 +57,16 @@ class ClientsController < ApplicationController
     end
   end
 
+  def results
+    @value = params[:value]
+    @error = false
+    if @value.empty? || @value.length < 3 || @value.nil?
+      @error = true
+    else
+      @results = Client.search(Client::SEARCH_COLUMNS, @value)
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

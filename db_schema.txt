@@ -41,14 +41,9 @@ contracts
 
 
 payments
+    us_id - str
     date - date
     amount - id
-    contract - int - fk
     comments - str
+    contract - int - fk
 
-
-Contrario 1 Cliente Hector
-Litado de lotes del contrato 
-
-1. Batch 2
-2. Batch 455
