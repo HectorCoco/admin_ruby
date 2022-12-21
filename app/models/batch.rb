@@ -2,7 +2,7 @@ class Batch < ApplicationRecord
   belongs_to :contract, optional: true
 
   scope :allowed, -> { where("state=1") }
-  # scope :related(param_contract_id), -> { where("contract_id=#{param_contract_id}" ) }
+  scope :related, ->(param_contract_id) { where("contract_id = ?", param_contract_id) }
 
   # @batches.where("contract_id==@contract.id")
   # @contract.batches_params

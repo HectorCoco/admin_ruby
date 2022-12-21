@@ -12,6 +12,7 @@ class Contract < ApplicationRecord
   after_save :update_contract_in_batch
 
   def update_contract_in_batch
+    Batch.reset_contract_id_in_batches(id)
     Batch.batch_contract_update(batches_selected, id)
   end
 

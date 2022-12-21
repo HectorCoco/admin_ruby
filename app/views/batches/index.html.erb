@@ -1,5 +1,14 @@
 <p style="color: green"><%= notice %></p>
 <h1>Batches</h1>
+<div>
+  <p>
+    <span>-------------------------------------------------------</span>
+  </p>
+  <%= link_to "New batch", new_batch_path %>
+  <p>
+    <span>-------------------------------------------------------</span>
+  </p>
+</div>
 <div id="batches">
   <% @batches.each do |batch| %>
     <%= render batch %>
@@ -9,4 +18,3 @@
     <span>-------------------------------------------------------</span>
   <% end %>
 </div>
-<%= link_to "New batch", new_batch_path %>
