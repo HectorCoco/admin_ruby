@@ -22,6 +22,10 @@
   <p>
     <strong>Lotes:</strong>
     <br>
-    <%= contract.batches.map{ |b| [ "Manzana - #{b.block}, Lote - #{b.lot} "] }.join("; ")%>
+    <%# <%= contract.batches.map{ |b| [ "Manzana - #{b.block}, Lote - #{b.lot} "] }.join('; ')%>
+    <%contract.batches.each do |batch|%>
+      <span>M- <%=batch.block%></span> ; <span>L- <%=batch.lot%></span>
+      <br>
+    <% end %>
   </p>
 </div>

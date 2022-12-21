@@ -71,8 +71,12 @@ class ContractsController < ApplicationController
   end
 
   def set_catalogs
-    @batches = Batch.allowed.all
+    @batches = batches_allowed
     @clients = Client.all
+  end
+
+  def batches_allowed
+    @batches = Batch.allowed + @contract.batches
   end
 
   # Only allow a list of trusted parameters through.
