@@ -9,17 +9,16 @@
       </ul>
     </div>
   <% end %>
-  <div class="mb-3"
->
-    <%= form.label :number, style: "display: block" %>
-    <%= form.text_field :number %>
-  </div>
   <div class="mb-3">
     <%= form.label "Client", style: "display: block"%>
     <%= form.select :client_id, @clients.collect { |c| [ "#{c.first_name} #{c.middle_name} #{c.last_name}", c.id ] }, {},class:"" %>
   </div>
-  <div class="mb-3"
->
+  <div class="mb-3">
+    <%= form.label :number, style: "display: block" %>
+    <%= form.text_field :number %>
+  </div>
+  <br>
+  <div class="mb-3">
     <%= form.submit %>
   </div>
 <% end %>

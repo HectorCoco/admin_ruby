@@ -1,38 +1,130 @@
 <div id="<%= dom_id batch %>">
-  <p>
-    <strong>Batch ID:</strong>
-    <%= batch.id %>
-  </p>
-  <p>
-    <strong>Contract:</strong>
-    <%= batch.contract_id %>
-  </p>
-  <p>
-    <strong>Price:</strong>
-    <%= batch.price %>
-  </p>
-  <p>
-    <strong>Area:</strong>
-    <%="#{ batch.square_meters} m2" %>
-  </p>
-  <p>
-    <strong>Block:</strong>
-    <%= batch.block %>
-  </p>
-  <p>
-    <strong>Lot:</strong>
-    <%= batch.lot %>
-  </p>
-  <p>
-    <strong>Boundaries:</strong>
-    <%= batch.boundaries %>
-  </p>
-  <p>
-    <strong>State:</strong>
-    <%= batch.state %>
-  </p>
-  <p>
-    <strong>Description:</strong>
-    <%= batch.description %>
-  </p>
+  <div class="form-layout form-layout-7">
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Batch UUID</span>
+      </div>
+      <!-- col-4 -->
+      <div class="col-7 col-sm-8">
+        <div class="form-control" >
+          <span><%=batch.uuid%></span>
+        </div>
+      </div>
+      <!-- col-8 -->
+    </div>
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Price</span>
+      </div>
+      <!-- col-4 -->
+      <div class="col-7 col-sm-8">
+        <div class="form-control">
+          <span><%=batch.price%></span>
+        </div>
+      </div>
+      <!-- col-8 -->
+    </div>
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Block</span>
+      </div>
+      <!-- col-4 -->
+      <div class="col-7 col-sm-8">
+        <div class="form-control">
+          <span><%=batch.block%></span>
+        </div>
+      </div>
+      <!-- col-8 -->
+    </div>
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Lot</span>
+      </div>
+      <!-- col-4 -->
+      <div class="col-7 col-sm-8">
+        <div class="form-control">
+          <span><%=batch.lot%></span>
+        </div>
+      </div>
+      <!-- col-8 -->
+    </div>
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Status</span>
+      </div>
+      <!-- col-4 -->
+      <% if batch.state=="1" %>
+        <div class="col-7 col-sm-8">
+          <div class="form-control">
+            <span class="tx-warning">Free</span>
+          </div>
+        </div>
+      <% else %>
+        <div class="col-7 col-sm-8">
+          <div class="form-control">
+            <span class="tx-success">Sold</span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Area</span>
+      </div>
+      <!-- col-4 -->
+      <div class="col-7 col-sm-8">
+        <div class="form-control">
+          <span><%="#{batch.square_meters} m2"%></span>
+        </div>
+      </div>
+      <!-- col-8 -->
+    </div>
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Contract id</span>
+      </div>
+      <!-- col-4 -->
+      <% unless batch.contract_id.nil? %>
+        <div class="col-7 col-sm-8">
+          <div class="form-control">
+            <span><%=batch.contract_id%></span>
+          </div>
+        </div>
+      <% else %>
+        <div class="col-7 col-sm-8">
+          <div class="form-control">
+            <span>No contract</span>
+          </div>
+        </div>
+      <% end %>
+      <!-- col-8 -->
+    </div>
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Boundaries</span>
+      </div>
+      <!-- col-4 -->
+      <div class="col-7 col-sm-8">
+        <div class="form-control">
+          <span><%=batch.boundaries%></span>
+        </div>
+      </div>
+      <!-- col-8 -->
+    </div>
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Description</span>
+      </div>
+      <!-- col-4 -->
+      <div class="col-7 col-sm-8">
+        <div class="form-control">
+          <span><%=batch.description%></span>
+        </div>
+      </div>
+      <!-- col-8 -->
+    </div>
+    <!-- col-8 -->
+  </div>
+  <!-- col-8 -->
 </div>
+<!-- row -->

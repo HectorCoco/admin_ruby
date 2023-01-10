@@ -1,43 +1,29 @@
-<p style="color: green"><%= notice %></p>
-<h6><strong>Personal information</strong></h6>
+<div class="pd-10 mg-t-20 bg-info ">
+  <ul class="nav nav-white-800 flex-column flex-md-row" role="tablist">
+    <h6 class="tx-white m-2" >Personal Information</h6>
+  </ul>
+</div>
 <%= render @client %>
-<br>
-<p>
-  <strong>Phone number:</strong>
-  <br>
-  <%n=1%>
-  <%@client.phones.each do |phone| %>
-    <%="#{n}.- #{phone.number}"%>
-    <%n+=1%>
-    <br>
-  <% end %>
-</p>
-<br>
-<p>
-  <h6><strong> Address:
-    </strong></h6>
-  <%@client.addresses.each do |address| %>
-    <strong>Street:</Strong>
-    <%=address.street%>
-    <br>
-    <strong>Block:</Strong>
-    <%=address.block%>
-    <strong>Lot:</Strong>
-    <%=address.lot%>
-    <br>
-    <strong>Colony:</Strong>
-    <%=address.street%>
-    <strong>Postal Code:</Strong>
-    <%=address.postal_code%>
-    <br>
-    <strong>City:</Strong>
-    <%=address.city%>
-    <strong>State:</Strong>
-    <%=address.state%>
-  <% end %>
-</p>
+<div class="pd-10 mg-t-20 bg-info">
+  <ul class="nav nav-white-800 flex-column flex-md-row" role="tablist">
+    <h6 class="tx-white m-2" >Phone Numbers</h6>
+  </ul>
+</div>
+<%=render "/clients/phones", client: @client%>
+<div class="pd-10 mg-t-20 bg-info">
+  <ul class="nav nav-white-800 flex-column flex-md-row" role="tablist">
+    <h6 class="tx-white m-2" >Addresses</h6>
+  </ul>
+</div>
+<%=render "/clients/addresses", client:@client%>
 <div>
-  <%= link_to "Edit this client", edit_client_path(@client) %> |
-  <%= link_to "Back to clients", clients_path %>
-  <%= button_to "Destroy this client", @client, method: :delete %>
+  <%= link_to "Edit this client", edit_client_path(@client) %> ||
+  <%= link_to "Back to clients", clients_path %> ||
+  <%= link_to new_phone_with_client_path(@client), class:"" do%>
+    Add phone number
+  <% end %> ||
+  <%= link_to new_address_with_client_path(@client), class:"" do%>
+    Add address
+  <% end %>
+  <%= button_to "Destroy this client", @client, method: :delete, class:"btn btn-info tx-11 pd-y-12 tx-uppercase tx-spacing-2 mb-3"%>
 </div>

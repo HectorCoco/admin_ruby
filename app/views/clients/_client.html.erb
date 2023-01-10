@@ -1,22 +1,70 @@
 <div id="<%= dom_id client %>">
-  <p>
-    <strong>Client ID:</strong>
-    <%= client.id%>
-  </p>
-  <p>
-    <strong>First name:</strong>
-    <%= client.first_name %>
-  </p>
-  <p>
-    <strong>Middle name:</strong>
-    <%= client.middle_name %>
-  </p>
-  <p>
-    <strong>Last name:</strong>
-    <%= client.last_name %>
-  </p>
-  <p>
-    <strong>Status:</strong>
-    <%= client.status %>
-  </p>
+  <div class="form-layout form-layout-7">
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Client ID</span>
+      </div>
+      <!-- col-4 -->
+      <div class="col-7 col-sm-8">
+        <div class="form-control" >
+          <span><%=client.id%></span></div>
+      </div>
+      <!-- col-8 -->
+    </div>
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>First Name</span>
+      </div>
+      <!-- col-4 -->
+      <div class="col-7 col-sm-8">
+        <div class="form-control">
+          <span><%=client.first_name%></span></div>
+      </div>
+      <!-- col-8 -->
+    </div>
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Middle Name</span>
+      </div>
+      <!-- col-4 -->
+      <div class="col-7 col-sm-8">
+        <div class="form-control">
+          <span><%=client.middle_name%></span></div>
+      </div>
+      <!-- col-8 -->
+    </div>
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Last Name</span>
+      </div>
+      <!-- col-4 -->
+      <div class="col-7 col-sm-8">
+        <div class="form-control">
+          <span><%=client.last_name%></span></div>
+      </div>
+      <!-- col-8 -->
+    </div>
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Status</span>
+      </div>
+      <!-- col-4 -->
+      <% if client.status==true %>
+        <div class="col-7 col-sm-8">
+          <div class="form-control">
+            <span>Active</span>
+          </div>
+        </div>
+      <% else %>
+        <div class="col-7 col-sm-8">
+          <div class="form-control">
+            <span>Inactive</span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <!-- col-8 -->
+  </div>
+  <!-- col-8 -->
 </div>
+<!-- row -->

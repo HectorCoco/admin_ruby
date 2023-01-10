@@ -3,7 +3,7 @@ class BatchesController < ApplicationController
 
   # GET /batches or /batches.json
   def index
-    @batches = Batch.all
+    @batches = Batch.all.order_by_free
   end
 
   # GET /batches/1 or /batches/1.json
@@ -66,6 +66,6 @@ class BatchesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def batch_params
-    params.require(:batch).permit(:price, :lot, :block, :boundaries, :state, :description, :square_meters)
+    params.require(:batch).permit(:uuid, :price, :lot, :block, :boundaries, :state, :description, :square_meters)
   end
 end

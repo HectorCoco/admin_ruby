@@ -1,8 +1,11 @@
 class Batch < ApplicationRecord
   belongs_to :contract, optional: true
 
+  validates :price, :lot, :block, :state, presence: true
+
   scope :allowed, -> { where("state=1") }
   scope :related, ->(param_contract_id) { where("contract_id = ?", param_contract_id) }
+  scope :order_by_free, -> { order(state: :asc) }
 
   # @batches.where("contract_id==@contract.id")
   # @contract.batches_params

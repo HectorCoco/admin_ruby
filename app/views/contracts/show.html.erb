@@ -1,10 +1,11 @@
-<p style="color: green"><%= notice %></p>
-
+<div class="pd-10 mg-t-20 bg-info ">
+  <ul class="nav nav-white-800 flex-column flex-md-row" role="tablist">
+    <h6 class="tx-white m-2" >Contract Information</h6>
+  </ul>
+</div>
 <%= render @contract %>
-
 <div>
-  <%= link_to "Edit this contract", edit_contract_path(@contract) %> |
+  <%= link_to "Edit this contract", edit_contract_path(@contract) %> ||
   <%= link_to "Back to contracts", contracts_path %>
-
-  <%= button_to "Destroy this contract", @contract, method: :delete %>
+  <%= button_to "Destroy this contract", @contract, method: :delete, class:"btn btn-info tx-11 pd-y-12 tx-uppercase tx-spacing-2 mb-3"%>
 </div>

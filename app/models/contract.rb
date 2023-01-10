@@ -8,7 +8,7 @@ class Contract < ApplicationRecord
   validates_numericality_of :total_amount, :total_payments, greater_than: 0
 
   # Callbacks
-  before_destroy :reset_contract
+  before_destroy :reset_contract_in_batch
   after_save :update_contract_in_batch
 
   def update_contract_in_batch
@@ -16,7 +16,7 @@ class Contract < ApplicationRecord
     Batch.batch_contract_update(batches_selected, id)
   end
 
-  def reset_contract
+  def reset_contract_in_batch
     Batch.reset_contract_id_in_batches(id)
   end
 end

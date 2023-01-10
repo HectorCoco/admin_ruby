@@ -32,13 +32,31 @@
   <body>
     <%=render "/layouts/menu_partials/left_panel"%>
     <%=render "/layouts/menu_partials/top_panel"%>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <!-- ########## START: MAIN PANEL ########## -->
     <div class="br-mainpanel">
+      <div class="d-flex mb-4">
+        <% if alert %>
+          <div class="alert alert-warning" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong class="d-block d-sm-inline-block-force"><%=alert%></strong>
+          </div>
+        <% end %>
+        <% if notice %>
+          <div class="alert alert-success" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong class="d-block d-sm-inline-block-force"><%=notice%></strong>
+          </div>
+        <% end %>
+      </div>
       <!-- d-flex -->
       <div class="br-pagebody mg-t-5 pd-x-30">
-        <%= yield %>
+        <div class="br-section-wrapper">
+          <%= yield %>
+        </div>
       </div>
       <!-- br-pagebody -->
       <%=render "layouts/menu_partials/footer"%>

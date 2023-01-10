@@ -2,7 +2,6 @@
   <% if address.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(address.errors.count, "error") %> prohibited this address from being saved:</h2>
-
       <ul>
         <% address.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,47 +9,39 @@
       </ul>
     </div>
   <% end %>
-
+  <div>
+    <%= form.label "Client", style: "display: block"%>
+    <%= form.select :client_id, @clients.collect { |c| [ "#{c.first_name} #{c.middle_name} #{c.last_name}", c.id ] }, {},class:"" %>
+  </div>
   <div>
     <%= form.label :street, style: "display: block" %>
     <%= form.text_field :street %>
   </div>
-
   <div>
     <%= form.label :block, style: "display: block" %>
     <%= form.text_field :block %>
   </div>
-
   <div>
     <%= form.label :lot, style: "display: block" %>
     <%= form.text_field :lot %>
   </div>
-
   <div>
     <%= form.label :colony, style: "display: block" %>
     <%= form.text_field :colony %>
   </div>
-
   <div>
     <%= form.label :postal_code, style: "display: block" %>
     <%= form.text_field :postal_code %>
   </div>
-
   <div>
     <%= form.label :city, style: "display: block" %>
     <%= form.text_field :city %>
   </div>
-
   <div>
     <%= form.label :state, style: "display: block" %>
     <%= form.text_field :state %>
   </div>
-
-  <div>
-    <%= form.label :client_id, style: "display: block" %>
-    <%= form.text_field :client_id %>
-  </div>
-
+  <br>
   <div>
     <%= form.submit %>
   </div>

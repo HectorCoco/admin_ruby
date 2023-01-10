@@ -1,0 +1,15 @@
+<div class="form-layout form-layout-7">
+  <%client.phones.each_with_index do |phone, index| %>
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span><%=index + 1%></span>
+      </div>
+      <!-- col-4 -->
+      <div class="col-7 col-sm-8">
+        <div class="form-control" >
+          <span><%=phone.number%></span></div>
+      </div>
+      <!-- col-8 -->
+    </div>
+  <% end %>
+</div>

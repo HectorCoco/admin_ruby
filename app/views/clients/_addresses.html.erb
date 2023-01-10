@@ -1,0 +1,88 @@
+<p>
+  <% if client.addresses.empty?%>
+    <p>Sin direcciones</p>
+  <%else%>
+    <div class="form-layout form-layout-7">
+      <%client.addresses.each do |address| %>
+        <div class="pd-5 bg-info mt-1">
+        </div>
+        <div class="row no-gutters ">
+          <div class="col-5 col-sm-4">
+            <span>Street</span>
+          </div>
+          <!-- col-4 -->
+          <div class="col-7 col-sm-8">
+            <div class="form-control" >
+              <span><%=address.street%></span></div>
+          </div>
+          <!-- col-8 -->
+        </div>
+        <div class="row no-gutters">
+          <div class="col-5 col-sm-4">
+            <span>Block</span>
+          </div>
+          <!-- col-4 -->
+          <div class="col-7 col-sm-8">
+            <div class="form-control" >
+              <span><%=address.block%></span></div>
+          </div>
+          <!-- col-8 -->
+        </div>
+        <div class="row no-gutters">
+          <div class="col-5 col-sm-4">
+            <span>Lot</span>
+          </div>
+          <!-- col-4 -->
+          <div class="col-7 col-sm-8">
+            <div class="form-control" >
+              <span><%=address.lot%></span></div>
+          </div>
+          <!-- col-8 -->
+        </div>
+        <div class="row no-gutters">
+          <div class="col-5 col-sm-4">
+            <span>Colony</span>
+          </div>
+          <!-- col-4 -->
+          <div class="col-7 col-sm-8">
+            <div class="form-control" >
+              <span><%=address.colony%></span></div>
+          </div>
+          <!-- col-8 -->
+        </div>
+        <div class="row no-gutters">
+          <div class="col-5 col-sm-4">
+            <span>Postal Code</span>
+          </div>
+          <!-- col-4 -->
+          <div class="col-7 col-sm-8">
+            <div class="form-control" >
+              <span><%=address.postal_code%></span></div>
+          </div>
+          <!-- col-8 -->
+        </div>
+        <div class="row no-gutters">
+          <div class="col-5 col-sm-4">
+            <span>City</span>
+          </div>
+          <!-- col-4 -->
+          <div class="col-7 col-sm-8">
+            <div class="form-control" >
+              <span><%=address.city%></span></div>
+          </div>
+          <!-- col-8 -->
+        </div>
+        <div class="row no-gutters">
+          <div class="col-5 col-sm-4">
+            <span>State</span>
+          </div>
+          <!-- col-4 -->
+          <div class="col-7 col-sm-8">
+            <div class="form-control" >
+              <span><%=address.state%></span></div>
+          </div>
+          <!-- col-8 -->
+        </div>
+      <% end %>
+    <% end %>
+  </p>

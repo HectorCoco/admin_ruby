@@ -1,35 +1,59 @@
 <%= form_with(model: contract) do |form| %>
-  <% if contract.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(contract.errors.count, "error") %> prohibited this contract from being saved:</h2>
-      <ul>
-        <% contract.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="mb-3">
-    <%= form.label "Client", style: "display: block"%>
-    <%= form.select :client_id, @clients.collect { |c| [ "#{c.first_name} #{c.middle_name} #{c.last_name}", c.id ] }, {},class:"custom-select" %>
+  <div class="row">
+    <% if contract.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(contract.errors.count, "error") %> prohibited this contract from being saved:</h2>
+        <ul>
+          <% contract.errors.each do |error| %>
+            <li class="col-sm-8 mg-t-10 mg-sm-t-0"><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   </div>
-  <div class="">
-    <%= form.label :batch_id, style: "display: block" %>
-    <%= form.select "batch_id", @batches.collect { |b| [ "manzana-#{b.block} lote-#{b.lot}", b.id ] }, {},multiple:true, class:"selectpicker multiselect" %>
-    <div>
-      <%= form.label :total_amount, style: "display: block" %>
-      <%= form.text_field :total_amount %>
-    </div>
-    <div>
-      <%= form.label :total_payments, style: "display: block" %>
-      <%= form.text_field :total_payments %>
-    </div>
-    <div>
-      <%= form.label :comments, style: "display: block" %>
-      <%= form.text_area :comments %>
+  <div class="row">
+    <%= form.label :client, style: "display: block", class:"col-sm-4 form-control-label" do%>
+      Client<span class="tx-danger">*</span>
+    <%end%>
+    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+      <%= form.select :client_id, @clients.collect { |c| [ "#{c.first_name} #{c.middle_name} #{c.last_name}", c.id ] }, {:prompt => 'Select Client...'}, class:"form-control selectpicker border border-gray"%>
     </div>
   </div>
-  <div>
-    <%= form.submit %>
+  <div class="row mg-t-20">
+    <%= form.label :batch_id, style: "display: block", class:"col-sm-4 form-control-label" do%>
+      Batches<span class="tx-danger">*</span>
+    <% end %>
+    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+      <%= form.select "batch_id", @batches.collect { |b| [ "#{b.uuid}", b.id ] }, {:promt=>'Select batches...'},multiple:true, class:"form-control selectpicker multiselect border border-gray" %>
+    </div>
+  </div>
+  <div class="row mg-t-20 mb-4">
+    <%= form.label :down_payment, style: "display: block", class:"col-sm-4 form-control-label"%>
+    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+      <%= form.text_field :down_payment, class:"form-control" %>
+    </div>
+  </div>
+  <div class="row mg-t-20">
+    <%= form.label :total_amount, style: "display: block", class:"col-sm-4 form-control-label"%>
+    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+      <%= form.text_field :total_amount,class:"form-control"%>
+    </div>
+  </div>
+  <div class="row mg-t-20">
+    <%= form.label :total_payments, style: "display: block", class:"col-sm-4 form-control-label"%>
+    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+      <%= form.text_field :total_payments,class:"form-control"%>
+    </div>
+  </div>
+  <div class="row mg-t-20">
+    <%= form.label :comments, style: "display: block" , class:"col-sm-4 form-control-label"%>
+    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+      <%= form.text_area :comments,class:"form-control"%>
+    </div>
+  </div>
+  <div class="row mg-t-10 d-flex justify-content-center">
+    <div class="form-layout-footer mg-t-30 mt-2">
+      <%= form.submit "Confirm", class:"btn btn-info"%>
+    </div>
   </div>
 <% end %>

@@ -58,7 +58,7 @@ class ClientsController < ApplicationController
   end
 
   def results
-    @value = params[:value]
+    @value = params[:value].downcase
     @error = false
     if @value.empty? || @value.length < 3 || @value.nil?
       @error = true

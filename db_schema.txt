@@ -41,9 +41,10 @@ contracts
 
 
 payments
-    us_id - str
     date - date
-    amount - id
+    folio - string
+    tipo - string
+    amount - float
     comments - str
     contract - int - fk
 

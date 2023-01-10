@@ -1,31 +1,91 @@
 <div id="<%= dom_id contract %>">
-  <p>
-    <strong>Contract ID:</strong>
-    <%= contract.id %>
-  </p>
-  <p>
-    <strong>Client:</strong>
-    <%= contract.client_id %>
-  </p>
-  <p>
-    <strong>Total amount:</strong>
-    <%= contract.total_amount %>
-  </p>
-  <p>
-    <strong>Total payments:</strong>
-    <%= contract.total_payments %>
-  </p>
-  <p>
-    <strong>Comments:</strong>
-    <%= contract.comments %>
-  </p>
-  <p>
-    <strong>Lotes:</strong>
-    <br>
-    <%# <%= contract.batches.map{ |b| [ "Manzana - #{b.block}, Lote - #{b.lot} "] }.join('; ')%>
-    <%contract.batches.each do |batch|%>
-      <span>M- <%=batch.block%></span> ; <span>L- <%=batch.lot%></span>
-      <br>
-    <% end %>
-  </p>
+  <div class="form-layout form-layout-7">
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>contract ID</span>
+      </div>
+      <!-- col-4 -->
+      <div class="col-7 col-sm-8">
+        <div class="form-control" >
+          <span><%=contract.id%></span>
+        </div>
+      </div>
+      <!-- col-8 -->
+    </div>
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Client</span>
+      </div>
+      <!-- col-4 -->
+      <div class="col-7 col-sm-8">
+        <div class="form-control">
+          <span><%="#{contract.client.first_name} #{contract.client.middle_name} #{contract.client.last_name}"%></span>
+        </div>
+      </div>
+      <!-- col-8 -->
+    </div>
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Batches</span>
+      </div>
+      <!-- col-4 -->
+      <div class="col-7 col-sm-8">
+        <div class="form-control">
+          <span><%=contract.batches.empty? ? "No batches" : contract.batches.pluck(:uuid).join(", ")%>
+          </span>
+        </div>
+      </div>
+      <!-- col-8 -->
+    </div>
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Total Amount</span>
+      </div>
+      <!-- col-4 -->
+      <div class="col-7 col-sm-8">
+        <div class="form-control">
+          <span><%="$ #{contract.total_amount+0.0}"%></span>
+        </div>
+      </div>
+      <!-- col-8 -->
+    </div>
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Total payments</span>
+      </div>
+      <!-- col-4 -->
+      <div class="col-7 col-sm-8">
+        <div class="form-control">
+          <span><%=contract.total_payments%></span>
+        </div>
+      </div>
+      <!-- col-8 -->
+    </div>
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Down payment</span>
+      </div>
+      <!-- col-4 -->
+      <div class="col-7 col-sm-8">
+        <div class="form-control">
+          <span><%="$ #{contract.down_payment+0.0}"%></span>
+        </div>
+      </div>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Comments</span>
+      </div>
+      <!-- col-4 -->
+      <div class="col-7 col-sm-8">
+        <div class="form-control">
+          <span><%=contract.comments%></span>
+        </div>
+      </div>
+      <!-- col-8 -->
+    </div>
+    <!-- col-8 -->
+  </div>
+  <!-- col-8 -->
 </div>
+<!-- row -->

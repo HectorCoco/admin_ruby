@@ -1,23 +1,32 @@
-<p style="color: green"><%= notice %></p>
 <h1>Clients</h1>
-<div>
-  <%=render "search"%>
-  <p>
-    <span>-------------------------------------------------------</span>
-  </p>
+<div class="row">
+  <div class="col-8">
+    <%=render "search"%>
+  </div>
+  <div class="d-flex align-items-baseline ml-3">
+    <div>
+      <%= link_to "New client", new_client_path, class:"btn btn-info tx-11 pd-y-12 tx-uppercase tx-spacing-2 mb-3" %>
+    </div>
+  </div>
 </div>
-<div>
-  <%= link_to "New client", new_client_path %>
-  <p>
-    <span>-------------------------------------------------------</span>
-  </p>
-</div>
-<div id="clients">
-  <% @clients.each do |client| %>
-    <%= render client %>
-    <p>
-      <%= link_to "Show this client", client %>
-    </p>
-    <span>-------------------------------------------------------</span>
-  <% end %>
+<div id="clients" class="bd bd-gray-300 rounded table-responsive">
+  <table class="table table-bordered mg-b-0">
+    <thead>
+      <tr>
+        <th class="bg-info">ID</th>
+        <th class="bg-info">First Name</th>
+        <th class="bg-info">Middle Name</th>
+        <th class="bg-info">Last Name</th>
+        <th class="bg-info">Status</th>
+        <th class="bg-info">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @clients.each do |client| %>
+        <tr>
+          <%=render "clients/client_index_table", client:client %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

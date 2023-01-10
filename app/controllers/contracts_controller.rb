@@ -76,12 +76,12 @@ class ContractsController < ApplicationController
   end
 
   def batches_allowed
-    @batches = Batch.allowed + @contract.batches
-  end
+    # binding.pry
+    return Batch.allowed if @contract.nil?
 
-  # Only allow a list of trusted parameters through.
-  def contract_params
-    params.require(:contract).permit(:total_amount, :total_payments, :comments, :client_id)
+    Batch.allowed + @contract.batches
+    # @batches = Batch.allowed
+    # @batches + @contract.batches unless @contract.nil?
   end
 
   def set_batches_selected
@@ -91,4 +91,9 @@ class ContractsController < ApplicationController
   # def get_all_batches
   #   @contract.batch_list = Batch.all
   # end
+
+  # Only allow a list of trusted parameters through.
+  def contract_params
+    params.require(:contract).permit(:total_amount, :total_payments, :comments, :client_id, :down_payment)
+  end
 end

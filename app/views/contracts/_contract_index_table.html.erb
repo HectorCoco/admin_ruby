@@ -1,0 +1,13 @@
+<td><%= contract.id%></td>
+<td><%= "#{contract.client.first_name} #{contract.client.middle_name} #{contract.client.last_name}"%></td>
+<td class="active_td d-flex justify-content-around pt-2 pb-3">
+  <span>
+    <%=contract.batches.empty? ? "No batches" : contract.batches.pluck(:uuid).join(", ")%>
+  </span>
+</td>
+<td><%= "$ #{contract.total_amount+0.0}"%></td>
+<td class="active_td d-flex justify-content-around pt-2 pb-3">
+  <%= link_to contract do%>
+    <span>Show</span>
+  <% end %>
+</td>
