@@ -1,20 +1,30 @@
-<p style="color: green"><%= notice %></p>
 <h1>Batches</h1>
-<div>
-  <p>
-    <span>-------------------------------------------------------</span>
-  </p>
-  <%= link_to "New batch", new_batch_path %>
-  <p>
-    <span>-------------------------------------------------------</span>
-  </p>
+<div class="row">
+  <div class="d-flex align-items-baseline ml-3">
+    <div>
+      <%= link_to "New batch", new_batch_path, class:"btn btn-info tx-11 pd-y-12 tx-uppercase tx-spacing-2 mb-3" %>
+    </div>
+  </div>
 </div>
-<div id="batches">
-  <% @batches.each do |batch| %>
-    <%= render batch %>
-    <p>
-      <%= link_to "Show this batch", batch %>
-    </p>
-    <span>-------------------------------------------------------</span>
-  <% end %>
+<div id="batches" class="bd bd-gray-300 rounded table-responsive">
+  <table class="table table-bordered mg-b-0">
+    <thead>
+      <tr>
+        <th class="bg-info">UUID</th>
+        <th class="bg-info">Price</th>
+        <th class="bg-info">Lot</th>
+        <th class="bg-info">Block</th>
+        <th class="bg-info">State</th>
+        <th class="bg-info">Contract</th>
+        <th class="bg-info">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @batches.each do |batch| %>
+        <tr>
+          <%=render "batches/batch_index_table", batch:batch %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

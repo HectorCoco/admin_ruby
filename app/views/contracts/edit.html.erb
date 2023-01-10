@@ -1,9 +1,17 @@
-<h1>Editing contract</h1>
-
-<%= render "form", contract: @contract %>
-
+<div class="mg-t-80">
+  <div class="col-xl-6">
+    <div class="form-layout form-layout-4">
+      <div class="pd-10 mg-t-20 bg-info mb-4">
+        <ul class="nav nav-white-800 flex-column flex-md-row" role="tablist">
+          <h6 class="tx-white m-2" >Edit Contract</h6>
+        </ul>
+      </div>
+      <%= render "form", contract: @contract %>
+    </div>
+  </div>
+  <!-- row -->
+</div>
 <br>
-
 <div>
   <%= link_to "Show this contract", @contract %> |
   <%= link_to "Back to contracts", contracts_path %>

@@ -1,5 +1,15 @@
 <p style="color: green"><%= notice %></p>
 <h1>Addresses</h1>
+<div>
+  <p>
+    <span>-------------------------------------------------------</span>
+  </p>
+  <%= link_to "New Address", new_address_path %>
+  <p>
+    <span>-------------------------------------------------------</span>
+  </p>
+</div>
+<br>
 <div id="addresses">
   <% @addresses.each do |address| %>
     <%= render address %>
@@ -9,4 +19,3 @@
     <span>-------------------------------------------------------</span>
   <% end %>
 </div>
-<%= link_to "New address", new_address_path %>

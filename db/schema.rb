@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_15_161034) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_04_150447) do
   create_table "addresses", force: :cascade do |t|
     t.string "street"
     t.string "block"
@@ -30,12 +30,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_15_161034) do
     t.string "lot"
     t.string "block"
     t.text "boundaries"
-    t.string "state"
+    t.string "state", default: "1"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "square_meters"
     t.integer "contract_id"
+    t.string "uuid"
     t.index ["contract_id"], name: "index_batches_on_contract_id"
   end
 
@@ -55,6 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_15_161034) do
     t.integer "client_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "down_payment"
     t.index ["client_id"], name: "index_contracts_on_client_id"
   end
 

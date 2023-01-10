@@ -1,10 +1,11 @@
-<p style="color: green"><%= notice %></p>
-
+<div class="pd-10 mg-t-20 bg-info ">
+  <ul class="nav nav-white-800 flex-column flex-md-row" role="tablist">
+    <h6 class="tx-white m-2" >Batch Information</h6>
+  </ul>
+</div>
 <%= render @batch %>
-
 <div>
-  <%= link_to "Edit this batch", edit_batch_path(@batch) %> |
+  <%= link_to "Edit this batch", edit_batch_path(@batch) %> ||
   <%= link_to "Back to batches", batches_path %>
-
-  <%= button_to "Destroy this batch", @batch, method: :delete %>
+  <%= button_to "Destroy this batch", @batch, method: :delete, class:"btn btn-info tx-11 pd-y-12 tx-uppercase tx-spacing-2 mb-3"%>
 </div>

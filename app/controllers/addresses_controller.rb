@@ -1,5 +1,6 @@
 class AddressesController < ApplicationController
-  before_action :set_address, only: %i[ show edit update destroy ]
+  before_action :set_address, only: %i[show edit update destroy]
+  before_action :set_catalogs, only: %i[new edit create]
 
   # GET /addresses or /addresses.json
   def index
@@ -13,6 +14,7 @@ class AddressesController < ApplicationController
   # GET /addresses/new
   def new
     @address = Address.new
+    @address.client_id = params[:client_id]
   end
 
   # GET /addresses/1/edit
@@ -58,13 +60,18 @@ class AddressesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_address
-      @address = Address.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def address_params
-      params.require(:address).permit(:street, :block, :lot, :colony, :postal_code, :city, :state, :client_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_address
+    @address = Address.find(params[:id])
+  end
+
+  def set_catalogs
+    @clients = Client.select(:id, :first_name, :middle_name, :last_name, :status)
+  end
+
+  # Only allow a list of trusted parameters through.
+  def address_params
+    params.require(:address).permit(:street, :block, :lot, :colony, :postal_code, :city, :state, :client_id)
+  end
 end

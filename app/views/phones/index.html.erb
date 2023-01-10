@@ -1,5 +1,15 @@
 <p style="color: green"><%= notice %></p>
 <h1>Phones</h1>
+<div>
+  <p>
+    <span>-------------------------------------------------------</span>
+  </p>
+  <%= link_to "New phone", new_phone_path %>
+  <p>
+    <span>-------------------------------------------------------</span>
+  </p>
+</div>
+<br>
 <div id="phones">
   <% @phones.each do |phone| %>
     <%= render phone %>
@@ -9,4 +19,3 @@
     <span>-------------------------------------------------------</span>
   <% end %>
 </div>
-<%= link_to "New phone", new_phone_path %>

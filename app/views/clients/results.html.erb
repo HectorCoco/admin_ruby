@@ -1,8 +1,11 @@
 <h1>Hola Mundo</h1>
+<p>
+  <%= link_to "Back to clients", clients_path %>
+</p>
 <%=render "search"%>
 <br>
 <br>
-<h1>Resultados para: &nbsp;"<%=@value%>"</h1>
+<h5>Resultados para: &nbsp;<span class="tx-success"> "<%=@value%>"</span></h5>
 <% unless @error %>
   <% unless @results.empty?%>
     <%@results.each do |result|%>
