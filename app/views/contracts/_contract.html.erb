@@ -1,91 +1,115 @@
-<div id="<%= dom_id contract %>">
-  <div class="form-layout form-layout-7">
-    <div class="row no-gutters">
-      <div class="col-5 col-sm-4">
-        <span>contract ID</span>
-      </div>
-      <!-- col-4 -->
-      <div class="col-7 col-sm-8">
-        <div class="form-control" >
-          <span><%=contract.id%></span>
-        </div>
-      </div>
-      <!-- col-8 -->
-    </div>
-    <div class="row no-gutters">
-      <div class="col-5 col-sm-4">
-        <span>Client</span>
-      </div>
-      <!-- col-4 -->
-      <div class="col-7 col-sm-8">
-        <div class="form-control">
-          <span><%="#{contract.client.first_name} #{contract.client.middle_name} #{contract.client.last_name}"%></span>
-        </div>
-      </div>
-      <!-- col-8 -->
-    </div>
-    <div class="row no-gutters">
-      <div class="col-5 col-sm-4">
-        <span>Batches</span>
-      </div>
-      <!-- col-4 -->
-      <div class="col-7 col-sm-8">
-        <div class="form-control">
-          <span><%=contract.batches.empty? ? "No batches" : contract.batches.pluck(:uuid).join(", ")%>
-          </span>
-        </div>
-      </div>
-      <!-- col-8 -->
-    </div>
-    <div class="row no-gutters">
-      <div class="col-5 col-sm-4">
-        <span>Total Amount</span>
-      </div>
-      <!-- col-4 -->
-      <div class="col-7 col-sm-8">
-        <div class="form-control">
-          <span><%="$ #{contract.total_amount+0.0}"%></span>
-        </div>
-      </div>
-      <!-- col-8 -->
-    </div>
-    <div class="row no-gutters">
-      <div class="col-5 col-sm-4">
-        <span>Total payments</span>
-      </div>
-      <!-- col-4 -->
-      <div class="col-7 col-sm-8">
-        <div class="form-control">
-          <span><%=contract.total_payments%></span>
-        </div>
-      </div>
-      <!-- col-8 -->
-    </div>
-    <div class="row no-gutters">
-      <div class="col-5 col-sm-4">
-        <span>Down payment</span>
-      </div>
-      <!-- col-4 -->
-      <div class="col-7 col-sm-8">
-        <div class="form-control">
-          <span><%="$ #{contract.down_payment+0.0}"%></span>
-        </div>
-      </div>
-    </div>
-    <div class="row no-gutters">
-      <div class="col-5 col-sm-4">
-        <span>Comments</span>
-      </div>
-      <!-- col-4 -->
-      <div class="col-7 col-sm-8">
-        <div class="form-control">
-          <span><%=contract.comments%></span>
-        </div>
-      </div>
-      <!-- col-8 -->
-    </div>
-    <!-- col-8 -->
+<div class="card">
+  <div class="card-header" role="tab" id="headingOne">
+    <h6 class="mg-b-0">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="tx-gray-800 transition">
+        <h6 class="tx-info tx-bold m-2" >Contract Information</h6>
+      </a>
+    </h6>
   </div>
-  <!-- col-8 -->
+  <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+    <div class="card-block pd-20">
+      <div id="<%= dom_id contract %>">
+        <div class="form-layout form-layout-7">
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span>contract ID</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control" >
+                <span><%=contract.id%></span>
+              </div>
+            </div>
+            <!-- col-8 -->
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span>Client</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <%=link_to contract.client do%>
+                  <span><%="#{contract.client.first_name} #{contract.client.middle_name} #{contract.client.last_name}"%></span>
+                <% end %>
+              </div>
+            </div>
+            <!-- col-8 -->
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span>Batches</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <% if contract.batches.empty? %>
+                  <span class="tx-danger">No batches</span>
+                <% else %>
+                  <span>/</span>
+                  <%contract.batches.each do |batch|%>
+                    <%=link_to batch do%>
+                      <span><%=batch.uuid%></span>
+                    <% end %>
+                    <span>/</span>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+            <!-- col-8 -->
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span>Total Amount</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <span><%="$ #{contract.total_amount+0.0}"%></span>
+              </div>
+            </div>
+            <!-- col-8 -->
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span>Total payments</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <span><%=contract.total_payments%></span>
+              </div>
+            </div>
+            <!-- col-8 -->
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span>Down payment</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <span><%="$ #{contract.down_payment+0.0}"%></span>
+              </div>
+            </div>
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span>Comments</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <span><%=contract.comments%></span>
+              </div>
+            </div>
+            <!-- col-8 -->
+          </div>
+          <!-- col-8 -->
+        </div>
+        <!-- col-8 -->
+      </div>
+      <!-- row -->
+    </div>
+  </div>
 </div>
-<!-- row -->

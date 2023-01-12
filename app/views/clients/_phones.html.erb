@@ -1,15 +1,32 @@
-<div class="form-layout form-layout-7">
-  <%client.phones.each_with_index do |phone, index| %>
-    <div class="row no-gutters">
-      <div class="col-5 col-sm-4">
-        <span><%=index + 1%></span>
+<div class="card">
+  <div class="card-header" role="tab" id="headingTwo">
+    <h6 class="mg-b-0">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="tx-gray-800 transition">
+        <h6 class="tx-info tx-bold m-2" >Phone numbers</h6>
+      </a>
+    </h6>
+  </div>
+  <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo">
+    <div class="card-block pd-20">
+      <% if client.phones.empty?%>
+        <p class="tx-bold">Sin telefonos registrados</p>
+      <%else%>
+        <div class="form-layout form-layout-7">
+          <%client.phones.each_with_index do |phone, index| %>
+            <div class="row no-gutters">
+              <div class="col-5 col-sm-4">
+                <span class="tx-bold"><%=index + 1%></span>
+              </div>
+              <!-- col-4 -->
+              <div class="col-7 col-sm-8">
+                <div class="form-control" >
+                  <span><%=phone.number%></span></div>
+              </div>
+              <!-- col-8 -->
+            </div>
+          <% end %>
+        </div>
       </div>
-      <!-- col-4 -->
-      <div class="col-7 col-sm-8">
-        <div class="form-control" >
-          <span><%=phone.number%></span></div>
-      </div>
-      <!-- col-8 -->
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

@@ -87,7 +87,9 @@
       <% unless batch.contract_id.nil? %>
         <div class="col-7 col-sm-8">
           <div class="form-control">
-            <span><%=batch.contract_id%></span>
+            <%=link_to batch.contract do%>
+              <span><%=batch.contract_id%></span>
+            <% end %>
           </div>
         </div>
       <% else %>

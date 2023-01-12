@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
   before_action :set_client, :set_catalogs, only: %i[show edit update destroy]
+  # before_action :set_catalogs, only: %i[new edit create]
 
   # GET /clients or /clients.json
   def index
@@ -8,6 +9,7 @@ class ClientsController < ApplicationController
 
   # GET /clients/1 or /clients/1.json
   def show
+    @contracts = @client.contracts.order_by_date
   end
 
   # GET /clients/new
@@ -81,6 +83,4 @@ class ClientsController < ApplicationController
 end
 
 def set_catalogs
-  # @phones = @client.phones.select(:id, :number, :client_id)
-  # @addresses = @client.addresses.select(:id, :street, :block, :lot, :colony, :postal_code, :city, :state, :client_id)
 end

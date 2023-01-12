@@ -42,8 +42,8 @@ contracts
 
 payments
     date - date
-    folio - string
-    tipo - string
+    file_number - string
+    kind - string
     amount - float
     comments - str
     contract - int - fk

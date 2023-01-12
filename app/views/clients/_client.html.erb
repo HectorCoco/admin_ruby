@@ -1,70 +1,84 @@
-<div id="<%= dom_id client %>">
-  <div class="form-layout form-layout-7">
-    <div class="row no-gutters">
-      <div class="col-5 col-sm-4">
-        <span>Client ID</span>
-      </div>
-      <!-- col-4 -->
-      <div class="col-7 col-sm-8">
-        <div class="form-control" >
-          <span><%=client.id%></span></div>
-      </div>
-      <!-- col-8 -->
-    </div>
-    <div class="row no-gutters">
-      <div class="col-5 col-sm-4">
-        <span>First Name</span>
-      </div>
-      <!-- col-4 -->
-      <div class="col-7 col-sm-8">
-        <div class="form-control">
-          <span><%=client.first_name%></span></div>
-      </div>
-      <!-- col-8 -->
-    </div>
-    <div class="row no-gutters">
-      <div class="col-5 col-sm-4">
-        <span>Middle Name</span>
-      </div>
-      <!-- col-4 -->
-      <div class="col-7 col-sm-8">
-        <div class="form-control">
-          <span><%=client.middle_name%></span></div>
-      </div>
-      <!-- col-8 -->
-    </div>
-    <div class="row no-gutters">
-      <div class="col-5 col-sm-4">
-        <span>Last Name</span>
-      </div>
-      <!-- col-4 -->
-      <div class="col-7 col-sm-8">
-        <div class="form-control">
-          <span><%=client.last_name%></span></div>
-      </div>
-      <!-- col-8 -->
-    </div>
-    <div class="row no-gutters">
-      <div class="col-5 col-sm-4">
-        <span>Status</span>
-      </div>
-      <!-- col-4 -->
-      <% if client.status==true %>
-        <div class="col-7 col-sm-8">
-          <div class="form-control">
-            <span>Active</span>
-          </div>
-        </div>
-      <% else %>
-        <div class="col-7 col-sm-8">
-          <div class="form-control">
-            <span>Inactive</span>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <!-- col-8 -->
+<div class="card">
+  <div class="card-header" role="tab" id="headingOne">
+    <h6 class="mg-b-0">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="tx-gray-800 transition">
+        <h6 class="tx-info tx-bold m-2" >Personal Information</h6>
+      </a>
+    </h6>
   </div>
-  <!-- col-8 -->
+  <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+    <div class="card-block pd-20">
+      <div id="<%= dom_id client %>">
+        <div class="form-layout form-layout-7">
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span class="tx-bold">Client ID</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control" >
+                <span><%=client.id%></span></div>
+            </div>
+            <!-- col-8 -->
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span class="tx-bold">First Name</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <span><%=client.first_name%></span></div>
+            </div>
+            <!-- col-8 -->
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span class="tx-bold">Middle Name</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <span><%=client.middle_name%></span></div>
+            </div>
+            <!-- col-8 -->
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span class="tx-bold">Last Name</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <span><%=client.last_name%></span></div>
+            </div>
+            <!-- col-8 -->
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span class="tx-bold">Status</span>
+            </div>
+            <!-- col-4 -->
+            <% if client.status==true %>
+              <div class="col-7 col-sm-8">
+                <div class="form-control">
+                  <span class="">Active</span>
+                </div>
+              </div>
+            <% else %>
+              <div class="col-7 col-sm-8">
+                <div class="form-control">
+                  <span class="tx-bold">Inactive</span>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <!-- col-8 -->
+        </div>
+        <!-- col-8 -->
+      </div>
+      <!-- row -->
+      <!-- card-header -->
+    </div>
+  </div>
 </div>
-<!-- row -->

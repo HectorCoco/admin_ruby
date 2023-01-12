@@ -1,0 +1,26 @@
+<div id="<%= dom_id payment %>">
+  <p>
+    <strong>Date:</strong>
+    <%= payment.date %>
+  </p>
+  <p>
+    <strong>File number:</strong>
+    <%= payment.file_number %>
+  </p>
+  <p>
+    <strong>Contract:</strong>
+    <%= payment.contract_id %>
+  </p>
+  <p>
+    <strong>Amount:</strong>
+    <%="$ #{payment.amount}" %>
+  </p>
+  <p>
+    <strong>Kind:</strong>
+    <%= payment.kind %>
+  </p>
+  <p>
+    <strong>Comments:</strong>
+    <%= payment.comments %>
+  </p>
+</div>

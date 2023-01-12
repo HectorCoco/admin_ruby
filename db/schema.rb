@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_04_150447) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_10_145314) do
   create_table "addresses", force: :cascade do |t|
     t.string "street"
     t.string "block"
@@ -60,6 +60,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_150447) do
     t.index ["client_id"], name: "index_contracts_on_client_id"
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.date "date"
+    t.string "file_number"
+    t.string "kind"
+    t.float "amount"
+    t.text "comments"
+    t.integer "contract_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contract_id"], name: "index_payments_on_contract_id"
+  end
+
   create_table "phones", force: :cascade do |t|
     t.string "number"
     t.integer "client_id", null: false
@@ -83,5 +95,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_150447) do
   add_foreign_key "addresses", "clients"
   add_foreign_key "batches", "contracts"
   add_foreign_key "contracts", "clients"
+  add_foreign_key "payments", "contracts"
   add_foreign_key "phones", "clients"
 end
