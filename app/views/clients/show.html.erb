@@ -1,29 +1,72 @@
-<div class="pd-10 mg-t-20 bg-info ">
-  <ul class="nav nav-white-800 flex-column flex-md-row" role="tablist">
-    <h6 class="tx-white m-2" >Personal Information</h6>
-  </ul>
+<div class="pd-10 mg-t-20 bg-info d-lg-flex justify-content-between">
+  <div class="d-lg-flex align-items-center" role="tablist">
+    <h5 class="tx-white m-2 tx-bold" >Client information</h5>
+  </div>
+  <div class="d-flex">
+    <%= link_to clients_path, class:"btn btn-primary" do%>
+      <div class="tx-white m-2 tx-bold">Back to clients list</div>
+    <% end %>
+    <div class="btn-group ">
+      <button type="button" class="btn btn-teal btn-block mg-b-10
+ dropdown-toggle tx-bold" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Actions
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-item">
+          <%= link_to edit_client_path(@client), class:"" do%>
+            <span class="tx-bold">Edit this client</span>
+          <% end %>
+        </div>
+        <div class="dropdown-item">
+          <%= link_to new_phone_with_client_path(@client), class:"" do%>
+            <span class="tx-bold">Add phone</span>
+          <% end %>
+        </div>
+        <div class="dropdown-item">
+          <%= link_to new_address_with_client_path(@client), class:"" do%>
+            <span class="tx-bold">Add address</span>
+          <% end %>
+        </div>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-item">
+          <%= button_to @client, method: :delete, class:"btn btn-danger btn-block mg-b-10" do%>
+            <span class="tx-bold">Destroy</span>
+          <% end %>
+        </div ></div>
+    </div>
+  </div>
 </div>
-<%= render @client %>
-<div class="pd-10 mg-t-20 bg-info">
-  <ul class="nav nav-white-800 flex-column flex-md-row" role="tablist">
-    <h6 class="tx-white m-2" >Phone Numbers</h6>
-  </ul>
+<div id="accordion" class="accordion" role="tablist" aria-multiselectable="true">
+  <%=render @client%>
+  <%=render "/clients/phones", client: @client%>
+  <%=render "/clients/addresses", client:@client%>
+  <br>
+  <br>
 </div>
-<%=render "/clients/phones", client: @client%>
-<div class="pd-10 mg-t-20 bg-info">
-  <ul class="nav nav-white-800 flex-column flex-md-row" role="tablist">
-    <h6 class="tx-white m-2" >Addresses</h6>
-  </ul>
+<div class="pd-10 mg-t-20 bg-info d-lg-flex">
+  <div class="d-lg-flex align-items-center" role="tablist">
+    <h5 class="tx-white m-2 tx-bold" >Contracts</h5>
+  </div>
 </div>
-<%=render "/clients/addresses", client:@client%>
-<div>
-  <%= link_to "Edit this client", edit_client_path(@client) %> ||
-  <%= link_to "Back to clients", clients_path %> ||
-  <%= link_to new_phone_with_client_path(@client), class:"" do%>
-    Add phone number
-  <% end %> ||
-  <%= link_to new_address_with_client_path(@client), class:"" do%>
-    Add address
-  <% end %>
-  <%= button_to "Destroy this client", @client, method: :delete, class:"btn btn-info tx-11 pd-y-12 tx-uppercase tx-spacing-2 mb-3"%>
+<div class="bd rounded table-responsive">
+  <table class="table table-bordered mg-b-0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Batches</th>
+        <th>Total Amount</th>
+        <th>Total Payments</th>
+        <th>Down payment</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@contracts.each do |contract|%>
+        <tr>
+          <%=render "contracts_table", contract:contract%>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
+<!-- bd-0 -->

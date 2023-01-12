@@ -7,7 +7,15 @@
 <% else %>
   <td><span class="tx-success">Sold</span></td>
 <% end %>
-<td><%= batch.contract_id.nil? ? "No contract" : batch.contract_id%></td>
+<td>
+  <% if batch.contract_id.nil? %>
+    <span class="tx-danger">No contract</span>
+  <% else %>
+    <%=link_to batch.contract do%>
+      <%=batch.contract_id%>
+    <% end %>
+  <% end %>
+</td>
 <td> <%= link_to batch do%>
     <span>Show</span>
   <% end %>
