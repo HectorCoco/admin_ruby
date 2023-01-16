@@ -20,7 +20,10 @@
               <!-- col-4 -->
               <div class="col-7 col-sm-8">
                 <div class="form-control" >
-                  <span><%=phone.number%></span></div>
+                  <%= link_to client_phone_path(client,phone) do %>
+                    <span><%=phone.number%></span>
+                  </div>
+                <% end %>
               </div>
               <!-- col-8 -->
             </div>

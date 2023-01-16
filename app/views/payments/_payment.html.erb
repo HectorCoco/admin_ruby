@@ -9,7 +9,9 @@
   </p>
   <p>
     <strong>Contract:</strong>
-    <%= payment.contract_id %>
+    <%=link_to contract_path payment.contract do%>
+      <%= payment.contract_id %>
+    <% end %>
   </p>
   <p>
     <strong>Amount:</strong>

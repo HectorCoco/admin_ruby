@@ -1,42 +1,36 @@
 <div id="<%= dom_id address %>">
   <p>
+    <strong>Client:</strong>
+    <%=link_to client_path @client do%>
+      <%= "#{address.client.first_name.capitalize} #{address.client.middle_name.capitalize} #{address.client.last_name.capitalize}"%>
+    <%end%>
+  </p>
+  <p>
     <strong>Street:</strong>
     <%= address.street %>
   </p>
-
   <p>
     <strong>Block:</strong>
     <%= address.block %>
   </p>
-
   <p>
     <strong>Lot:</strong>
     <%= address.lot %>
   </p>
-
   <p>
     <strong>Colony:</strong>
     <%= address.colony %>
   </p>
-
   <p>
     <strong>Postal code:</strong>
     <%= address.postal_code %>
   </p>
-
   <p>
     <strong>City:</strong>
     <%= address.city %>
   </p>
-
   <p>
     <strong>State:</strong>
     <%= address.state %>
   </p>
-
-  <p>
-    <strong>Client:</strong>
-    <%= address.client_id %>
-  </p>
-
 </div>

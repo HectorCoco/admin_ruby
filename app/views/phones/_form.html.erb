@@ -1,4 +1,4 @@
-<%= form_with(model: phone) do |form| %>
+<%= form_with(model: [@client, @phone]) do |form| %>
   <% if phone.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(phone.errors.count, "error") %> prohibited this phone from being saved:</h2>
@@ -11,7 +11,7 @@
   <% end %>
   <div class="mb-3">
     <%= form.label "Client", style: "display: block"%>
-    <%= form.select :client_id, @clients.collect { |c| [ "#{c.first_name} #{c.middle_name} #{c.last_name}", c.id ] }, {},class:"" %>
+    <span><%="#{@client.first_name} #{@client.middle_name} #{@client.last_name}"%></span>
   </div>
   <div class="mb-3">
     <%= form.label :number, style: "display: block" %>
@@ -19,6 +19,6 @@
   </div>
   <br>
   <div class="mb-3">
-    <%= form.submit %>
+    <%= form.submit "Confirm", class:"btn btn-success"%>
   </div>
 <% end %>

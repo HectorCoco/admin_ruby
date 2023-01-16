@@ -13,8 +13,16 @@
           <p class="tx-bold">Sin direcciones</p>
         <%else%>
           <div class="form-layout form-layout-7">
-            <%client.addresses.each do |address| %>
-              <div class="pd-5 bg-info mt-1">
+            <%client.addresses.each_with_index do |address,index| %>
+              <div class="pd-5 bg-info mt-1 d-flex align-items-center justify-content-between">
+                <div class="tx-white m-2 tx-bold">
+                  <%="Address N. #{index+1}"%>
+                </div>
+                <div class="d-flex align-items-center">
+                  <%= link_to edit_client_address_path(@client,address) do%>
+                    <button class="btn btn-warning active btn-block">Edit this address</button>
+                  <% end %>
+                </div>
               </div>
               <div class="row no-gutters ">
                 <div class="col-5 col-sm-4">

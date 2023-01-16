@@ -18,12 +18,12 @@
           <% end %>
         </div>
         <div class="dropdown-item">
-          <%= link_to new_phone_with_client_path(@client), class:"" do%>
+          <%= link_to new_client_phone_path(@client), class:"" do%>
             <span class="tx-bold">Add phone</span>
           <% end %>
         </div>
         <div class="dropdown-item">
-          <%= link_to new_address_with_client_path(@client), class:"" do%>
+          <%= link_to new_client_address_path(@client), class:"" do%>
             <span class="tx-bold">Add address</span>
           <% end %>
         </div>
@@ -32,7 +32,8 @@
           <%= button_to @client, method: :delete, class:"btn btn-danger btn-block mg-b-10" do%>
             <span class="tx-bold">Destroy</span>
           <% end %>
-        </div ></div>
+        </div >
+      </div>
     </div>
   </div>
 </div>

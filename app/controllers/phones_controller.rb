@@ -1,10 +1,11 @@
 class PhonesController < ApplicationController
+  before_action :get_client
   before_action :set_phone, only: %i[show edit update destroy]
-  before_action :set_catalogs, only: %i[new edit create]
+  # before_action :set_catalogs, only: %i[new edit create]
 
   # GET /phones or /phones.json
   def index
-    @phones = Phone.all
+    @phones = @client.phones
   end
 
   # GET /phones/1 or /phones/1.json
@@ -13,8 +14,7 @@ class PhonesController < ApplicationController
 
   # GET /phones/new
   def new
-    @phone = Phone.new
-    @phone.client_id = params[:client_id]
+    @phone = @client.phones.build
   end
 
   # GET /phones/1/edit
@@ -23,11 +23,11 @@ class PhonesController < ApplicationController
 
   # POST /phones or /phones.json
   def create
-    @phone = Phone.new(phone_params)
+    @phone = @client.phones.build(phone_params)
 
     respond_to do |format|
       if @phone.save
-        format.html { redirect_to phone_url(@phone), notice: "Phone was successfully created." }
+        format.html { redirect_to client_phones_path(@client), notice: "Phone was successfully created." }
         format.json { render :show, status: :created, location: @phone }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class PhonesController < ApplicationController
   def update
     respond_to do |format|
       if @phone.update(phone_params)
-        format.html { redirect_to phone_url(@phone), notice: "Phone was successfully updated." }
+        format.html { redirect_to client_phone_path(@client), notice: "Phone was successfully updated." }
         format.json { render :show, status: :ok, location: @phone }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,20 +54,20 @@ class PhonesController < ApplicationController
     @phone.destroy
 
     respond_to do |format|
-      format.html { redirect_to phones_url, notice: "Phone was successfully destroyed." }
+      format.html { redirect_to client_phones_path, notice: "Phone was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def get_client
+    @client = Client.find(params[:client_id])
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_phone
-    @phone = Phone.find(params[:id])
-  end
-
-  def set_catalogs
-    @clients = Client.select(:id, :first_name, :middle_name, :last_name, :status)
+    @phone = @client.phones.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

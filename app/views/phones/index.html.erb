@@ -1,20 +1,20 @@
-<p style="color: green"><%= notice %></p>
 <h1>Phones</h1>
 <div>
   <p>
     <span>-------------------------------------------------------</span>
   </p>
-  <%= link_to "New phone", new_phone_path %>
+  <%= link_to 'Show Client', [@client], class:"btn btn-primary" %>
+  <%= link_to "New phone", new_client_phone_path, class:"btn btn-success" %>
   <p>
     <span>-------------------------------------------------------</span>
   </p>
 </div>
 <br>
 <div id="phones">
-  <% @phones.each do |phone| %>
+  <% @client.phones.each do |phone| %>
     <%= render phone %>
     <p>
-      <%= link_to "Show this phone", phone %>
+      <%= link_to "Show this phone", client_phone_path(@client,phone), class:"btn btn-info"  %>
     </p>
     <span>-------------------------------------------------------</span>
   <% end %>
