@@ -1,10 +1,7 @@
 <h1>Editing phone</h1>
-
 <%= render "form", phone: @phone %>
-
 <br>
-
 <div>
-  <%= link_to "Show this phone", @phone %> |
-  <%= link_to "Back to phones", phones_path %>
+  <%= link_to "Show this phone", new_client_phone_path(@client,@phone), class:"btn btn-info" %> ||
+  <%= link_to "Back to phones", client_phones_path(@client,@phone), class:"btn btn-primary" %>
 </div>

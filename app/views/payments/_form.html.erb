@@ -22,7 +22,7 @@
       Contract<span class="tx-danger">*</span>
     <%end%>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-      <%= form.select :contract_id, @contracts.collect { |c| [ "#{c.id}", c.id ] }, {:prompt => 'Select contract...'}, class:"form-control selectpicker border border-gray"%>
+      <%= form.select :contract_id, @contracts.collect { |c| [ "Contrato de folio #{c.id} - cliente #{c.client.first_name} #{c.client.middle_name}", c.id ] }, {:prompt => 'Select contract...'}, class:"form-control selectpicker border border-gray"%>
     </div>
   </div>
   <div class="col-sm-8 mg-t-10 mg-sm-t-0">
