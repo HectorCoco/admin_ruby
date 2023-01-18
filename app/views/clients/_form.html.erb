@@ -33,13 +33,13 @@
       <%= form.text_field :last_name,class:"form-control"%>
     </div>
   </div>
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.check_box :status, class:"rdiobox"%>
+  <div class="d-flex">
+    <%= form.label :status, style: "display: block", class:"col-lg-4" %>
+    <%= form.check_box :status, class:"radiobox"%>
   </div>
   <div class="row mg-t-10 d-flex justify-content-center">
     <div class="form-layout-footer mg-t-30 mt-2">
-      <%= form.submit "Confirm", class:"btn btn-info"%>
+      <%= form.submit "Confirm", class:"btn btn-success"%>
     </div>
   </div>
 <% end %>

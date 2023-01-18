@@ -1,0 +1,13 @@
+<th scope="row"><%=payment.date%></th>
+<td> <%=payment.file_number%> </td>
+<td> <%=payment.kind%> </td>
+<td> <%="$ #{payment.amount+0.0}"%> </td>
+<td class="d-flex align-items-top justify-content-center">
+  <%= link_to payment, class:"btn btn-info" do%>
+    <i class="fa fa-eye"></i>
+    <span class="tx-white tx-bold"></span>
+  <% end %>
+  <%= link_to edit_payment_path(payment), class:"btn btn-warning" do%>
+    <i class="fa fa-pencil"></i>
+  <% end %>
+</td>

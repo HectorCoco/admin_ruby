@@ -1,19 +1,30 @@
 <h1>Resultados</h1>
-<p>
-  <%= link_to "Back to clients", clients_path %>
-</p>
-<%=render "search"%>
-<br>
-<br>
-<h5>Resultados para: &nbsp;<span class="tx-success"> "<%=@value%>"</span></h5>
-<% unless @error %>
-  <% unless @results.empty?%>
-    <%@results.each do |result|%>
-      <%=link_to result do%>
-        <span><%="#{result.first_name} #{result.middle_name} #{result.last_name}"%></span><br>
-      <% end %>
-    <% end %>
-  <% else %>
-    <span><%=@error%></span>
+<div>
+  <%= link_to clients_path, class:"btn btn-primary" do%>
+    <i class="fa fa-reply"></i>
   <% end %>
+</div>
+<br>
+<%=render "search"%>
+<%unless @value.empty?%>
+  <br>
+  <br>
+  <h5>Resultados para: &nbsp;<span class="tx-success"> "<%=@value%>"</span></h5>
+  <br>
+  <br>
+  <% unless @error %>
+    <% unless @results.empty?%>
+      <%@results.each do |result|%>
+        <%=link_to result, class:"tx-bold" do%>
+          <span><%="#{result.first_name} #{result.middle_name} #{result.last_name}"%></span><br>
+        <% end %>
+      <% end %>
+    <% else %>
+      <span class="tx-danger tx-bold"><%="No hay ninguna coincidencia"%></span>
+    <% end %>
+  <% end %>
+<% else %>
+  <br>
+  <br>
+  <span class="tx-bold tx-danger">* Para obtener resutaldos, escriba un criterio de busqueda con mas de 3 caracteres</span>
 <% end %>

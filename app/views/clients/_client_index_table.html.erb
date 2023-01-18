@@ -2,8 +2,18 @@
 <td><%= client.first_name%></td>
 <td><%= client.middle_name%></td>
 <td><%= client.last_name%></td>
-<td><%= client.status%></td>
-<td> <%= link_to client do%>
-    <span>Show</span>
+<td><% if client.status==true %>
+    <span>activo</span>
+  <% else %>
+    <span>inactivo</span>
+  <% end %>
+</td>
+<td class="d-flex align-items-top justify-content-center">
+  <%= link_to client, class:"btn btn-info" do%>
+    <i class="fa fa-eye"></i>
+    <span class="tx-white tx-bold"></span>
+  <% end %>
+  <%= link_to edit_client_path(client), class:"btn btn-warning" do%>
+    <i class="fa fa-pencil"></i>
   <% end %>
 </td>

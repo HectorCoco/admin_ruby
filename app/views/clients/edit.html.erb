@@ -1,10 +1,13 @@
 <div class="mg-t-80">
   <div class="col-xl-6">
     <div class="form-layout form-layout-4">
-      <div class="pd-10 mg-t-20 bg-info mb-4">
-        <ul class="nav nav-white-800 flex-column flex-md-row" role="tablist">
+      <div class="pd-10 mg-t-20 bg-info mb-4 d-flex justify-content-between">
+        <div class="nav nav-white-800 flex-column flex-md-row" role="tablist">
           <h6 class="tx-white m-2" >Edit Client</h6>
-        </ul>
+        </div>
+        <div>
+          <%= link_to "Back to clients", clients_path, class:"btn btn-primary" %>
+        </div>
       </div>
       <%= render "form", client: @client %>
     </div>
@@ -12,7 +15,3 @@
   <!-- row -->
 </div>
 <br>
-<div>
-  <%= link_to "Show this client", @client %> |
-  <%= link_to "Back to clients", clients_path %>
-</div>

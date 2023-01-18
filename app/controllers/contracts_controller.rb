@@ -1,6 +1,6 @@
 class ContractsController < ApplicationController
   before_action :set_contract, only: %i[show edit update destroy]
-  before_action :set_catalogs, only: %i[new show update edit create destroy]
+  before_action :set_catalogs
 
   # GET /contracts or /contracts.json
   def index
@@ -72,7 +72,7 @@ class ContractsController < ApplicationController
 
   def set_catalogs
     @batches = batches_allowed
-    @clients = Client.all
+    @clients = Client.active.all.order_by_name
   end
 
   def batches_allowed

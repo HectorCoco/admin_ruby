@@ -1,14 +1,30 @@
-<div class="d-flex">
-  <%= link_to "Back to payments", payments_path %>
+<div class="pd-10 mg-t-20 bg-info d-lg-flex justify-content-between">
+  <div class="d-lg-flex align-items-center" role="tablist">
+    <h5 class="tx-white m-2 tx-bold" >Payment</h5>
+  </div>
+  <div class="d-flex">
+    <%= link_to payments_path, class:"btn btn-primary" do%>
+      <div class="tx-white m-2 tx-bold">Back to payments list</div>
+    <% end %>
+    <div class="btn-group ">
+      <button type="button" class="btn btn-teal btn-block mg-b-10 dropdown-toggle tx-bold" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Actions
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-item">
+          <%= link_to edit_payment_path(@payment), class:"" do%>
+            <span class="tx-bold">Edit this payment</span>
+          <% end %>
+        </div>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-item">
+          <%= button_to @payment, method: :delete, class:"btn btn-danger btn-block mg-b-10" do%>
+            <span class="tx-bold">Destroy</span>
+          <% end %>
+        </div >
+      </div>
+    </div>
+  </div>
 </div>
+<%= render @payment %>
 <br>
-<br>
-<div class="">
-  <%= render @payment %>
-</div>
-<br>
-<br>
-<div class="d-flex">
-  <%= link_to "Edit this payment", edit_payment_path(@payment) %> |
-  <%= button_to "Destroy this payment", @payment, method: :delete %>
-</div>

@@ -1,11 +1,30 @@
-<div class="pd-10 mg-t-20 bg-info ">
-  <ul class="nav nav-white-800 flex-column flex-md-row" role="tablist">
-    <h6 class="tx-white m-2" >Batch Information</h6>
-  </ul>
+<div class="pd-10 mg-t-20 bg-info d-lg-flex justify-content-between">
+  <div class="d-lg-flex align-items-center" role="tablist">
+    <h5 class="tx-white m-2 tx-bold" >Batch</h5>
+  </div>
+  <div class="d-flex">
+    <%= link_to batches_path, class:"btn btn-primary" do%>
+      <div class="tx-white m-2 tx-bold">Back to batches list</div>
+    <% end %>
+    <div class="btn-group ">
+      <button type="button" class="btn btn-teal btn-block mg-b-10 dropdown-toggle tx-bold" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Actions
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-item">
+          <%= link_to edit_batch_path(@batch), class:"" do%>
+            <span class="tx-bold">Edit this batch</span>
+          <% end %>
+        </div>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-item">
+          <%= button_to @batch, method: :delete, class:"btn btn-danger btn-block mg-b-10" do%>
+            <span class="tx-bold">Destroy</span>
+          <% end %>
+        </div >
+      </div>
+    </div>
+  </div>
 </div>
 <%= render @batch %>
-<div>
-  <%= link_to "Edit this batch", edit_batch_path(@batch) %> ||
-  <%= link_to "Back to batches", batches_path %>
-  <%= button_to "Destroy this batch", @batch, method: :delete, class:"btn btn-info tx-11 pd-y-12 tx-uppercase tx-spacing-2 mb-3"%>
-</div>
+<br>

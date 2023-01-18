@@ -1,10 +1,10 @@
 <%=form_tag( client_results_path, method: :get, name:"search_form", class:"") do%>
   <div class="d-lg-flex">
     <div>
-      <input type="text" name="value" id="value" minlength="3" class="form-control col-lg-10 mb-2" placeholder="Buscar..."/>
+      <input type="text" name="value" id="value" minlength="3" class="form-control" placeholder="Buscar..."/>
     </div>
     <div>
-      <input type="submit" value="Aceptar" class="btn btn-info tx-11 pd-y-12 tx-uppercase tx-spacing-2 mb-3"/>
+      <input type="submit" value="Buscar" class="btn btn-info tx-11 pd-y-12 tx-uppercase tx-spacing-2 tx-bold"/>
     </div>
   </div>
 <% end %>
