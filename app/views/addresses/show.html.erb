@@ -1,7 +1,11 @@
 <div class="d-flex">
   <%= link_to "Back to addresses", client_addresses_path(@client,@address), class:"btn btn-info" %>
 </div>
+<br>
+<br>
 <%= render @address %>
+<br>
+<br>
 <div class="d-flex">
   <%= link_to "Edit this address", edit_client_address_path(@client), class:"btn btn-success" %>
   <%= button_to [@client,@address], method: :delete, class:"btn btn-danger" do%>

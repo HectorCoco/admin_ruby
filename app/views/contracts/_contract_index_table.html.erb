@@ -18,8 +18,16 @@
   <% end %>
 </td>
 <td><%= "$ #{contract.total_amount+0.0}"%></td>
-<td>
-  <%= link_to contract do%>
-    <span>Show</span>
+<td class="d-flex align-items-top justify-content-center">
+  <%= link_to contract, class:"btn btn-info" do%>
+    <i class="fa fa-eye"></i>
+    <span class="tx-white tx-bold"></span>
+  <% end %>
+  <%= link_to edit_contract_path(contract), class:"btn btn-warning" do%>
+    <i class="fa fa-pencil"></i>
+  <% end %>
+  <%= link_to new_with_contract_path(contract.id), class:"btn btn-teal" do%>
+    <i class="fa fa-money"></i>
+    <span class="tx-white tx-bold">Add Payment</span>
   <% end %>
 </td>

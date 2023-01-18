@@ -1,14 +1,31 @@
-<h1>Payments</h1>
-<div id="payments">
-  <div>
-    <p><%= link_to "New payment", new_payment_path %></p>
+<div class="bd rounded pd-10">
+  <h1 class="tx-bold d-flex justify-content-center">PAYMENTS</h1>
+  <div class="row d-flex justify-content-end m-3">
+    <div class="d-flex align-items-center">
+      <%= link_to new_payment_path, class:"btn btn-success tx-11 tx-uppercase tx-spacing tx-bold bd d-flex align-items-center pd-15" do%>
+        <i class="fa fa-plus"></i>
+      <% end %>
+    </div>
   </div>
-  <% @payments.each do |payment| %>
-    <p>--------------------------------------------------------------------</p>
-    <%= render payment %>
-    <p>
-      <%= link_to "Show this payment", payment %>
-    </p>
-    <p>--------------------------------------------------------------------</p>
-  <% end %>
+  <div id="batches" class="bd bd-gray-300 rounded table-responsive">
+    <table class="table table-bordered mg-b-0">
+      <thead>
+        <tr>
+          <th class="bg-info">File number</th>
+          <th class="bg-info">Date&nbsp;&nbsp;&nbsp;y-m-d</th>
+          <th class="bg-info">Contract</th>
+          <th class="bg-info">Client</th>
+          <th class="bg-info">Amount</th>
+          <th class="bg-info">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @payments.each do |payment| %>
+          <tr>
+            <%=render "payments/payment_index_table", payment:payment %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

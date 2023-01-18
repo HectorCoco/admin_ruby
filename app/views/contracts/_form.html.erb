@@ -16,7 +16,7 @@
       Client<span class="tx-danger">*</span>
     <%end%>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-      <%= form.select :client_id, @clients.collect { |c| [ "#{c.first_name} #{c.middle_name} #{c.last_name}", c.id ] }, {:prompt => 'Select Client...'}, class:"form-control selectpicker border border-gray"%>
+      <%= form.select :client_id, @clients.collect { |c| [ "#{c.first_name.capitalize} #{c.middle_name.capitalize} #{c.last_name.capitalize}", c.id ] }, {:prompt => 'Select Client...'}, class:"form-control selectpicker border border-gray"%>
     </div>
   </div>
   <div class="row mg-t-20">

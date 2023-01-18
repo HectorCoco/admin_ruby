@@ -1,28 +1,90 @@
 <div id="<%= dom_id payment %>">
-  <p>
-    <strong>Date:</strong>
-    <%= payment.date %>
-  </p>
-  <p>
-    <strong>File number:</strong>
-    <%= payment.file_number %>
-  </p>
-  <p>
-    <strong>Contract:</strong>
-    <%=link_to contract_path payment.contract do%>
-      <%= payment.contract_id %>
-    <% end %>
-  </p>
-  <p>
-    <strong>Amount:</strong>
-    <%="$ #{payment.amount}" %>
-  </p>
-  <p>
-    <strong>Kind:</strong>
-    <%= payment.kind %>
-  </p>
-  <p>
-    <strong>Comments:</strong>
-    <%= payment.comments %>
-  </p>
-</div>
+  <div class="form-layout form-layout-7">
+    <!-- row-->
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Date</span>
+      </div>
+      <div class="col-7 col-sm-8">
+        <div class="form-control" >
+          <%= payment.date %>
+        </div>
+      </div>
+    </div>
+    <!-- row-->
+    <!-- row-->
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>File number</span>
+      </div>
+      <div class="col-7 col-sm-8">
+        <div class="form-control" >
+          <%= payment.file_number %>
+        </div>
+      </div>
+    </div>
+    <!-- row-->
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Contract number</span>
+      </div>
+      <div class="col-7 col-sm-8">
+        <div class="form-control" >
+          <%=link_to contract_path payment.contract do%>
+            <%= payment.contract_id %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <!-- row-->
+    <!-- row-->
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Client</span>
+      </div>
+      <div class="col-7 col-sm-8">
+        <div class="form-control" >
+          <%=link_to client_path payment.contract.client do%>
+            <%="#{payment.contract.client.first_name} #{payment.contract.client.middle_name} #{payment.contract.client.last_name}" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <!-- row-->
+    <!-- row-->
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Amount</span>
+      </div>
+      <div class="col-7 col-sm-8">
+        <div class="form-control" >
+          <%="$ #{payment.amount}" %>
+        </div>
+      </div>
+    </div>
+    <!-- row-->
+    <!-- row-->
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Kind</span>
+      </div>
+      <div class="col-7 col-sm-8">
+        <div class="form-control" >
+          <%= payment.kind %>
+        </div>
+      </div>
+    </div>
+    <!-- row-->
+    <!-- row-->
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Comments</span>
+      </div>
+      <div class="col-7 col-sm-8">
+        <div class="form-control" >
+          <%= payment.comments %>
+        </div>
+      </div>
+    </div>
+    <!-- row-->
+  </div>

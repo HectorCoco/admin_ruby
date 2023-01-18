@@ -1,28 +1,35 @@
-<h1>Contracts</h1>
-<div class="row">
-  <div class="d-flex align-items-baseline ml-3">
-    <div>
-      <%= link_to "New contract", new_contract_path, class:"btn btn-info tx-11 pd-y-12 tx-uppercase tx-spacing-2 mb-3" %>
+<div class="bd rounded pd-10">
+  <h1 class="tx-bold d-flex justify-content-center">CONTRACTS</h1>
+  <div class="row d-flex justify-content-end m-3">
+    <div class="d-flex align-items-center">
+      <%= link_to new_contract_path, class:"btn btn-success tx-11 tx-uppercase tx-spacing tx-bold bd d-flex align-items-center pd-15" do%>
+        <i class="fa fa-plus"></i>
+      <% end %>
     </div>
   </div>
-</div>
-<div id="contracts" class="bd bd-gray-300 rounded table-responsive">
-  <table class="table table-bordered mg-b-0">
-    <thead>
-      <tr>
-        <th class="bg-info">ID</th>
-        <th class="bg-info">Client</th>
-        <th class="bg-info">Batches</th>
-        <th class="bg-info">Total Amount</th>
-        <th class="bg-info">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @contracts.each do |contract| %>
+  <div id="contracts" class="bd bd-gray-300 rounded table-responsive">
+    <table class="table table-bordered mg-b-0">
+      <thead>
         <tr>
-          <%=render "contracts/contract_index_table", contract:contract %>
+          <th class="bg-info">ID</th>
+          <th class="bg-info">Client</th>
+          <th class="bg-info">Batches</th>
+          <th class="bg-info">Total Amount</th>
+          <th class="bg-info">Actions</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @contracts.each do |contract| %>
+          <tr>
+            <%=render "contracts/contract_index_table", contract:contract %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="pd-10 mg-t-20 bg-info d-lg-flex">
+  <div class="d-lg-flex align-items-center" role="tablist">
+    <h5 class="tx-white m-2 tx-bold" >Contracts</h5>
+  </div>
 </div>
