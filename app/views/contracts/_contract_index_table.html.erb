@@ -13,11 +13,12 @@
       <%=link_to batch do%>
         <span><%=batch.uuid%></span>
       <% end %>
-      <span>/</span>
     <% end %>
   <% end %>
 </td>
-<td><%= "$ #{contract.total_amount+0.0}"%></td>
+<td><%=number_to_currency(contract.total_amount)%></td>
+<td><%="#{contract.payments.length} de #{contract.total_payments}"%></td>
+<td class=""><%=contract.next_payment%></td>
 <td class="d-flex align-items-top justify-content-center">
   <%= link_to contract, class:"btn btn-info" do%>
     <i class="fa fa-eye"></i>
@@ -28,6 +29,6 @@
   <% end %>
   <%= link_to new_with_contract_path(contract.id), class:"btn btn-teal" do%>
     <i class="fa fa-money"></i>
-    <span class="tx-white tx-bold">Add Payment</span>
+    <span class="tx-white tx-bold">Anadir pago</span>
   <% end %>
 </td>

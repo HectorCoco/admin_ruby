@@ -1,7 +1,7 @@
 <th scope="row"><%=contract.id%></th>
 <td>
   <% if contract.batches.empty? %>
-    <span class="tx-danger">No batches</span>
+    <span class="tx-danger tx-bold">Sin lotes</span>
   <% else %>
     <span>/</span>
     <%contract.batches.each do |batch|%>
@@ -12,10 +12,19 @@
     <% end %>
   <% end %>
 </td>
-<td><%="$ #{contract.total_amount+0.0}"%></td>
-<td><%=contract.total_payments%></td>
-<td><%="$ #{contract.down_payment+0.0}"%></td>
-<td> <%= link_to contract do%>
-    <span>Show</span>
+<td><%=number_to_currency(contract.total_amount)%></td>
+<td><%="#{contract.payments.length} de #{contract.total_payments}"%></td>
+<td><%=number_to_currency(contract.down_payment)%></td>
+<td class="d-flex align-items-top justify-content-center">
+  <%= link_to contract, class:"btn btn-info" do%>
+    <i class="fa fa-eye"></i>
+    <span class="tx-white tx-bold"></span>
+  <% end %>
+  <%= link_to edit_contract_path(contract), class:"btn btn-warning" do%>
+    <i class="fa fa-pencil"></i>
+  <% end %>
+  <%= link_to new_with_contract_path(contract.id), class:"btn btn-teal" do%>
+    <i class="fa fa-money"></i>
+    <span class="tx-white tx-bold">Anadir pago</span>
   <% end %>
 </td>

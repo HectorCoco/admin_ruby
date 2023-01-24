@@ -2,7 +2,7 @@
   <div class="form-layout form-layout-7">
     <div class="row no-gutters">
       <div class="col-5 col-sm-4">
-        <span>Batch UUID</span>
+        <span>Identificador</span>
       </div>
       <!-- col-4 -->
       <div class="col-7 col-sm-8">
@@ -14,19 +14,19 @@
     </div>
     <div class="row no-gutters">
       <div class="col-5 col-sm-4">
-        <span>Price</span>
+        <span>Precio</span>
       </div>
       <!-- col-4 -->
       <div class="col-7 col-sm-8">
         <div class="form-control">
-          <span><%=batch.price%></span>
+          <span class="tx-bold"><%=number_to_currency(batch.price)%></span>
         </div>
       </div>
       <!-- col-8 -->
     </div>
     <div class="row no-gutters">
       <div class="col-5 col-sm-4">
-        <span>Block</span>
+        <span>Manzana</span>
       </div>
       <!-- col-4 -->
       <div class="col-7 col-sm-8">
@@ -38,7 +38,7 @@
     </div>
     <div class="row no-gutters">
       <div class="col-5 col-sm-4">
-        <span>Lot</span>
+        <span>Lote</span>
       </div>
       <!-- col-4 -->
       <div class="col-7 col-sm-8">
@@ -50,19 +50,19 @@
     </div>
     <div class="row no-gutters">
       <div class="col-5 col-sm-4">
-        <span>Status</span>
+        <span>Estado</span>
       </div>
       <!-- col-4 -->
       <% if batch.state=="1" %>
         <div class="col-7 col-sm-8">
           <div class="form-control">
-            <span class="tx-warning">Free</span>
+            <span class="tx-warning">Disponible</span>
           </div>
         </div>
       <% else %>
         <div class="col-7 col-sm-8">
           <div class="form-control">
-            <span class="tx-success">Sold</span>
+            <span class="tx-success">Vendido</span>
           </div>
         </div>
       <% end %>
@@ -81,7 +81,7 @@
     </div>
     <div class="row no-gutters">
       <div class="col-5 col-sm-4">
-        <span>Contract id</span>
+        <span>Contrato</span>
       </div>
       <!-- col-4 -->
       <% unless batch.contract_id.nil? %>
@@ -95,7 +95,7 @@
       <% else %>
         <div class="col-7 col-sm-8">
           <div class="form-control">
-            <span>No contract</span>
+            <span>Sin contrato</span>
           </div>
         </div>
       <% end %>
@@ -103,7 +103,7 @@
     </div>
     <div class="row no-gutters">
       <div class="col-5 col-sm-4">
-        <span>Boundaries</span>
+        <span>Colindancias</span>
       </div>
       <!-- col-4 -->
       <div class="col-7 col-sm-8">
@@ -115,7 +115,7 @@
     </div>
     <div class="row no-gutters">
       <div class="col-5 col-sm-4">
-        <span>Description</span>
+        <span>Descripcion</span>
       </div>
       <!-- col-4 -->
       <div class="col-7 col-sm-8">

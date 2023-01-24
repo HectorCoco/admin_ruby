@@ -1,0 +1,16 @@
+<h2>Notificaciones</h2>
+<div>
+  <%@notifications.each do |notification|%>
+    <%=link_to notification do%>
+      <div>
+        <span>ID del contrato:</span>
+        <span><%=notification.id%></span>||
+        <span>Nombre del cliente:</span>
+        <span><%=notification.id%></span>||
+        <span>Fecha de pago:</span>
+        <span><%=notification.next_payment%></span>
+      </div>
+      <br>
+    <% end %>
+  <% end %>
+</div>

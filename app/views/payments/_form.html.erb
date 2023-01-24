@@ -14,7 +14,7 @@
       Date <span class="tx-danger">*</span>
     <% end %>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-      <%= form.date_field :date, class:"form-control" %>
+      <%= form.date_field :date, class:"form-control", value: @payment.contract.nil? ? Time.now.strftime("%Y-%m-%d") : @payment.contract.next_payment %>
     </div>
   </div>
   <div class="row mg-t-20">
@@ -28,13 +28,15 @@
       Contract<span class="tx-danger">*</span>
     <%end%>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-      <%= form.select :contract_id, @contracts.collect { |c| [ "Contrato de folio #{c.id} - cliente #{c.client.first_name} #{c.client.middle_name}", c.id ] }, {:prompt => 'Select contract...'}, class:"form-control selectpicker border border-gray"%>
+      <%= form.select :contract_id, @contracts.collect { |c| [ "Contrato de folio: #{c.id} - cliente: #{c.client.first_name} #{c.client.middle_name}", c.id ] }, {:prompt => 'Select contract...'}, class:"form-control selectpicker border border-gray"%>
     </div>
   </div>
   <div class="row mg-t-20">
     <%= form.label :amount, style: "display: block" , class:"col-sm-4 form-control-label"%>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-      <%= form.text_field :amount, class:"form-control"%>
+      <div class="d-flex">
+        <%= form.text_field :amount, class:"form-control"%>
+      </div>
     </div>
   </div>
   <div class="row mg-t-20">

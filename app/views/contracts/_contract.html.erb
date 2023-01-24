@@ -2,7 +2,7 @@
   <div class="card-header" role="tab" id="headingOne">
     <h6 class="mg-b-0">
       <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="tx-gray-800 transition">
-        <h6 class="tx-info tx-bold m-2" >Information</h6>
+        <h6 class="tx-info tx-bold m-2" >Informacion</h6>
       </a>
     </h6>
   </div>
@@ -12,7 +12,7 @@
         <div class="form-layout form-layout-7">
           <div class="row no-gutters">
             <div class="col-5 col-sm-4">
-              <span>contract ID</span>
+              <span>ID</span>
             </div>
             <!-- col-4 -->
             <div class="col-7 col-sm-8">
@@ -24,7 +24,7 @@
           </div>
           <div class="row no-gutters">
             <div class="col-5 col-sm-4">
-              <span>Client</span>
+              <span>Cliente</span>
             </div>
             <!-- col-4 -->
             <div class="col-7 col-sm-8">
@@ -38,13 +38,13 @@
           </div>
           <div class="row no-gutters">
             <div class="col-5 col-sm-4">
-              <span>Batches</span>
+              <span>Lotes</span>
             </div>
             <!-- col-4 -->
             <div class="col-7 col-sm-8">
               <div class="form-control">
                 <% if contract.batches.empty? %>
-                  <span class="tx-danger">No batches</span>
+                  <span class="tx-danger">Sin lotes</span>
                 <% else %>
                   <span>/</span>
                   <%contract.batches.each do |batch|%>
@@ -60,42 +60,93 @@
           </div>
           <div class="row no-gutters">
             <div class="col-5 col-sm-4">
-              <span>Total Amount</span>
+              <span>Monto Total</span>
             </div>
             <!-- col-4 -->
             <div class="col-7 col-sm-8">
               <div class="form-control">
-                <span><%="$ #{contract.total_amount+0.0}"%></span>
+                <span class="tx-primary tx-bold"><%=number_to_currency(contract.total_amount)%></span>
               </div>
             </div>
             <!-- col-8 -->
           </div>
           <div class="row no-gutters">
             <div class="col-5 col-sm-4">
-              <span>Total payments</span>
+              <span>Enganche</span>
             </div>
             <!-- col-4 -->
             <div class="col-7 col-sm-8">
               <div class="form-control">
-                <span><%=contract.total_payments%></span>
+                <span class="tx-bold"><%=number_to_currency(contract.down_payment)%></span>
+              </div>
+            </div>
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span>Primer pago</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <span class=""><%=contract.first_payment%></span>
+              </div>
+            </div>
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span>Siguiente pago</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <span class=""><%=contract.next_payment%></span>
+              </div>
+            </div>
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span>Pagos realizados</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <span><%="#{contract.payments.length} de #{contract.total_payments}"%></span>
               </div>
             </div>
             <!-- col-8 -->
           </div>
           <div class="row no-gutters">
             <div class="col-5 col-sm-4">
-              <span>Down payment</span>
+              <span>Total pagado</span>
             </div>
             <!-- col-4 -->
             <div class="col-7 col-sm-8">
               <div class="form-control">
-                <span><%="$ #{contract.down_payment+0.0}"%></span>
+                <%
+                  total_paid=contract.down_payment
+                  contract.payments.each do |payment|
+                  total_paid+=payment.amount
+                  end
+                %>
+                <span class="tx-success tx-bold"><%=number_to_currency(total_paid)%></span>
               </div>
             </div>
           </div>
           <div class="row no-gutters">
             <div class="col-5 col-sm-4">
-              <span>Comments</span>
+              <span>Adeudo total</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <%to_pay = contract.total_amount-total_paid %>
+                <span class="tx-warning tx-bold"><%=number_to_currency(to_pay)%></span>
+              </div>
+            </div>
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span>Comentarios</span>
             </div>
             <!-- col-4 -->
             <div class="col-7 col-sm-8">

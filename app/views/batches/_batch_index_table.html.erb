@@ -1,22 +1,27 @@
 <td><%= batch.uuid%></td>
-<td><%= batch.price%></td>
-<td><%= batch.lot%></td>
+<td><%=number_to_currency(batch.price)%></td>
 <td><%= batch.block%></td>
+<td><%= batch.lot%></td>
 <% if batch.state == "1" %>
-  <td><span class="tx-warning">Free</span></td>
+  <td><span class="tx-warning">Disponible</span></td>
 <% else %>
-  <td><span class="tx-success">Sold</span></td>
+  <td><span class="tx-success">Vendido</span></td>
 <% end %>
 <td>
   <% if batch.contract_id.nil? %>
-    <span class="tx-danger">No contract</span>
+    <span class="tx-danger">Sin contrato</span>
   <% else %>
     <%=link_to batch.contract do%>
-      <%=batch.contract_id%>
+      <%="#{batch.contract_id}"%>
     <% end %>
   <% end %>
 </td>
-<td> <%= link_to batch do%>
-    <span>Show</span>
+<td class="d-flex align-items-top justify-content-center">
+  <%= link_to batch, class:"btn btn-info" do%>
+    <i class="fa fa-eye"></i>
+    <span class="tx-white tx-bold"></span>
+  <% end %>
+  <%= link_to edit_batch_path(batch), class:"btn btn-warning" do%>
+    <i class="fa fa-pencil"></i>
   <% end %>
 </td>

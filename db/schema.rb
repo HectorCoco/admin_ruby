@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_10_145314) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_19_235506) do
   create_table "addresses", force: :cascade do |t|
     t.string "street"
     t.string "block"
@@ -44,9 +44,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_10_145314) do
     t.string "first_name"
     t.string "middle_name"
     t.string "last_name"
-    t.boolean "status"
+    t.boolean "status", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
   end
 
   create_table "contracts", force: :cascade do |t|
@@ -57,6 +58,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_10_145314) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "down_payment"
+    t.date "next_payment"
+    t.date "first_payment"
     t.index ["client_id"], name: "index_contracts_on_client_id"
   end
 

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   get "client_results", to: "clients#results", as: :client_results
+  get "all_notifications", to: "home#all_notifications"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 end

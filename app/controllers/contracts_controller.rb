@@ -28,6 +28,9 @@ class ContractsController < ApplicationController
 
     respond_to do |format|
       if @contract.save
+        @contract.set_first_next_payment
+        @contract.update_contract_in_batch
+
         format.html { redirect_to contract_url(@contract), notice: "Contract was successfully created." }
         format.json { render :show, status: :created, location: @contract }
       else
@@ -44,6 +47,8 @@ class ContractsController < ApplicationController
       # get_all_batches
 
       if @contract.update(contract_params)
+        @contract.update_contract_in_batch
+
         format.html { redirect_to contract_url(@contract), notice: "Contract was successfully updated." }
         format.json { render :show, status: :ok, location: @contract }
       else
@@ -94,6 +99,6 @@ class ContractsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def contract_params
-    params.require(:contract).permit(:total_amount, :total_payments, :comments, :client_id, :down_payment)
+    params.require(:contract).permit(:total_amount, :total_payments, :comments, :client_id, :down_payment, :next_payment, :first_payment)
   end
 end
