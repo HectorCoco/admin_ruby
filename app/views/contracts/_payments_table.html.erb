@@ -1,7 +1,7 @@
 <th scope="row"><%=payment.date%></th>
 <td> <%=payment.file_number%> </td>
 <td> <%=payment.kind%> </td>
-<td> <%="$ #{payment.amount+0.0}"%> </td>
+<td> <%=number_to_currency(payment.amount)%> </td>
 <td class="d-flex align-items-top justify-content-center">
   <%= link_to payment, class:"btn btn-info" do%>
     <i class="fa fa-eye"></i>

@@ -6,6 +6,10 @@ class Batch < ApplicationRecord
   scope :allowed, -> { where("state=1") }
   scope :related, ->(param_contract_id) { where("contract_id = ?", param_contract_id) }
   scope :order_by_free, -> { order(state: :asc) }
+  scope :order_by_block, -> { order(block: :asc) }
+  scope :order_by_lot, -> { order(lot: :asc) }
+
+  after_save :update_uuid
 
   # @batches.where("contract_id==@contract.id")
   # @contract.batches_params
@@ -15,5 +19,10 @@ class Batch < ApplicationRecord
 
   def self.reset_contract_id_in_batches(param_contract_id)
     where(contract_id: param_contract_id).update_all(contract_id: nil, state: "1")
+  end
+
+  def update_uuid
+    uuid = "M#{block}-L#{lot}"
+    update_column(:uuid, uuid)
   end
 end

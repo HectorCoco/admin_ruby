@@ -2,7 +2,7 @@
   <div class="row">
     <% if contract.errors.any? %>
       <div style="color: red">
-        <h2><%= pluralize(contract.errors.count, "error") %> prohibited this contract from being saved:</h2>
+        <h5><%= pluralize(contract.errors.count, "error") %> prohibited this contract from being saved:</h5>
         <ul>
           <% contract.errors.each do |error| %>
             <li class="col-sm-8 mg-t-10 mg-sm-t-0"><%= error.full_message %></li>
@@ -24,7 +24,13 @@
       Batches<span class="tx-danger">*</span>
     <% end %>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-      <%= form.select "batch_id", @batches.collect { |b| [ "#{b.uuid}", b.id ] }, {:promt=>'Select batches...'},multiple:true, class:"form-control selectpicker multiselect border border-gray" %>
+      <%= form.select :batch_id, @batches.collect { |b| [ "#{b.uuid}", b.id ] }, {:promt=>'Select batches...'},multiple:true, class:"form-control selectpicker multiselect border border-gray", id:"batch_selector" %>
+    </div>
+  </div>
+  <div class="row mg-t-20">
+    <%= form.label :total_amount, style: "display: block", class:"col-sm-4 form-control-label"%>
+    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+      <%= form.text_field :total_amount,class:"form-control", id:"amount"%>
     </div>
   </div>
   <div class="row mg-t-20 mb-4">
@@ -34,15 +40,15 @@
     </div>
   </div>
   <div class="row mg-t-20">
-    <%= form.label :total_amount, style: "display: block", class:"col-sm-4 form-control-label"%>
-    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-      <%= form.text_field :total_amount,class:"form-control"%>
-    </div>
-  </div>
-  <div class="row mg-t-20">
     <%= form.label :total_payments, style: "display: block", class:"col-sm-4 form-control-label"%>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
       <%= form.text_field :total_payments,class:"form-control"%>
+    </div>
+  </div>
+  <div class="row mg-t-20">
+    <%= form.label "Primer pago", style: "display: block", class:"col-sm-4 form-control-label"%>
+    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+      <%= form.date_field :first_payment,class:"form-control", :disabled =>contract.first_payment.nil? ? false : true%>
     </div>
   </div>
   <div class="row mg-t-20">

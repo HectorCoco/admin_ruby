@@ -6,13 +6,16 @@ class Contract < ApplicationRecord
   attr_accessor :batches_selected
   # attr_accessor :batch_list
 
-  validates_numericality_of :total_amount, :total_payments, greater_than: 0
+  validates_numericality_of :total_amount, :down_payment, :total_payments, greater_than: 0
+  validates :total_amount, :total_payments, :first_payment, presence: true
 
   scope :order_by_date, -> { order(created_at: :asc) }
+  scope :expired, -> { where("next_payment<=?", Date.current) }
+  scope :order_by_next, -> { order(next_payment: :asc) }
 
   # Callbacks
   before_destroy :reset_contract_in_batch
-  after_save :update_contract_in_batch
+  # after_save :update_contract_in_batch, if: :changes_next_payment?
 
   def update_contract_in_batch
     Batch.reset_contract_id_in_batches(id)
@@ -21,5 +24,20 @@ class Contract < ApplicationRecord
 
   def reset_contract_in_batch
     Batch.reset_contract_id_in_batches(id)
+  end
+
+  def changes_next_payment?
+    # binding.prailsry
+    !next_payment_changed?
+  end
+
+  def set_first_next_payment
+    current_date = first_payment
+    current_date += 1.month
+    update_column(:next_payment, current_date)
+  end
+
+  def self.get_notifications
+    expired.order_by_next
   end
 end

@@ -5,27 +5,43 @@
     </h5>
   </p>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<div>
+  <%
+  total=0
+total_paid=0
+to_pay=0
+@payments.each do |payment|
+total_paid += payment.amount
+end
+@contracts.each do |contract|
+total_paid+=contract.down_payment
+total+=contract.total_amount
+end
+to_pay=total-total_paid
+%>
+  <div class="bd bd-gray-300 rounded table-responsive">
+    <table class="table table-bordered mg-b-0">
+      <thead>
+        <tr>
+          <th class="bg-info"><spam class="tx-white tx-bold">Total </span></th>
+          <th class="bg-info"><spam class="tx-white tx-bold">Total en caja</span></th>
+          <th class="bg-info"><spam class="tx-white tx-bold">Total a percibir</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <Span class="tx-bold"><%="#{number_to_currency(total)}"%></Span>
+          </td>
+          <td>
+            <Span class="tx-bold tx-success"><%="#{number_to_currency(total_paid)}"%></Span>
+          </td>
+          <td>
+            <Span class="tx-bold tx-warning"><%="#{number_to_currency(to_pay)}"%></Span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -3,10 +3,12 @@
     <div class="form-layout form-layout-4">
       <div class="pd-10 mg-t-20 bg-info mb-4 d-flex justify-content-between">
         <div class="nav nav-white-800 flex-column flex-md-row" role="tablist">
-          <h6 class="tx-white m-2" >Edit Client</h6>
+          <h6 class="tx-white m-2 tx-bold" >Editando cliente <%=" #{@client.first_name} #{@client.middle_name} #{@client.last_name}"%></h6>
         </div>
         <div>
-          <%= link_to "Back to clients", clients_path, class:"btn btn-primary" %>
+          <%= link_to clients_path, class:"btn btn-primary" do%>
+            <i class="fa fa-reply"></i>
+          <% end %>
         </div>
       </div>
       <%= render "form", client: @client %>

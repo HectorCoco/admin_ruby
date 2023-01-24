@@ -3,9 +3,9 @@
 <td><%= client.middle_name%></td>
 <td><%= client.last_name%></td>
 <td><% if client.status==true %>
-    <span>activo</span>
+    <span class="tx-primary">Activo</span>
   <% else %>
-    <span>inactivo</span>
+    <span class="tx-danger">Inactivo</span>
   <% end %>
 </td>
 <td class="d-flex align-items-top justify-content-center">

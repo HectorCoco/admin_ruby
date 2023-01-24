@@ -11,4 +11,5 @@ class Client < ApplicationRecord
 
   scope :active, -> { where("status=true") }
   scope :order_by_name, -> { order(first_name: :asc) }
+  scope :order_by_active, -> { order(status: :desc) }
 end

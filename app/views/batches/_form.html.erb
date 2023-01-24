@@ -11,17 +11,9 @@
       </div>
     <% end %>
   </div>
-  <div class="row">
-    <%= form.label :uuid, style: "display: block", class:"col-sm-4 form-control-label" do %>
-      UUID <span class="tx-danger">*</span>
-    <% end %>
-    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-      <%= form.text_field :uuid,class:"form-control"%>
-    </div>
-  </div>
   <div class="row mg-t-20">
     <%= form.label :price, style: "display: block", class:"col-sm-4 form-control-label" do %>
-      Price <span class="tx-danger">*</span>
+      Precio <span class="tx-danger">*</span>
     <% end %>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
       <%= form.text_field :price,class:"form-control"%>
@@ -29,7 +21,7 @@
   </div>
   <div class="row mg-t-20 mb-4">
     <%= form.label :block, style: "display: block", class:"col-sm-4 form-control-label" do %>
-      Block <span class="tx-danger">*</span>
+      Manzana <span class="tx-danger">*</span>
     <% end %>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
       <%= form.text_field :block,class:"form-control"%>
@@ -37,7 +29,7 @@
   </div>
   <div class="row mg-t-20 mb-4">
     <%= form.label :lot, style: "display: block", class:"col-sm-4 form-control-label" do %>
-      Lot <span class="tx-danger">*</span>
+      Lote <span class="tx-danger">*</span>
     <% end %>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
       <%= form.text_field :lot,class:"form-control"%>
@@ -45,7 +37,7 @@
   </div>
   <div class="row mg-t-20 mb-4">
     <%= form.label :square_meters, style: "display: block", class:"col-sm-4 form-control-label" do %>
-      Area <span class="tx-danger">*</span>
+      Area
     <% end %>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
       <%= form.text_field :square_meters,class:"form-control"%>
@@ -53,7 +45,7 @@
   </div>
   <div class="row mg-t-20 mb-4">
     <%= form.label :boundaries, style: "display: block", class:"col-sm-4 form-control-label" do %>
-      Boundaries <span class="tx-danger">*</span>
+      Colindancias
     <% end %>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
       <%= form.text_area :boundaries,class:"form-control"%>
@@ -61,7 +53,7 @@
   </div>
   <div class="row mg-t-20 mb-4">
     <%= form.label :description, style: "display: block", class:"col-sm-4 form-control-label" do %>
-      Description <span class="tx-danger">*</span>
+      Descripcion
     <% end %>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
       <%= form.text_area :description,class:"form-control"%>
@@ -69,7 +61,7 @@
   </div>
   <div class="row mg-t-10 d-flex justify-content-center">
     <div class="form-layout-footer mg-t-30 mt-2">
-      <%= form.submit "Confirm", class:"btn btn-info"%>
+      <%= form.submit "Confirmar", class:"btn btn-info"%>
     </div>
   </div>
 <% end %>

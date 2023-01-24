@@ -3,7 +3,7 @@
     <!-- row-->
     <div class="row no-gutters">
       <div class="col-5 col-sm-4">
-        <span>Date</span>
+        <span>Fecha</span>
       </div>
       <div class="col-7 col-sm-8">
         <div class="form-control" >
@@ -15,7 +15,7 @@
     <!-- row-->
     <div class="row no-gutters">
       <div class="col-5 col-sm-4">
-        <span>File number</span>
+        <span>Folio</span>
       </div>
       <div class="col-7 col-sm-8">
         <div class="form-control" >
@@ -26,7 +26,7 @@
     <!-- row-->
     <div class="row no-gutters">
       <div class="col-5 col-sm-4">
-        <span>Contract number</span>
+        <span>Numero de contrato</span>
       </div>
       <div class="col-7 col-sm-8">
         <div class="form-control" >
@@ -40,7 +40,7 @@
     <!-- row-->
     <div class="row no-gutters">
       <div class="col-5 col-sm-4">
-        <span>Client</span>
+        <span>Cliente</span>
       </div>
       <div class="col-7 col-sm-8">
         <div class="form-control" >
@@ -54,11 +54,11 @@
     <!-- row-->
     <div class="row no-gutters">
       <div class="col-5 col-sm-4">
-        <span>Amount</span>
+        <span>Monto</span>
       </div>
       <div class="col-7 col-sm-8">
         <div class="form-control" >
-          <%="$ #{payment.amount}" %>
+          <span class="tx-success tx-bold"><%=number_to_currency(payment.amount)%></span>
         </div>
       </div>
     </div>
@@ -66,7 +66,7 @@
     <!-- row-->
     <div class="row no-gutters">
       <div class="col-5 col-sm-4">
-        <span>Kind</span>
+        <span>Tipo</span>
       </div>
       <div class="col-7 col-sm-8">
         <div class="form-control" >
@@ -78,7 +78,7 @@
     <!-- row-->
     <div class="row no-gutters">
       <div class="col-5 col-sm-4">
-        <span>Comments</span>
+        <span>Comentarios</span>
       </div>
       <div class="col-7 col-sm-8">
         <div class="form-control" >
