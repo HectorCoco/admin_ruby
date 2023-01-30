@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :phones
   end
   resources :payments
+  # , except: [:edit]
   get "payments/new_with_contract/:contract_id", to: "payments#new", as: :new_with_contract
 
   root "home#index"

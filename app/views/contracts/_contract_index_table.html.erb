@@ -1,24 +1,33 @@
-<td><%= contract.id%></td>
-<td>
-  <%=link_to contract.client do%>
-    <span><%= "#{contract.client.first_name} #{contract.client.middle_name} #{contract.client.last_name}"%></span>
-  <% end %>
-</td>
+<th scope="row"><%=contract.id%></th>
 <td>
   <% if contract.batches.empty? %>
-    <span class="tx-danger">No batches</span>
+    <span class="tx-danger tx-bold">Sin lotes</span>
   <% else %>
     <span>/</span>
     <%contract.batches.each do |batch|%>
       <%=link_to batch do%>
         <span><%=batch.uuid%></span>
       <% end %>
+      <span>/</span>
     <% end %>
   <% end %>
 </td>
-<td><%=number_to_currency(contract.total_amount)%></td>
 <td><%="#{contract.payments.length} de #{contract.total_payments}"%></td>
-<td class=""><%=contract.next_payment%></td>
+<td class=<%=contract.next_payment <= Time.now ? "tx-danger tx-bold" : "tx-primary tx-bold"%>><%=contract.next_payment.strftime("%d-%m-%Y")%></td>
+<td class="tx-primary tx-bold"><%=number_to_currency(contract.total_amount)%></td>
+<td class="tx-bold"><%=number_to_currency(contract.down_payment)%></td>
+<%total_paid=contract.down_payment
+  contract.payments.each do |payment|
+  total_paid+=payment.amount
+  end%>
+<td class="tx-success tx-bold"><%=number_to_currency(total_paid)%></td>
+<%to_pay = contract.total_amount-total_paid %>
+<td class="tx-warning tx-bold"><%=number_to_currency(to_pay)%></td>
+<% if contract.map==true %>
+  <td class="tx-success tx-bold">Si</td>
+<% else %>
+  <td class="tx-danger tx-bold">No</td>
+<% end %>
 <td class="d-flex align-items-top justify-content-center">
   <%= link_to contract, class:"btn btn-info" do%>
     <i class="fa fa-eye"></i>

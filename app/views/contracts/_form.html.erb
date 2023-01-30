@@ -13,7 +13,7 @@
   </div>
   <div class="row">
     <%= form.label :client, style: "display: block", class:"col-sm-4 form-control-label" do%>
-      Client<span class="tx-danger">*</span>
+      Cliente<span class="tx-danger">*</span>
     <%end%>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
       <%= form.select :client_id, @clients.collect { |c| [ "#{c.first_name.capitalize} #{c.middle_name.capitalize} #{c.last_name.capitalize}", c.id ] }, {:prompt => 'Select Client...'}, class:"form-control selectpicker border border-gray"%>
@@ -21,35 +21,57 @@
   </div>
   <div class="row mg-t-20">
     <%= form.label :batch_id, style: "display: block", class:"col-sm-4 form-control-label" do%>
-      Batches<span class="tx-danger">*</span>
+      Lotes<span class="tx-danger">***</span>
     <% end %>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-      <%= form.select :batch_id, @batches.collect { |b| [ "#{b.uuid}", b.id ] }, {:promt=>'Select batches...'},multiple:true, class:"form-control selectpicker multiselect border border-gray", id:"batch_selector" %>
+      <%= form.select :batch_id,options_for_select(@batches.sort_by{|b| b[:block]}.sort_by{|b| b[:lot]}.map { |b| [ b.uuid, b.id ] }, @contract.batches.pluck(:id)),
+  {},multiple:true, class:"form-control selectpicker multiselect border border-gray bg-danger", id:"batch_selector" %>
     </div>
   </div>
   <div class="row mg-t-20">
-    <%= form.label :total_amount, style: "display: block", class:"col-sm-4 form-control-label"%>
+    <%= form.label :total_amount, style: "display: block", class:"col-sm-4 form-control-label" do%>
+      Monto total<span class="tx-danger">*</span>
+    <% end %>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-      <%= form.text_field :total_amount,class:"form-control", id:"amount"%>
+      <%= form.text_field :total_amount,class:"form-control", id:"amount", placeholder: "$0"%>
     </div>
   </div>
   <div class="row mg-t-20 mb-4">
-    <%= form.label :down_payment, style: "display: block", class:"col-sm-4 form-control-label"%>
+    <%= form.label :down_payment, style: "display: block", class:"col-sm-4 form-control-label" do%>
+      Enganche<span class="tx-danger">*</span>
+    <% end %>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-      <%= form.text_field :down_payment, class:"form-control" %>
+      <%= form.text_field :down_payment, class:"form-control", placeholder: "$0"%>
     </div>
   </div>
   <div class="row mg-t-20">
-    <%= form.label :total_payments, style: "display: block", class:"col-sm-4 form-control-label"%>
+    <%= form.label :total_payments, style: "display: block", class:"col-sm-4 form-control-label" do%>
+      Numero de pagos<span class="tx-danger">*</span>
+    <% end %>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
       <%= form.text_field :total_payments,class:"form-control"%>
     </div>
   </div>
   <div class="row mg-t-20">
-    <%= form.label "Primer pago", style: "display: block", class:"col-sm-4 form-control-label"%>
+    <%= form.label :monthly_payment, style: "display: block", class:"col-sm-4 form-control-label" do%>
+      Pago mensual<span class="tx-danger">*</span>
+    <% end %>
+    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+      <%= form.text_field :monthly_payment ,class:"form-control", placeholder: "$0"%>
+    </div>
+  </div>
+  <div class="row mg-t-20">
+    <%= form.label :first_payment, style: "display: block", class:"col-sm-4 form-control-label" do%>
+      Fecha de primer pago <span class="tx-danger">*</span>
+    <% end %>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
       <%= form.date_field :first_payment,class:"form-control", :disabled =>contract.first_payment.nil? ? false : true%>
     </div>
+  </div>
+  <div class="d-flex mt-4">
+    <%= form.label "Plano entregado", style: "display: block", class:"" %>
+    <%= form.check_box :map, class:"form-check-input col-lg-9" do%>
+    <% end %>
   </div>
   <div class="row mg-t-20">
     <%= form.label :comments, style: "display: block" , class:"col-sm-4 form-control-label"%>

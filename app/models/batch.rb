@@ -3,7 +3,7 @@ class Batch < ApplicationRecord
 
   validates :price, :lot, :block, :state, presence: true
 
-  scope :allowed, -> { where("state=1") }
+  scope :allowed, -> { where("state='1'") }
   scope :related, ->(param_contract_id) { where("contract_id = ?", param_contract_id) }
   scope :order_by_free, -> { order(state: :asc) }
   scope :order_by_block, -> { order(block: :asc) }

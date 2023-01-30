@@ -6,8 +6,8 @@ class Contract < ApplicationRecord
   attr_accessor :batches_selected
   # attr_accessor :batch_list
 
-  validates_numericality_of :total_amount, :down_payment, :total_payments, greater_than: 0
-  validates :total_amount, :total_payments, :first_payment, presence: true
+  validates_numericality_of :total_amount, :down_payment, :total_payments, :monthly_payment, greater_than: 0
+  validates :total_amount, :total_payments, :down_payment, :first_payment, :monthly_payment, presence: true
 
   scope :order_by_date, -> { order(created_at: :asc) }
   scope :expired, -> { where("next_payment<=?", Date.current) }
@@ -33,7 +33,6 @@ class Contract < ApplicationRecord
 
   def set_first_next_payment
     current_date = first_payment
-    current_date += 1.month
     update_column(:next_payment, current_date)
   end
 

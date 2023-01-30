@@ -1,4 +1,4 @@
-<th scope="row"><%=payment.date%></th>
+<th scope="row"><%=payment.date.strftime("%d-%m-%Y")%></th>
 <td> <%=payment.file_number%> </td>
 <td> <%=payment.kind%> </td>
 <td> <%=number_to_currency(payment.amount)%> </td>
@@ -7,7 +7,9 @@
     <i class="fa fa-eye"></i>
     <span class="tx-white tx-bold"></span>
   <% end %>
+  <!--
   <%= link_to edit_payment_path(payment), class:"btn btn-warning" do%>
     <i class="fa fa-pencil"></i>
   <% end %>
+  -->
 </td>

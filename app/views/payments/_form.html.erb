@@ -10,21 +10,23 @@
     </div>
   <% end %>
   <div class="row">
-    <%= form.label :date, style: "display: block", class:"col-sm-4 form-control-label" do%>
-      Date <span class="tx-danger">*</span>
+    <%= form.label "Fecha a la que corresponde", style: "display: block", class:"col-sm-4 form-control-label" do%>
+      Fecha a la que corresponde <span class="tx-danger">*</span>
     <% end %>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-      <%= form.date_field :date, class:"form-control", value: @payment.contract.nil? ? Time.now.strftime("%Y-%m-%d") : @payment.contract.next_payment %>
+      <%= form.date_field :date, class:"form-control", value: payment.contract.nil? ? "" : payment.date ? payment.date : payment.contract.next_payment %>
     </div>
   </div>
   <div class="row mg-t-20">
-    <%= form.label :file_number, style: "display: block" , class:"col-sm-4 form-control-label"%>
+    <%= form.label "Folio", style: "display: block" , class:"col-sm-4 form-control-label" do%>
+      Folio<span class="tx-danger">*</span>
+    <% end %>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-      <%= form.text_field :file_number, class:"form-control"%>
+      <%= form.text_field :file_number, class:"form-control", value: payment.contract.payments.empty? ? 1 : payment.contract.payments.sort_by{|p| p[:file_number]}.last.file_number.to_i + 1 %>
     </div>
   </div>
   <div class="row mg-t-20 mb-4">
-    <%= form.label :client, style: "display: block", class:"col-sm-4 form-control-label" do%>
+    <%= form.label "Cliente", style: "display: block", class:"col-sm-4 form-control-label" do%>
       Contract<span class="tx-danger">*</span>
     <%end%>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
@@ -32,7 +34,9 @@
     </div>
   </div>
   <div class="row mg-t-20">
-    <%= form.label :amount, style: "display: block" , class:"col-sm-4 form-control-label"%>
+    <%= form.label "Pago", style: "display: block" , class:"col-sm-4 form-control-label" do%>
+      Pago<span class="tx-danger">*</span>
+    <% end %>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
       <div class="d-flex">
         <%= form.text_field :amount, class:"form-control"%>
@@ -40,20 +44,22 @@
     </div>
   </div>
   <div class="row mg-t-20">
-    <%= form.label :kind, style: "display: block" , class:"col-sm-4 form-control-label"%>
+    <%= form.label "Tipo", style: "display: block" , class:"col-sm-4 form-control-label" do%>
+      Tipo<span class="tx-danger">*</span>
+    <% end %>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-      <%=form.select :kind, options_for_select([["Completo"],["Abono"]]), {}, class:"form-control border border-gray"%>
+      <%=form.select :kind, options_for_select([["Completo"],["Abono"]]), {:prompt => ""}, class:"form-control border border-gray"%>
     </div>
   </div>
   <div class="row mg-t-20">
-    <%= form.label :comments, style: "display: block" , class:"col-sm-4 form-control-label"%>
+    <%= form.label "Comentarios", style: "display: block" , class:"col-sm-4 form-control-label"%>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
       <%= form.text_area :comments, class:"form-control"%>
     </div>
   </div>
   <div class="row mg-t-10 d-flex justify-content-center">
     <div class="form-layout-footer mg-t-30 mt-2">
-      <%= form.submit "Confirm", class:"btn btn-success"%>
+      <%= form.submit "Confirmar", class:"btn btn-success"%>
     </div>
   </div>
 <% end %>

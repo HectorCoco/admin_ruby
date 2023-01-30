@@ -2838,7 +2838,7 @@
     grouping: [ 3 ],
     currency: [ "$", "" ],
     dateTime: "%a %b %e %X %Y",
-    date: "%m/%d/%Y",
+    date: "%d/%m/%Y",
     time: "%H:%M:%S",
     periods: [ "AM", "PM" ],
     days: [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ],
