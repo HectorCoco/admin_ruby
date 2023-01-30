@@ -2,7 +2,7 @@ module Searchable
   extend ActiveSupport::Concern
 
   included do
-    scope :by_column, ->(column, value) { where("CAST(#{column} AS VARCHAR ) LIKE ?", "%#{value}%") if value.present? }
+    scope :by_column, ->(column, value) { where("CAST(#{column} AS VARCHAR ) ILIKE ?", "%#{value}%") if value.present? }
   end
 
   class_methods do

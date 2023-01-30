@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_19_235506) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_30_151448) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "addresses", force: :cascade do |t|
     t.string "street"
     t.string "block"
@@ -19,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_19_235506) do
     t.string "postal_code"
     t.string "city"
     t.string "state"
-    t.integer "client_id", null: false
+    t.bigint "client_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_addresses_on_client_id"
@@ -35,7 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_19_235506) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "square_meters"
-    t.integer "contract_id"
+    t.bigint "contract_id"
     t.string "uuid"
     t.index ["contract_id"], name: "index_batches_on_contract_id"
   end
@@ -54,12 +57,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_19_235506) do
     t.integer "total_amount"
     t.integer "total_payments"
     t.text "comments"
-    t.integer "client_id", null: false
+    t.bigint "client_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "down_payment"
     t.date "next_payment"
     t.date "first_payment"
+    t.integer "monthly_payment"
+    t.boolean "map", default: false
+    t.date "map_date"
     t.index ["client_id"], name: "index_contracts_on_client_id"
   end
 
@@ -69,15 +75,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_19_235506) do
     t.string "kind"
     t.float "amount"
     t.text "comments"
-    t.integer "contract_id", null: false
+    t.bigint "contract_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "realization_date"
     t.index ["contract_id"], name: "index_payments_on_contract_id"
   end
 
   create_table "phones", force: :cascade do |t|
     t.string "number"
-    t.integer "client_id", null: false
+    t.bigint "client_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_phones_on_client_id"
@@ -91,6 +98,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_19_235506) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "middle_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

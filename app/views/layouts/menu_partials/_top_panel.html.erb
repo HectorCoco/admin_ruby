@@ -5,24 +5,31 @@
     <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
   </div>
   <!-- br-header-left -->
-  <div class="br-header-right">
+  <div class="br-header-right d-flex align-items-center justify-content-between">
     <nav class="nav">
       <%=render "/layouts/menu_partials/notifications_panel"%>
       <!-- dropdown -->
-      <div class="dropdown">
+      <div class="dropdown  d-flex justify-content-center align-items-center">
         <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
           <span class="logged-name hidden-md-down"><%=current_user.email%></span>
-          <span class="square-10 bg-success"></span>
+          <!--
+          <span class="square-10 bg-success ml-5"></span>
+          -->
         </a>
         <div class="dropdown-menu dropdown-menu-header wd-200">
           <ul class="list-unstyled user-profile-nav">
+            <!--
             <li><a href=""><i class="icon ion-ios-person"></i> Edit Profile</a></li>
             <li><a href=""><i class="icon ion-ios-gear"></i> Settings</a></li>
             <li><a href=""><i class="icon ion-ios-download"></i> Downloads</a></li>
             <li><a href=""><i class="icon ion-ios-star"></i> Favorites</a></li>
             <li><a href=""><i class="icon ion-ios-folder"></i> Collections</a></li>
+            -->
             <% if user_signed_in? %>
-              <li><%=button_to "Sign Out", destroy_user_session_path, method: :delete%>
+              <li>
+                <%=button_to destroy_user_session_path, method: :delete, class:"btn btn-danger tx-bold" do%>
+                  <span>Cerrar sesión </span>
+                <% end %>
               </li>
             <% end %>
           </ul>

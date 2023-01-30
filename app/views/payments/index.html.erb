@@ -1,22 +1,27 @@
 <div class="bd rounded pd-10">
   <h1 class="tx-bold d-flex justify-content-center">PAGOS</h1>
   <div class="row d-flex justify-content-end m-3">
+    <!--
     <div class="d-flex align-items-center">
       <%= link_to new_payment_path, class:"btn btn-success tx-11 tx-uppercase tx-spacing tx-bold bd d-flex align-items-center pd-15" do%>
         <i class="fa fa-plus"></i>
       <% end %>
     </div>
+  
+  -->
   </div>
   <div id="batches" class="bd bd-gray-300 rounded table-responsive">
     <table class="table table-bordered mg-b-0">
       <thead>
         <tr>
-          <th class="bg-info">Folio</th>
-          <th class="bg-info">Fecha&nbsp;&nbsp;&nbsp;a-m-d</th>
-          <th class="bg-info">Contracto</th>
-          <th class="bg-info">Cliente</th>
-          <th class="bg-info">Monto</th>
-          <th class="bg-info">Opciones</th>
+          <th class="bg-info"><span class="tx-white">Folio</span></th>
+          <th class="bg-info"><span class="tx-white">Contrato</span></th>
+          <th class="bg-info"><span class="tx-white">Cliente</span></th>
+          <th class="bg-info"><span class="tx-white">Fecha de captura</span></th>
+          <th class="bg-info"><span class="tx-white">Fecha a la que corresponde</span></th>
+          <th class="bg-info"><span class="tx-white">Tipo</span></th>
+          <th class="bg-info"><span class="tx-white">Monto</span></th>
+          <th class="bg-info"><span class="tx-white">Opciones</span></th>
         </tr>
       </thead>
       <tbody>

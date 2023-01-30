@@ -1,16 +1,40 @@
-<h2>Notificaciones</h2>
-<div>
-  <%@notifications.each do |notification|%>
-    <%=link_to notification do%>
-      <div>
-        <span>ID del contrato:</span>
-        <span><%=notification.id%></span>||
-        <span>Nombre del cliente:</span>
-        <span><%=notification.id%></span>||
-        <span>Fecha de pago:</span>
-        <span><%=notification.next_payment%></span>
-      </div>
-      <br>
-    <% end %>
-  <% end %>
+<h2 class="tx-bold d-flex justify-content-center">PAGOS VENCIDOS</h2>
+<br>
+<br>
+<div class="bd bd-gray-300 rounded table-responsive">
+  <table class="table mg-b-0">
+    <thead>
+      <tr>
+        <th>ID del contrato</th>
+        <th>Cliente</th>
+        <th>Fecha de pago</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@notifications.each do |notification|%>
+        <tr>
+          <th scope="row">
+            <%=link_to notification do%>
+              <span><%=notification.id%></span>
+            <% end %>
+          </th>
+          <td>
+            <%=link_to notification.client do%>
+              <span><%="#{notification.client.first_name} #{notification.client.middle_name} #{notification.client.last_name}"%></span>
+            <% end %>
+          </td>
+          <td>
+            <span class="tx-bold tx-danger"><%=notification.next_payment%></span>
+          </td>
+          <td>
+            <%= link_to new_with_contract_path(notification.id), class:"btn btn-teal" do%>
+              <i class="fa fa-money"></i>
+              <span class="tx-white tx-bold">Anadir pago</span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

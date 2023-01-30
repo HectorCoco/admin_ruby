@@ -99,6 +99,6 @@ class ContractsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def contract_params
-    params.require(:contract).permit(:total_amount, :total_payments, :comments, :client_id, :down_payment, :next_payment, :first_payment)
+    params.require(:contract).permit(:total_amount, :total_payments, :comments, :client_id, :down_payment, :next_payment, :first_payment, :monthly_payment, :map, :map_date)
   end
 end

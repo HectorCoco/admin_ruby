@@ -1,5 +1,4 @@
 <td><%= payment.file_number%></td>
-<td><%= payment.date%></td>
 <% if payment.contract_id.nil? %>
   <td>
     <span class="tx-danger">No contract</span>
@@ -10,7 +9,7 @@
 <% else %>
   <td>
     <%=link_to payment.contract do%>
-      <%= payment.contract_id%>
+      <span class="tx-bold"><%= payment.contract_id%></span>
     <% end %>
   </td>
   <td>
@@ -18,14 +17,19 @@
       <%="#{payment.contract.client.first_name} #{payment.contract.client.middle_name} #{payment.contract.client.last_name}" %>
     <% end %>
   </td>
+  <td><%= payment.created_at.strftime("%d-%m-%Y")%></td>
+  <td><%= payment.date.strftime("%d-%m-%Y")%></td>
 <% end %>
-<td><%=number_to_currency(payment.amount)%></td>
-<td class="d-flex align-items-top justify-content-center">
-  <%= link_to payment, class:"btn btn-info" do%>
-    <i class="fa fa-eye"></i>
-    <span class="tx-white tx-bold"></span>
-  <% end %>
+<td><span class=<%=payment.kind == "Completo" ? "tx-success tx-bold" : "tx-danger tx-bold "%>> <%=payment.kind%></span></td>
+  <td><%=number_to_currency(payment.amount)%></td>
+  <td class="d-flex align-items-top justify-content-center">
+    <%= link_to payment, class:"btn btn-info" do%>
+      <i class="fa fa-eye"></i>
+      <span class="tx-white tx-bold"></span>
+    <% end %>
+    <!--
   <%= link_to edit_payment_path(payment), class:"btn btn-warning" do%>
     <i class="fa fa-pencil"></i>
   <% end %>
-</td>
+  -->
+  </td>

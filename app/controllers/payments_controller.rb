@@ -4,7 +4,7 @@ class PaymentsController < ApplicationController
 
   # GET /payments or /payments.json
   def index
-    @payments = Payment.all.order_by_date
+    @payments = Payment.all.order_by_file_number
   end
 
   # GET /payments/1 or /payments/1.json
@@ -72,6 +72,6 @@ class PaymentsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def payment_params
-    params.require(:payment).permit(:date, :file_number, :kind, :amount, :comments, :contract_id)
+    params.require(:payment).permit(:date, :file_number, :kind, :amount, :comments, :contract_id, :realization_date)
   end
 end

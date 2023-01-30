@@ -12,9 +12,19 @@
     <% end %>
   <% end %>
 </td>
-<td><%=number_to_currency(contract.total_amount)%></td>
 <td><%="#{contract.payments.length} de #{contract.total_payments}"%></td>
-<td><%=number_to_currency(contract.down_payment)%></td>
+<td class=<%=contract.next_payment <= Time.now ? "tx-danger tx-bold" : "tx-primary tx-bold"%>><%=contract.next_payment.strftime("%d-%m-%Y")%></td>
+<td class="tx-primary tx-bold"><%=number_to_currency(contract.total_amount)%></td>
+<td class="tx-bold"><%=number_to_currency(contract.down_payment)%></td>
+<%total_paid=contract.down_payment
+  contract.payments.each do |payment|
+  total_paid+=payment.amount
+  end%>
+<td class="tx-success tx-bold
+"><%=number_to_currency(total_paid)%></td>
+<%to_pay = contract.total_amount-total_paid %>
+<td class="tx-warning tx-bold
+"><%=number_to_currency(to_pay)%></td>
 <td class="d-flex align-items-top justify-content-center">
   <%= link_to contract, class:"btn btn-info" do%>
     <i class="fa fa-eye"></i>

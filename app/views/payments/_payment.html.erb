@@ -3,11 +3,22 @@
     <!-- row-->
     <div class="row no-gutters">
       <div class="col-5 col-sm-4">
-        <span>Fecha</span>
+        <span>Fecha de realizacion</span>
       </div>
       <div class="col-7 col-sm-8">
         <div class="form-control" >
-          <%= payment.date %>
+          <%= payment.created_at.strftime("%d-%m-%Y")%>
+        </div>
+      </div>
+    </div>
+    <!-- row-->
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Fecha a la que corresponde</span>
+      </div>
+      <div class="col-7 col-sm-8">
+        <div class="form-control" >
+          <%= payment.date.strftime("%d-%m-%Y")%>
         </div>
       </div>
     </div>
@@ -31,7 +42,7 @@
       <div class="col-7 col-sm-8">
         <div class="form-control" >
           <%=link_to contract_path payment.contract do%>
-            <%= payment.contract_id %>
+            <span class="tx-bold"><%= payment.contract_id %></span>
           <% end %>
         </div>
       </div>
