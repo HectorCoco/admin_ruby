@@ -2,8 +2,7 @@
   <h1 class="tx-bold d-flex justify-content-center">LOTES</h1>
   <div class="row d-flex justify-content-end m-3">
     <div class="d-flex align-items-center">
-      <%= link_to new_batch_path, class:"btn btn-success tx-11 tx-uppercase tx-spacing tx-bold bd d-flex align-items-center pd-15
-" do%>
+      <%= link_to new_batch_path, class:"btn btn-success tx-11 tx-uppercase tx-spacing tx-bold bd d-flex align-items-center pd-15" do%>
         <i class="fa fa-plus"></i>
       <% end %>
     </div>
@@ -29,5 +28,8 @@
         <% end %>
       </tbody>
     </table>
+  </div>
+  <div>
+    <%=render "layouts/pagy/pagy"%>
   </div>
 </div>

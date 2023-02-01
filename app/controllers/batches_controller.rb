@@ -3,7 +3,7 @@ class BatchesController < ApplicationController
 
   # GET /batches or /batches.json
   def index
-    @batches = Batch.all.order_by_free.order_by_block.order_by_lot
+    @pagy, @batches = pagy(Batch.all.order_by_free.order_by_block.order_by_lot)
   end
 
   # GET /batches/1 or /batches/1.json

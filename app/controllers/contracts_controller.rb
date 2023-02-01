@@ -4,7 +4,7 @@ class ContractsController < ApplicationController
 
   # GET /contracts or /contracts.json
   def index
-    @contracts = Contract.eager_load(:batches, :payments).all
+    @pagy, @contracts = pagy(Contract.eager_load(:batches, :payments).all)
   end
 
   # GET /contracts/1 or /contracts/1.json
@@ -82,9 +82,9 @@ class ContractsController < ApplicationController
 
   def batches_allowed
     # binding.pry
-    return Batch.allowed if @contract.nil?
+    return Batch.allowed.order_by_block.order_by_lot if @contract.nil?
 
-    Batch.allowed + @contract.batches
+    Batch.allowed + @contract.batches.order_by_block.order_by_lot
     # @batches = Batch.allowed
     # @batches + @contract.batches unless @contract.nil?
   end
