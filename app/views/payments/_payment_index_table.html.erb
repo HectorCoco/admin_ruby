@@ -17,7 +17,7 @@
       <%="#{payment.contract.client.first_name} #{payment.contract.client.middle_name} #{payment.contract.client.last_name}" %>
     <% end %>
   </td>
-  <td><%= payment.created_at.strftime("%d-%m-%Y")%></td>
+  <td><%= payment.realization_date.nil? ? "No especificado" : payment.realization_date.strftime("%d-%m-%Y")%></td>
   <td><%= payment.date.strftime("%d-%m-%Y")%></td>
 <% end %>
 <td><span class=<%=payment.kind == "Completo" ? "tx-success tx-bold" : "tx-danger tx-bold "%>> <%=payment.kind%></span></td>

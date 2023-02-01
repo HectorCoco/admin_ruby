@@ -4,7 +4,7 @@ class ContractsController < ApplicationController
 
   # GET /contracts or /contracts.json
   def index
-    @pagy, @contracts = pagy(Contract.eager_load(:batches, :payments).all)
+    @pagy, @contracts = pagy(Contract.eager_load(:batches, :payments).all.order_by_expired)
   end
 
   # GET /contracts/1 or /contracts/1.json

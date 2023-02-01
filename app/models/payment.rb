@@ -1,7 +1,7 @@
 class Payment < ApplicationRecord
   belongs_to :contract
 
-  validates :date, :file_number, :kind, :amount, presence: true
+  validates :date, :file_number, :kind, :amount, :realization_date, presence: true
 
   scope :order_by_date, -> { order(date: :desc) }
   scope :order_by_file_number, -> { order(file_number: :desc) }

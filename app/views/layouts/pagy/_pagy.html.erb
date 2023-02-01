@@ -1,5 +1,7 @@
 <div class="text-center m-3">
   <div class="d-flex align-items-center justify-content-center">
-    <%== render "layouts/pagy/pagy_custom", locals: {pagy: @pagy} %>
+    <% if @pagy.pages>1 %>
+      <%== render "layouts/pagy/pagy_custom", locals: {pagy: @pagy} %>
+    <% end %>
   </div>
 </div>

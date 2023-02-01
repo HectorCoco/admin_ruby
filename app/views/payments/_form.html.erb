@@ -11,6 +11,14 @@
   <% end %>
   <div class="row">
     <%= form.label "Fecha a la que corresponde", style: "display: block", class:"col-sm-4 form-control-label" do%>
+      Fecha de realización <span class="tx-danger">*</span>
+    <% end %>
+    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+      <%= form.date_field :realization_date, class:"form-control", value: DateTime.now.strftime("%m-%d-%Y") %>
+    </div>
+  </div>
+  <div class="row mg-t-20">
+    <%= form.label "Fecha a la que corresponde", style: "display: block", class:"col-sm-4 form-control-label" do%>
       Fecha a la que corresponde <span class="tx-danger">*</span>
     <% end %>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
