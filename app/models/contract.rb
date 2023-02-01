@@ -11,6 +11,7 @@ class Contract < ApplicationRecord
 
   scope :order_by_date, -> { order(created_at: :asc) }
   scope :expired, -> { where("next_payment<=?", Date.current) }
+  scope :order_by_expired, -> { order(next_payment: :asc) }
   scope :order_by_next, -> { order(next_payment: :asc) }
 
   # Callbacks
