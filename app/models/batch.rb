@@ -6,8 +6,8 @@ class Batch < ApplicationRecord
   scope :allowed, -> { where("state='1'") }
   scope :related, ->(param_contract_id) { where("contract_id = ?", param_contract_id) }
   scope :order_by_free, -> { order(state: :asc) }
-  scope :order_by_block, -> { order(block: :asc) }
-  scope :order_by_lot, -> { order(lot: :asc) }
+  scope :order_by_block, -> { order("block::integer asc") }
+  scope :order_by_lot, -> { order("lot::integer asc") }
 
   after_save :update_uuid
 

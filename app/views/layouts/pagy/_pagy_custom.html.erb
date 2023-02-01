@@ -1,0 +1,47 @@
+<%#
+  This template is i18n-ready: if you don't use i18n, then you can replace the pagy_t
+  calls with the actual strings ("&lsaquo; Prev", "Next &rsaquo;", "&hellip;").
+
+  The link variable is set to a proc that returns the link tag.
+  Usage: link.call( page_number [, text [, extra_attributes_string ]])
+-%>
+<% 
+pagy=@pagy
+link = pagy_link_proc(pagy) -%>
+<%#-%>
+<nav aria-label="pager" class="pagy_nav pagination" role="navigation">
+  <%if pagy.prev-%>
+    <div class="page-item prev">
+      <%== link.call(pagy.prev, pagy_t('pagy.nav.prev'), 'aria-label="<"') %>
+    </div>
+  <%else-%>
+    <div class="page-item prev disabled tx-secondary">
+      <%# <%== link.call(pagy_t('pagy.nav.prev'))%>
+    </div>
+  <%end-%>
+  <% pagy.series.each do |item|-%>
+    <%if item.is_a?(Integer)-%>
+      <div class="page-item">
+        <%== link.call(item)%>
+      </div>
+    <%elsif item.is_a?(String)-%>
+      <div class="page-item active">
+        <%== link.call(item) %>
+      </div>
+    <%elsif item == :gap-%>
+      <div class="page-item">
+        <%== pagy_t('pagy.nav.gap') %>
+      </div>
+    <%end-%>
+  <%end-%>
+  <%if pagy.next-%>
+    <div class="page-item next">
+      <%== link.call(pagy.next, pagy_t('pagy.nav.next'), 'aria-label=">"') %>
+    </div>
+  <%else-%>
+    <div class="page-item next disabled">
+      <%# <%== link.call(pagy_t('pagy.nav.next'))%>
+    </div>
+  <%end-%>
+  <%#-%>
+</nav>

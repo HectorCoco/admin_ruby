@@ -24,8 +24,7 @@
       Lotes<span class="tx-danger">***</span>
     <% end %>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-      <%= form.select :batch_id,options_for_select(@batches.sort_by{|b| b[:block]}.sort_by{|b| b[:lot]}.map { |b| [ b.uuid, b.id ] }, @contract.batches.pluck(:id)),
-  {},multiple:true, class:"form-control selectpicker multiselect border border-gray bg-danger", id:"batch_selector" %>
+      <%= form.select :batch_id,options_for_select(@batches.map { |b| [ b.uuid, b.id ] }, @contract.batches.pluck(:id)), {},multiple:true, class:"form-control selectpicker multiselect border border-gray bg-danger", id:"batch_selector" %>
     </div>
   </div>
   <div class="row mg-t-20">

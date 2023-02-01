@@ -4,7 +4,7 @@ class ClientsController < ApplicationController
 
   # GET /clients or /clients.json
   def index
-    @clients = Client.all.order_by_active.order_by_name
+    @pagy, @clients = pagy(Client.all.order_by_active.order_by_name)
   end
 
   # GET /clients/1 or /clients/1.json
