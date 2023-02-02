@@ -1,6 +1,6 @@
 <div class="pd-10 mg-t-20 bg-info d-lg-flex justify-content-between">
   <div class="d-lg-flex align-items-center" role="tablist">
-    <h5 class="tx-white m-2 tx-bold" ><%="Informacion de cliente No. #{@client.id}"%></h5>
+    <h5 class="tx-white m-2 tx-bold" ><%="Información de cliente No. #{@client.id}"%></h5>
   </div>
   <div class="d-lg-flex">
     <div>
@@ -23,13 +23,13 @@
         <div class="dropdown-item">
           <%= link_to new_client_phone_path(@client), class:"" do%>
             <i class="fa fa-phone"></i>
-            <span class="tx-bold">Agregar telefono</span>
+            <span class="tx-bold">Agregar teléfono</span>
           <% end %>
         </div>
         <div class="dropdown-item">
           <%= link_to new_client_address_path(@client), class:"" do%>
             <i class="fa fa-home"></i>
-            <span class="tx-bold">Agregar direccion</span>
+            <span class="tx-bold">Agregar dirección</span>
           <% end %>
         </div>
         <div class="dropdown-divider"></div>

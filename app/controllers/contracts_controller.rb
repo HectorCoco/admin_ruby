@@ -1,5 +1,6 @@
 class ContractsController < ApplicationController
   before_action :set_contract, only: %i[show edit update destroy]
+  before_action :get_payments, only: %i[show]
   before_action :set_catalogs
 
   # GET /contracts or /contracts.json
@@ -93,6 +94,9 @@ class ContractsController < ApplicationController
     @contract.batches_selected = params[:contract][:batch_id].reject(&:empty?).map(&:to_i)
   end
 
+  def get_payments
+    @pagy, @contract.payments = pagy(@contract.payments)
+  end
   # def get_all_batches
   #   @contract.batch_list = Batch.all
   # end
