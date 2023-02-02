@@ -11,5 +11,6 @@ class HomeController < ApplicationController
   def set_catalogs
     @contracts = Contract.all
     @payments = Payment.all
+    @batches = Batch.all
   end
 end

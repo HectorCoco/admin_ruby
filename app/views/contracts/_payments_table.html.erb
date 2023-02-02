@@ -1,7 +1,7 @@
 <td> <%=payment.file_number%> </td>
-<th scope="row"><%=payment.realization_date.strftime("%d-%m-%Y")%></th>
+<td><%= payment.realization_date.nil? ? "No especificado" : payment.realization_date.strftime("%d-%m-%Y")%></td>
 <th scope="row"><%=payment.date.strftime("%d-%m-%Y")%></th>
-<td> <%=payment.kind%> </td>
+<td class= <%=payment.kind=="Completo"? "tx-success tx-bold" : "tx-warning tx-bold"%> > <%=payment.kind%> </td>
 <td> <%=number_to_currency(payment.amount)%> </td>
 <td class="d-flex align-items-top justify-content-center">
   <%= link_to payment, class:"btn btn-info" do%>

@@ -25,12 +25,12 @@
             <% end %>
           </td>
           <td>
-            <span class="tx-bold tx-danger"><%=notification.next_payment%></span>
+            <span class="tx-bold tx-danger"><%=notification.next_payment.strftime("%d-%m-%Y")%></span>
           </td>
           <td>
             <%= link_to new_with_contract_path(notification.id), class:"btn btn-teal" do%>
               <i class="fa fa-money"></i>
-              <span class="tx-white tx-bold">Anadir pago</span>
+              <span class="tx-white tx-bold">Añadir pago</span>
             <% end %>
           </td>
         </tr>

@@ -6,7 +6,7 @@
         <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800"><%="ID del contrato: #{notification.id}"%> </strong></p>
         <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800"><%="Cliente: #{notification.client.first_name} #{notification.client.middle_name} #{notification.client.last_name}"%></strong></p>
         <span class="tx-12">Fecha del pago:&nbsp;
-        </span><span class="tx 12 tx-danger"><%=notification.next_payment%></span>
+        </span><span class="tx 12 tx-danger"><%=notification.next_payment.strftime("%d-%m-%Y")%></span>
       </div>
     <% end %>
   </div>

@@ -10,7 +10,7 @@
     </div>
     <%= link_to new_with_contract_path(@contract.id), class:"btn btn-teal" do%>
       <i class="fa fa-money"></i>
-      <span class="tx-white tx-bold">Anadir pago</span>
+      <span class="tx-white tx-bold">Añadir pago</span>
     <% end %>
     <div class="btn-group ">
       <button type="button" class="btn btn-purple btn-block mg-b-10 dropdown-toggle tx-bold" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -59,11 +59,14 @@
     </thead>
     <tbody>
       <%descending = -1%>
-      <%@contract.payments.sort_by{|p| p[:file_number]}.reverse!.each do |payment|%>
+      <%@contract.payments.order_by_file_number_desc.each do |payment|%>
         <tr>
           <%=render "payments_table", payment:payment%>
         </tr>
       <% end %>
     </tbody>
   </table>
+</div>
+<div>
+  <%=render "layouts/pagy/pagy"%>
 </div>

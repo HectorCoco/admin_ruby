@@ -2,6 +2,7 @@ class Batch < ApplicationRecord
   belongs_to :contract, optional: true
 
   validates :price, :lot, :block, :state, presence: true
+  validates :uuid, uniqueness: true
 
   scope :allowed, -> { where("state='1'") }
   scope :related, ->(param_contract_id) { where("contract_id = ?", param_contract_id) }

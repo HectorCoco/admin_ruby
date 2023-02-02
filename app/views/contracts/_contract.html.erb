@@ -162,6 +162,20 @@
           </div>
           <div class="row no-gutters">
             <div class="col-5 col-sm-4">
+              <span>Plano entregado</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <span class= <%= contract.map==true ? "tx-success" : "tx-danger"%> >
+                  <%= contract.map==true ? "Si" : "No"%>
+                </span>
+              </div>
+            </div>
+            <!-- col-8 -->
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
               <span>Comentarios</span>
             </div>
             <!-- col-4 -->
