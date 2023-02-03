@@ -1,6 +1,6 @@
 class ContractsController < ApplicationController
   before_action :set_contract, only: %i[show edit update destroy]
-  before_action :get_payments, only: %i[show]
+  # before_action :get_payments, only: %i[show]
   before_action :set_catalogs
 
   # GET /contracts or /contracts.json
@@ -32,7 +32,7 @@ class ContractsController < ApplicationController
         @contract.set_first_next_payment
         @contract.update_contract_in_batch
 
-        format.html { redirect_to contract_url(@contract), notice: "Contract was successfully created." }
+        format.html { redirect_to contract_url(@contract), notice: "El contrato fue creado exitosamente." }
         format.json { render :show, status: :created, location: @contract }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -50,7 +50,7 @@ class ContractsController < ApplicationController
       if @contract.update(contract_params)
         @contract.update_contract_in_batch
 
-        format.html { redirect_to contract_url(@contract), notice: "Contract was successfully updated." }
+        format.html { redirect_to contract_url(@contract), notice: "El contrato fue actualizado exitosamente." }
         format.json { render :show, status: :ok, location: @contract }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -64,7 +64,7 @@ class ContractsController < ApplicationController
     @contract.destroy
 
     respond_to do |format|
-      format.html { redirect_to contracts_url, notice: "Contract was successfully destroyed." }
+      format.html { redirect_to contracts_url, notice: "El contrato fue eliminado exitosamente." }
       format.json { head :no_content }
     end
   end
@@ -94,9 +94,9 @@ class ContractsController < ApplicationController
     @contract.batches_selected = params[:contract][:batch_id].reject(&:empty?).map(&:to_i)
   end
 
-  def get_payments
-    @pagy, @contract.payments = pagy(@contract.payments)
-  end
+  # def get_payments
+  #   @pagy, @contract.payments = pagy(@contract.payments)
+  # end
   # def get_all_batches
   #   @contract.batch_list = Batch.all
   # end

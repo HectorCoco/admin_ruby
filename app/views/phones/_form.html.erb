@@ -9,16 +9,22 @@
       </ul>
     </div>
   <% end %>
-  <div class="mb-3">
-    <%= form.label "Client", style: "display: block"%>
-    <span><%="#{@client.first_name} #{@client.middle_name} #{@client.last_name}"%></span>
+  <div class="row">
+    <%= form.label :Cliente, style: "display: block", class:"col-sm-4 form-control-label" do %>
+      <span class="tx-bold"><%="#{@client.first_name} #{@client.middle_name} #{@client.last_name}"%></span>
+    <% end %>
   </div>
-  <div class="mb-3">
-    <%= form.label :number, style: "display: block" %>
-    <%= form.text_field :number %>
+  <div class="row mg-t-20">
+    <%= form.label :Number, style: "display: block", class:"col-sm-4 form-control-label" do %>
+      Número de teléfono <span class="tx-danger">*</span>
+    <% end %>
+    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+      <%= form.text_field :number,class:"form-control"%>
+    </div>
   </div>
-  <br>
-  <div class="mb-3">
-    <%= form.submit "Confirm", class:"btn btn-success"%>
+  <div class="row mg-t-10 d-flex justify-content-center">
+    <div class="form-layout mg-t-30 mt-2">
+      <%= form.submit "Confirmar", class:"btn btn-success"%>
+    </div>
   </div>
 <% end %>
