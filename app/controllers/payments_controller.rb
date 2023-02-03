@@ -4,7 +4,7 @@ class PaymentsController < ApplicationController
 
   # GET /payments or /payments.json
   def index
-    @pagy, @payments = pagy(Payment.all.order_by_file_number)
+    @pagy, @payments = pagy(Payment.all.order_by_realization_date.order_by_date.order_by_file_number_desc)
   end
 
   # GET /payments/1 or /payments/1.json
@@ -27,7 +27,7 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       if @payment.save
-        format.html { redirect_to payment_url(@payment), notice: "Payment was successfully created." }
+        format.html { redirect_to contract_path(@payment.contract), notice: "El pago fue registrado exitosamente." }
         format.json { render :show, status: :created, location: @payment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class PaymentsController < ApplicationController
   def update
     respond_to do |format|
       if @payment.update(payment_params)
-        format.html { redirect_to payment_url(@payment), notice: "Payment was successfully updated." }
+        format.html { redirect_to payment_url(@payment), notice: "El pago fue actualizado exitosamente." }
         format.json { render :show, status: :ok, location: @payment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class PaymentsController < ApplicationController
     @payment.destroy
 
     respond_to do |format|
-      format.html { redirect_to payments_url, notice: "Payment was successfully destroyed." }
+      format.html { redirect_to contract_path(@payment.contract), notice: "El pago fue eliminado exitosamente." }
       format.json { head :no_content }
     end
   end

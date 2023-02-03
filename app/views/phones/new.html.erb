@@ -1,7 +1,19 @@
-<h1>New phone</h1>
-<div>
-  <%= link_to "Back to phones", client_phones_path(@client,@phone), class:"btn btn-primary" %>
+<div class="mg-t-80">
+  <div class="col-xl-6">
+    <div class="form-layout form-layout-4">
+      <div class="pd-10 mg-t-20 bg-info mb-4 d-flex justify-content-between">
+        <div class="nav nav-white-800 flex-column flex-md-row" role="tablist">
+          <h6 class="tx-white m-2 tx-bold" >Nuevo Teléfono</h6>
+        </div>
+        <div>
+          <%= link_to client_path(@client), class:"btn btn-primary" do %>
+            <i class="fa fa-reply"></i>
+          <% end %>
+        </div>
+      </div>
+      <%= render "form", phone: @phone %>
+    </div>
+  </div>
+  <!-- row -->
 </div>
 <br>
-<br>
-<%= render "form", phone: @phone %>

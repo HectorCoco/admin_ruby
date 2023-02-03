@@ -4,6 +4,7 @@ class Payment < ApplicationRecord
   validates :date, :file_number, :kind, :amount, :realization_date, presence: true
 
   scope :order_by_date, -> { order(date: :desc) }
+  scope :order_by_realization_date, -> { order(realization_date: :desc) }
   scope :order_by_file_number, -> { order("file_number::integer asc") }
   scope :order_by_file_number_desc, -> { order("file_number::integer desc") }
 

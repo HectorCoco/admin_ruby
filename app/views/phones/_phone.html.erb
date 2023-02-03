@@ -1,12 +1,12 @@
 <div id="<%= dom_id phone %>">
   <p>
-    <strong>Client:</strong>
+    <strong>Cliente:</strong>
     <%=link_to client_path @client do%>
       <%= "#{phone.client.first_name.capitalize} #{phone.client.middle_name.capitalize} #{phone.client.last_name.capitalize}"%>
     <%end%>
   </p>
   <p>
-    <strong>Number:</strong>
+    <strong>Teléfono:</strong>
     <%= phone.number %>
   </p>
 </div>

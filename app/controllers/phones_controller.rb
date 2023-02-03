@@ -27,7 +27,7 @@ class PhonesController < ApplicationController
 
     respond_to do |format|
       if @phone.save
-        format.html { redirect_to client_phones_path(@client), notice: "Phone was successfully created." }
+        format.html { redirect_to client_path(@client), notice: "Phone was successfully created." }
         format.json { render :show, status: :created, location: @phone }
       else
         format.html { render :new, status: :unprocessable_entity }
