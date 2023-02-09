@@ -24,6 +24,17 @@
           </div>
           <div class="row no-gutters">
             <div class="col-5 col-sm-4">
+              <span>Fecha de firma</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <span class=""><%=contract.signing_date.nil? ? "No especificada" : contract.signing_date.strftime("%d-%m-%Y")%></span>
+              </div>
+            </div>
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
               <span>Cliente</span>
             </div>
             <!-- col-4 -->
@@ -46,12 +57,12 @@
                 <% if contract.batches.empty? %>
                   <span class="tx-danger">Sin lotes</span>
                 <% else %>
-                  <span>||</span>
-                  <%contract.batches.each do |batch|%>
+                  <span>/</span>
+                  <%contract.batches.order_by_block.order_by_lot.each do |batch|%>
                     <%=link_to batch do%>
                       <span><%=batch.uuid%></span>
                     <% end %>
-                    <span>||</span>
+                    <span>/</span>
                   <% end %>
                 <% end %>
               </div>

@@ -3,12 +3,12 @@
   <% if contract.batches.empty? %>
     <span class="tx-danger tx-bold">Sin lotes</span>
   <% else %>
-    <span>||</span>
-    <%contract.batches.each do |batch|%>
+    <span>/</span>
+    <%contract.batches.order_by_block.order_by_lot.each do |batch|%>
       <%=link_to batch do%>
         <span><%=batch.uuid%></span>
       <% end %>
-      <span>||</span>
+      <span>/</span>
     <% end %>
   <% end %>
 </td>
@@ -20,11 +20,10 @@
   contract.payments.each do |payment|
   total_paid+=payment.amount
   end%>
-<td class="tx-success tx-bold
-"><%=number_to_currency(total_paid)%></td>
+<td class="tx-success tx-bold"><%=number_to_currency(total_paid)%></td>
 <%to_pay = contract.total_amount-total_paid %>
-<td class="tx-warning tx-bold
-"><%=number_to_currency(to_pay)%></td>
+<td class="tx-warning tx-bold"><%=number_to_currency(to_pay)%></td>
+<td class=  <%=contract.map == true ? "tx-success tx-bold" : "tx-danger tx-bold" %>><%=contract.map == true ? "Si" : "No"%></td>
 <td class="d-flex align-items-top justify-content-center">
   <%= link_to contract, class:"btn btn-info" do%>
     <i class="fa fa-eye"></i>

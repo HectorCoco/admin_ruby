@@ -40,7 +40,7 @@ class PhonesController < ApplicationController
   def update
     respond_to do |format|
       if @phone.update(phone_params)
-        format.html { redirect_to client_phone_path(@client), notice: "Phone was successfully updated." }
+        format.html { redirect_to client_path(@client), notice: "Phone was successfully updated." }
         format.json { render :show, status: :ok, location: @phone }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class PhonesController < ApplicationController
     @phone.destroy
 
     respond_to do |format|
-      format.html { redirect_to client_phones_path, notice: "Phone was successfully destroyed." }
+      format.html { redirect_to client_phones_path(@client, @phone), notice: "Phone was successfully destroyed." }
       format.json { head :no_content }
     end
   end
