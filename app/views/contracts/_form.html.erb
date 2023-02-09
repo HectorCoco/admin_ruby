@@ -11,7 +11,15 @@
       </div>
     <% end %>
   </div>
-  <div class="row">
+  <div class="row mg-t-20">
+    <%= form.label :signing_date, style: "display: block", class:"col-sm-4 form-control-label" do%>
+      Fecha de firma <span class="tx-danger">*</span>
+    <% end %>
+    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+      <%= form.date_field :signing_date,class:"form-control"%>
+    </div>
+  </div>
+  <div class="row mg-t-20">
     <%= form.label :client, style: "display: block", class:"col-sm-4 form-control-label" do%>
       Cliente<span class="tx-danger">*</span>
     <%end%>
@@ -21,7 +29,7 @@
   </div>
   <div class="row mg-t-20">
     <%= form.label :batch_id, style: "display: block", class:"col-sm-4 form-control-label" do%>
-      Lotes<span class="tx-danger">***</span>
+      Lotes<span class="tx-danger">*</span>
     <% end %>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
       <%= form.select :batch_id,options_for_select(@batches.map { |b| [ b.uuid, b.id ] }, @contract.batches.pluck(:id)), {},multiple:true, class:"form-control selectpicker multiselect border border-gray bg-danger", id:"batch_selector" %>
@@ -73,7 +81,7 @@
     <% end %>
   </div>
   <div class="row mg-t-20">
-    <%= form.label :comments, style: "display: block" , class:"col-sm-4 form-control-label"%>
+    <%= form.label :Comentarios, style: "display: block" , class:"col-sm-4 form-control-label"%>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
       <%= form.text_area :comments,class:"form-control"%>
     </div>

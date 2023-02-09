@@ -3,11 +3,21 @@
     <!-- row-->
     <div class="row no-gutters">
       <div class="col-5 col-sm-4">
-        <span>Fecha de realizacion</span>
+        <span>Fecha de captura</span>
       </div>
       <div class="col-7 col-sm-8">
         <div class="form-control" >
           <%= payment.created_at.strftime("%d-%m-%Y")%>
+        </div>
+      </div>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-5 col-sm-4">
+        <span>Fecha de realizacion</span>
+      </div>
+      <div class="col-7 col-sm-8">
+        <div class="form-control" >
+          <%= payment.realization_date.strftime("%d-%m-%Y")%>
         </div>
       </div>
     </div>

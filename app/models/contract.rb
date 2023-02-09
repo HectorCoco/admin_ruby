@@ -7,7 +7,7 @@ class Contract < ApplicationRecord
   # attr_accessor :batch_list
 
   validates_numericality_of :total_amount, :down_payment, :total_payments, :monthly_payment, greater_than: 0
-  validates :total_amount, :total_payments, :down_payment, :first_payment, :monthly_payment, presence: true
+  validates :total_amount, :total_payments, :down_payment, :first_payment, :monthly_payment, :signing_date, presence: true
 
   scope :order_by_date, -> { order(created_at: :asc) }
   scope :expired, -> { where("next_payment<=?", Date.current) }

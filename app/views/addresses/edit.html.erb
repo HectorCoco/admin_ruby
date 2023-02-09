@@ -1,7 +1,19 @@
-<h1>Editing address</h1>
-<%= render "form", address: @address %>
-<br>
-<div>
-  <%= link_to "Show this address", new_client_address_path(@client,@address), class:"btn btn-info" %> ||
-  <%= link_to "Back to addresses", client_addresses_path(@client,@address), class:"btn btn-primary" %>
+<div class="mg-t-80">
+  <div class="col-xl-6">
+    <div class="form-layout form-layout-4">
+      <div class="pd-10 mg-t-20 bg-info mb-4 d-flex justify-content-between">
+        <div class="nav nav-white-800 flex-column flex-md-row" role="tablist">
+          <h6 class="tx-white m-2 tx-bold" >Editando Dirección</h6>
+        </div>
+        <div>
+          <%= link_to client_address_path(@client,@address), class:"btn btn-primary" do %>
+            <i class="fa fa-reply"></i>
+          <% end %>
+        </div>
+      </div>
+      <%= render "form", address: @address %>
+    </div>
+  </div>
+  <!-- row -->
 </div>
+<br>

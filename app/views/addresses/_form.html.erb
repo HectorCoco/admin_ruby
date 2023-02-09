@@ -9,42 +9,57 @@
       </ul>
     </div>
   <% end %>
-  <div>
-    <%= form.label "Client", style: "display: block"%>
-    <span><%="#{@client.first_name} #{@client.middle_name} #{@client.last_name}"%></span>
+  <div class="row d-flex align-items-center justify-content-center">
+    <%= form.label :Cliente, style: "display: block", class:"col-sm-4 form-control-label" do %>
+      <span class="tx-bold"><%="#{@client.first_name} #{@client.middle_name} #{@client.last_name}"%></span>
+    <% end %>
+  </div>
+  <div class="row mg-t-20">
+    <%= form.label "Calle", style: "display: block", class:"col-sm-4 form-control-label" %>
+    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+      <%= form.text_field :street,class:"form-control"%>
+    </div>
+  </div>
+  <div class="row mg-t-20">
+    <%= form.label "Manzana", style: "display: block", class:"col-sm-4 form-control-label" %>
+    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+      <%= form.text_field :block,class:"form-control"%>
+    </div>
+  </div>
+  <div class="row mg-t-20">
+    <%= form.label "Lote", style: "display: block", class:"col-sm-4 form-control-label" %>
+    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+      <%= form.text_field :lot,class:"form-control"%>
+    </div>
+  </div>
+  <div class="row mg-t-20">
+    <%= form.label "Colonia", style: "display: block", class:"col-sm-4 form-control-label" %>
+    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+      <%= form.text_field :colony ,class:"form-control"%>
+    </div>
+  </div>
+  <div class="row mg-t-20">
+    <%= form.label "Código Postal", style: "display: block", class:"col-sm-4 form-control-label" %>
+    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+      <%= form.text_field :postal_code,class:"form-control"%>
+    </div>
+  </div>
+  <div class="row mg-t-20">
+    <%= form.label "Ciudad", style: "display: block", class:"col-sm-4 form-control-label" %>
+    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+      <%= form.text_field :city,class:"form-control"%>
+    </div>
+  </div>
+  <div class="row mg-t-20">
+    <%= form.label "Estado", style: "display: block", class:"col-sm-4 form-control-label" %>
+    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+      <%= form.text_field :state ,class:"form-control"%>
+    </div>
   </div>
   <br>
-  <br>
-  <div>
-    <%= form.label :street, style: "display: block" %>
-    <%= form.text_field :street %>
-  </div>
-  <div>
-    <%= form.label :block, style: "display: block" %>
-    <%= form.text_field :block %>
-  </div>
-  <div>
-    <%= form.label :lot, style: "display: block" %>
-    <%= form.text_field :lot %>
-  </div>
-  <div>
-    <%= form.label :colony, style: "display: block" %>
-    <%= form.text_field :colony %>
-  </div>
-  <div>
-    <%= form.label :postal_code, style: "display: block" %>
-    <%= form.text_field :postal_code %>
-  </div>
-  <div>
-    <%= form.label :city, style: "display: block" %>
-    <%= form.text_field :city %>
-  </div>
-  <div>
-    <%= form.label :state, style: "display: block" %>
-    <%= form.text_field :state %>
-  </div>
-  <br>
-  <div class="mb-3">
-    <%= form.submit "Confirm", class:"btn btn-success"%>
+  <div class="row mg-t-10 d-flex justify-content-center">
+    <div class="form-layout mg-t-30 mt-2">
+      <%= form.submit "Confirmar", class:"btn btn-success"%>
+    </div>
   </div>
 <% end %>

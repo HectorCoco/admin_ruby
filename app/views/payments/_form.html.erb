@@ -9,7 +9,28 @@
       </ul>
     </div>
   <% end %>
-  <div class="row">
+  <div class="row mg-t-20 mb-4">
+    <%= form.label "Cliente", style: "display: block", class:"col-sm-4 form-control-label" do%>
+      Contrato
+    <%end%>
+    <!--<div class="col-sm-8 mg-t-10 mg-sm-t-0">
+         <%= form.select :contract_id, @contracts.collect { |c| [ "Contrato de folio: #{c.id} - cliente: #{c.client.first_name} #{c.client.middle_name}", c.id ] }, {}, class:"form-control selectpicker border border-gray", :readonly => true%>
+         </div>-->
+    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+      <%= form.text_field :contract_id, class:"form-control selectpicker border border-gray", :readonly => true%>
+    </div>
+  </div>
+  <div class="row mg-t-20">
+    <%= form.label "Cliente", style: "display: block" , class:"col-sm-4 form-control-label" do%>
+      Cliente
+    <% end %>
+    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+      <div class="d-flex">
+        <%= form.text_field "#{@payment.contract.client.first_name}", class:"form-control selectpicker border border-gray", :readonly => true, value:"#{@payment.contract.client.first_name} #{@payment.contract.client.middle_name} #{@payment.contract.client.last_name}"%>
+      </div>
+    </div>
+  </div>
+  <div class="row mg-t-20">
     <%= form.label "Fecha a la que corresponde", style: "display: block", class:"col-sm-4 form-control-label" do%>
       Fecha de realización <span class="tx-danger">*</span>
     <% end %>
@@ -33,14 +54,6 @@
       <%= form.text_field :file_number, class:"form-control", value: payment.contract.payments.empty? ? 1 : payment.contract.payments.order_by_file_number.last.file_number.to_i + 1 %>
     </div>
   </div>
-  <div class="row mg-t-20 mb-4">
-    <%= form.label "Cliente", style: "display: block", class:"col-sm-4 form-control-label" do%>
-      Contrato<span class="tx-danger">*</span>
-    <%end%>
-    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-      <%= form.select :contract_id, @contracts.collect { |c| [ "Contrato de folio: #{c.id} - cliente: #{c.client.first_name} #{c.client.middle_name}", c.id ] }, {:prompt => 'Select contract...'}, class:"form-control selectpicker border border-gray"%>
-    </div>
-  </div>
   <div class="row mg-t-20">
     <%= form.label "Pago", style: "display: block" , class:"col-sm-4 form-control-label" do%>
       Pago<span class="tx-danger">*</span>
@@ -56,7 +69,7 @@
       Tipo<span class="tx-danger">*</span>
     <% end %>
     <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-      <%=form.select :kind, options_for_select([["Completo"],["Abono"]]), {:prompt => ""}, class:"form-control border border-gray"%>
+      <%=form.select :kind, options_for_select([["Completo"],["Abono"]]), {:prompt => ""}, class:"form-control selectpicker border border-gray"%>
     </div>
   </div>
   <div class="row mg-t-20">

@@ -31,10 +31,10 @@
     <div class="d-flex align-items-center justify-content-center bg-br-primary ht-100v">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <% if notice %>
-          <div class="alert alert-primary text-white text-opacity-50 text-center mb-4"> <%=notice%>  </div>
+          <div class="alert alert-success text-opacity-50 text-center mb-4"> <%=notice%>  </div>
         <% end %>
         <% if alert %>
-          <div class="alert alert-danger text-white text-opacity-50 text-center mb-4"> <%=alert%>  </div>
+          <div class="alert alert-danger text-opacity-50 text-center mb-4"> <%=alert%>  </div>
         <% end %>
         <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white rounded shadow-base">
           <div class="signin-logo tx-center tx-28 tx-bold tx-inverse"><span class="tx-normal">[</span> HVA <span class="tx-normal">]</span></div>
