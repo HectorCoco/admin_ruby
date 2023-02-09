@@ -1,0 +1,14 @@
+databases:
+  - name: ryr_production
+    databaseName: ryr_production
+    user: ryr_user
+
+services:
+  - type: web
+    name: ryr
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: RAILS_MASTER_KEY
+        sync: false

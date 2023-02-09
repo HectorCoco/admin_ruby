@@ -33,21 +33,24 @@
 #   <<: *default
 #      database: db_admin_ruby_production
 
-development: 
+default: &default
   adapter: postgresql
-  database: postgres_admin_ruby_development
-  pool: 5
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  host: localhost
+  # host: localhost
   username: t0t0t4t0 
   password: hector091188.
+  
+
+development: 
+  <<: *default
+  database: postgres_admin_ruby_development
+
 production: 
-  adapter: postgresql
-  database: postgres_admin_ruby_production
-  pool: 5
-  timeout: 5000
+  <<: *default
+  url: postgres://ryr_user:21BjT54BzzlmQGzcq3P5whyD47G6txH3@dpg-cfii9fpgp3jh03k77c30-a/ryr_production
+
 test: 
-  adapter: postgresql
+  <<: *default
   database: postgres_admin_ruby_test
-  pool: 5
-  timeout: 5000
