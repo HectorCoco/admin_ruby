@@ -38,14 +38,15 @@ default: &default
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  # host: localhost
-  username: t0t0t4t0 
-  password: hector091188.
+
   
 
 development: 
   <<: *default
   database: postgres_admin_ruby_development
+  host: localhost
+  username: develop
+  password: q1w2e3r4
 
 production: 
   <<: *default
