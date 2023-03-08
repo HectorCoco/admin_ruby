@@ -1,75 +1,199 @@
 <div class="card card-body bg-primary tx-white bd-0">
   <p class="card-text ">
     <h5 class="d-lg-flex justify-content-center align-items-center">
-      <span class="tx-bold d-flex justify-content-center"> Bienvenido!!</span>
+      <span class="tx-bold d-flex justify-content-center"> Autenticado como </span>
       &nbsp; 
-      <span class="tx-bold tx-success d-flex justify-content-center""><%=current_user.email%></span>
+      <span class="tx-bold tx-success d-flex justify-content-center""><%= current_user.email %></span>
     </h5>
   </p>
 </div>
-<div>
-  <%
-  total=0
-total_paid=0
-to_pay=0
-@payments.each do |payment|
-total_paid += payment.amount
-end
-@contracts.each do |contract|
-total_paid+=contract.down_payment
-total+=contract.total_amount
-end
-to_pay=total-total_paid
+<% total = 0
+     total_paid = 0
+     to_pay = 0
+     expired_payment = 0
+
+     @payments.each do |payment|
+       total_paid += payment.amount
+     end
+     @contracts.each do |contract|
+       total_paid += contract.down_payment
+       total += contract.total_amount
+       if  Date.current > contract.next_payment
+        expired_payment += 1
+       end
+     end
+     to_pay = total - total_paid 
 %>
-  <div class="bd bd-gray-300 rounded table-responsive">
-    <table class="table table-bordered mg-b-0">
-      <thead>
-        <tr>
-          <th class="bg-info"><spam class="tx-white tx-bold">Total </span></th>
-          <th class="bg-info"><spam class="tx-white tx-bold">Total en caja</span></th>
-          <th class="bg-info"><spam class="tx-white tx-bold">Total a percibir</span>
-            <th class="bg-info"><spam class="tx-white tx-bold">Lotes libres</span>
-              <th class="bg-info"><spam class="tx-white tx-bold">Lotes vendidos</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <Span class="tx-bold"><%="#{number_to_currency(total)}"%></Span>
-              </td>
-              <td>
-                <Span class="tx-bold tx-success"><%="#{number_to_currency(total_paid)}"%></Span>
-              </td>
-              <td>
-                <Span class="tx-bold tx-warning"><%="#{number_to_currency(to_pay)}"%></Span>
-              </td>
-              <td>
-                <%
-              free_batches = 0
-              total_batches=0
-              @batches.each_with_index do |b,i|
-                if b.state == "1"
-                  free_batches+=1
-                end
-                total_batches=i
-              end
-              # total_batches+=1
-              %>
-                <Span class="tx-bold tx-primary">
-                  <%="#{free_batches} de #{total_batches}"%>
-                </Span>
-              </td>
-              <td>
-                <%
-              selled_batches=total_batches-free_batches
-              %>
-                <Span class="tx-bold tx-success">
-                  <%="#{selled_batches} de #{total_batches}"%>
-                </Span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+<%
+      free_batches = 0
+      total_batches = 0
+      @batches.each_with_index do |b, i|
+        if b.state == "1"
+          free_batches += 1
+        end
+        total_batches = i
+      end
+      total_batches+=1
+%>
+<!--Inicia card de contratos -->
+<div class="card">
+  <div class="card-header" role="tab" id="headingOne">
+    <h6 class="mg-b-0">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="tx-gray-800 transition">
+        <h6 class="tx-info tx-bold m-2" >Información general de Contratos</h6>
+      </a>
+    </h6>
+  </div>
+  <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+    <div class="card-block pd-20">
+      <div id="contracts">
+        <div class="form-layout form-layout-7">
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span class="tx-bold">Total de contratos</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <span><%=@contracts.count%></span></div>
+            </div>
+            <!-- col-8 -->
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span class="tx-bold">Contratos al día</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <span><%=@contracts.count-expired_payment%></span></div>
+            </div>
+            <!-- col-8 -->
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span class="tx-bold">Contratos vencidos</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <span><%=expired_payment%></span></div>
+            </div>
+            <!-- col-8 -->
+          </div>
+        </div>
       </div>
+      <!-- col-8 -->
     </div>
+    <!-- row -->
+  </div>
+</div>
+<!--Finaliza Card de Contratos-->
+<!--Inicia Card de Lotes-->
+<div class="card">
+  <div class="card-header" role="tab" id="headingOne">
+    <h6 class="mg-b-0">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" class="tx-gray-800 transition">
+        <h6 class="tx-info tx-bold m-2" >Información general de Lotes</h6>
+      </a>
+    </h6>
+  </div>
+  <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+    <div class="card-block pd-20">
+      <div id="Batches">
+        <div class="form-layout form-layout-7">
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span class="tx-bold">Total de Lotes</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <span><%=total_batches%></span></div>
+            </div>
+            <!-- col-8 -->
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span class="tx-bold">Lotes Libres</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <span><%=free_batches%></span></div>
+            </div>
+            <!-- col-8 -->
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span class="tx-bold">Lotes Vendidos</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <span><%=total_batches-free_batches%></span></div>
+            </div>
+            <!-- col-8 -->
+          </div>
+        </div>
+      </div>
+      <!-- col-8 -->
+    </div>
+    <!-- row -->
+  </div>
+</div>
+<!--Filaniza Card de Lotes -->
+<!--Inicia card de balance-->
+<div class="card">
+  <div class="card-header" role="tab" id="headingOne">
+    <h6 class="mg-b-0">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree" class="tx-gray-800 transition">
+        <h6 class="tx-info tx-bold m-2" >Balance General</h6>
+      </a>
+    </h6>
+  </div>
+  <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+    <div class="card-block pd-20">
+      <div id="Balance">
+        <div class="form-layout form-layout-7">
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span class="tx-bold">Total percibido</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <span><%=number_to_currency(total_paid)%></span></div>
+            </div>
+            <!-- col-8 -->
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span class="tx-bold">Total a percibir</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <span><%=number_to_currency(to_pay)%></span></div>
+            </div>
+            <!-- col-8 -->
+          </div>
+          <div class="row no-gutters">
+            <div class="col-5 col-sm-4">
+              <span class="tx-bold">Total</span>
+            </div>
+            <!-- col-4 -->
+            <div class="col-7 col-sm-8">
+              <div class="form-control">
+                <span><%=number_to_currency(total)%></span></div>
+            </div>
+            <!-- col-8 -->
+          </div>
+        </div>
+      </div>
+      <!-- col-8 -->
+    </div>
+    <!-- row -->
+  </div>
+</div>
+<!--Finaliza Card de balance-->

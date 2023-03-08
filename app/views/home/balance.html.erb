@@ -1,0 +1,54 @@
+  
+<div class="bd bd-gray-300 rounded table-responsive">
+  <table class="table table-bordered mg-b-0">
+    <thead>
+      <tr>
+        <th class="bg-info"><spam class="tx-white tx-bold">Total </span></th>
+        <th class="bg-info"><spam class="tx-white tx-bold">Total en caja</span></th>
+        <th class="bg-info"><spam class="tx-white tx-bold">Total a percibir</span>
+          <th class="bg-info"><spam class="tx-white tx-bold">Lotes libres</span>
+            <th class="bg-info"><spam class="tx-white tx-bold">Lotes vendidos</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <Span class="tx-bold"><%="#{number_to_currency(total)}"%></Span>
+            </td>
+            <td>
+              <Span class="tx-bold tx-success"><%="#{number_to_currency(total_paid)}"%></Span>
+            </td>
+            <td>
+              <Span class="tx-bold tx-warning"><%="#{number_to_currency(to_pay)}"%></Span>
+            </td>
+            <td>
+              <%
+              free_batches = 0
+              total_batches=0
+              @batches.each_with_index do |b,i|
+                if b.state == "1"
+                  free_batches+=1
+                end
+                total_batches=i
+              end
+              # total_batches+=1
+              %>
+              <Span class="tx-bold tx-primary">
+                <%="#{free_batches} de #{total_batches}"%>
+              </Span>
+            </td>
+            <td>
+              <%
+              selled_batches=total_batches-free_batches
+              %>
+              <Span class="tx-bold tx-success">
+                <%="#{selled_batches} de #{total_batches}"%>
+              </Span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
