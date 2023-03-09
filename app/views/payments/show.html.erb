@@ -24,7 +24,7 @@
         -->
         <div class="dropdown-divider"></div>
         <div class="dropdown-item">
-          <%= button_to @payment, method: :delete, class:"btn btn-danger btn-block mg-b-10" do%>
+          <%= button_to @payment, method: :delete, :onclick => "return confirm('Desea eliminar este pago de manera permanente')", class:"btn btn-danger btn-block mg-b-10" do%>
             <i class="icon ion-close"></i>
             <span class="tx-bold">Eliminar</span>
           <% end %>
