@@ -8,7 +8,7 @@
 <br>
 <div class="d-flex">
   <%= link_to "Editar", edit_client_address_path(@client), class:"btn btn-success" %>
-  <%= button_to [@client,@address], method: :delete, class:"btn btn-danger" do%>
+  <%= button_to [@client,@address], method: :delete, :onclick => "return confirm('Desea eliminar esta dirección de manera permanente')", class:"btn btn-danger" do%>
     <span class="tx-bold">Eliminar</span>
   <% end %>
 </div>
