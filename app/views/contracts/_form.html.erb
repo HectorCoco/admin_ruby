@@ -88,7 +88,7 @@
   </div>
   <div class="row mg-t-10 d-flex justify-content-center">
     <div class="form-layout-footer mg-t-30 mt-2">
-      <%= form.submit "Confirmar", class:"btn btn-success"%>
+      <%= form.submit "Confirmar", :onclick => "return confirm('Desea resgistrar la información')", class:"btn btn-success"%>
     </div>
-  </div>
-<% end %>
+    </div>
+  <% end %>
