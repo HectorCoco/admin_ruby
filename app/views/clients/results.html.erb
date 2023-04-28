@@ -14,7 +14,8 @@
   <br>
   <% unless @error %>
     <% unless @results.empty?%>
-      <%@results.each_with_index do |result, index|%>
+      <%new_results = @results.uniq%>
+      <%new_results.each_with_index do |result, index|%>
         <%=link_to result, class:"tx-bold" do%>
           <span><%="#{index+1}.-  #{result.first_name} #{result.middle_name} #{result.last_name}"%></span><br>
         <% end %>

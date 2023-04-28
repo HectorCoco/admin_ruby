@@ -44,9 +44,7 @@ default: &default
 development: 
   <<: *default
   database: postgres_admin_ruby_development
-  host: localhost
-  username: develop
-  password: q1w2e3r4
+
 
 production: 
   <<: *default
