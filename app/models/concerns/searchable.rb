@@ -8,11 +8,9 @@ module Searchable
   class_methods do
     def search(columns, value)
       results = []
-
       columns.each do |column|
         results << by_column(column, value)
       end
-
       results.flatten
     end
   end
