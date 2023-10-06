@@ -6,6 +6,12 @@ class HomeController < ApplicationController
 
   def all_notifications
     @notifications = Contract.get_notifications
+    @notifications.each do |notification|
+      total_paid=notification.down_payment
+      notification.payments.each do |payment|
+        total_paid += payment.amount
+      end
+    end
   end
 
   def set_catalogs

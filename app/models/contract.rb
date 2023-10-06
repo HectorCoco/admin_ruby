@@ -38,6 +38,11 @@ class Contract < ApplicationRecord
   end
 
   def self.get_notifications
-    expired.order_by_next
+    self
+    .joins("JOIN payments ON payments.contract_id = contracts.id")
+    .expired
+    .group(:id)
+    .having("SUM(payments.amount) + contracts.down_payment != contracts.total_amount")
+    .order_by_next
   end
 end
